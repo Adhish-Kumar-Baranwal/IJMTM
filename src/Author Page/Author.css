@@ -1,0 +1,44 @@
+/* Author.css */
+
+/* Section Styling */
+.author-section {
+    padding: 48px 0;
+    background-color: #e6e6e6;
+  }
+  
+  /* Card Styling */
+  .author-card {
+    margin-top: 40px;
+    padding: 120px;
+  }
+  
+  /* Contact Information Styling */
+  
+
+  .contact-info {
+    padding: 32px;
+    background-color: #1976d2;
+    color: #fff;
+  }
+  
+  .contact-info p {
+    opacity: 0.8;
+    margin: 12px 0 0;
+  }
+  
+  /* Contact Form Styling */
+  .contact-form {
+    padding: 32px;
+  }
+  
+  .contact-form h4 {
+    margin-bottom: 16px;
+  }
+  
+  .contact-form button {
+    margin-top: 16px;
+  }
+  
+  .posts-image{
+    height: 150px;
+  }

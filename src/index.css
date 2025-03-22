@@ -1,0 +1,51 @@
+/* @import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+} */
+
+@import "tailwindcss";
+
+@layer base
+ {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;    
+    box-sizing: border-box;
+  }
+  .nav-height {
+    @apply h-[calc(100vh-60px)]
+  }
+  
+}
+
+body {
+  background: #F5F5F5;
+}
+
+.screen-max-width {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  position: relative;
+  max-width: 1120px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
