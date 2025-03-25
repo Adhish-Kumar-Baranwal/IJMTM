@@ -49,3 +49,9 @@ body {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+
+.u-container{
+  margin: 0 315px;
+  padding: 0 16px;
+}
