@@ -2,7 +2,6 @@ export const navLists = [
     {
       name: "Publish with Us",
       submenu: [
-        { name: "Publish Journal", path: "/publish-journal" },
         { name: "Publish Paper", path: "/publish-paper" },
       ],
     },
@@ -17,9 +16,9 @@ export const navLists = [
       name: "Browse",
       submenu: [
         { name: "Journals", path: "/journals" },
-        { name: "Research Papers", path: "/research-papers" },
-        { name: "Authors", path: "/Authors" },
-        { name: "Recently Published", path: "/recently-published" },
+        { name: "Published Papers", path: "/PublishedPapers" },
+        { name: "Author", path: "/Author" },
+        // { name: "Recently Published", path: "/recently-published" },
         { name: "Popular Topics", path: "/popular-topics" },
       ],
     },
