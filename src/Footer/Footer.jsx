@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer mt-50">
+    <footer className="footer">
       <div className="footer-container">
         {/* Logo Section */}
         <div className="footer-logo">
@@ -25,15 +25,6 @@ const Footer = () => {
               <li>About Us</li>
             </ul>
           </div>
-
-          {/* <div>
-            <h4>Resources</h4>
-            <ul>
-              <li>Illustrations</li>
-              <li>Bits & Snippets</li>
-              <li>Affiliate Program</li>
-            </ul>
-          </div> */}
 
           <div>
             <h4>Help & Support</h4>

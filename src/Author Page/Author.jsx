@@ -89,6 +89,7 @@ const Author = () => {
         </Box>
         </div>
       </Container>
+      
     </Box>
   );
 }

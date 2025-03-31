@@ -1,6 +1,4 @@
-/* @import "tailwindcss";
-
-* {
+/* * {
   box-sizing: border-box;
 } */
 
@@ -54,4 +52,16 @@ body {
 .u-container{
   margin: 0 315px;
   padding: 0 16px;
+}
+
+/* Ensure the entire layout takes full height */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Make content fill available space */
+.main-content {
+  flex: 1;
 }

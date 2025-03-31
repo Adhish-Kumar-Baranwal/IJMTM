@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import NavBar from "../../NavBar/NavBar";
 import "./PublishedPapers.css";
 import Select from "react-select";
+import Footer from "../../../Footer/Footer";
+import Layout from "../../../Layout";
 
 
 const PublishedPapers = () => {
@@ -23,7 +25,7 @@ const PublishedPapers = () => {
       <NavBar />
 
       <div className="u-container">
-        <h2 className="cfp-title">Call For Papers</h2>
+        <h2 className="cfp-title">Published Papers</h2>
       </div>
 
       <div className="u-container">
@@ -33,7 +35,7 @@ const PublishedPapers = () => {
             <input type="text" name="" id="" className="cfp-search-box" placeholder="Search..." />
           </div>
           <div className="cfp-select-section">
-            <label>Select Frameworks:</label>
+            <label>Select Year Published:</label>
               <Select
                 isMulti
                 options={options}
@@ -42,7 +44,7 @@ const PublishedPapers = () => {
               />
           </div>
           <div className="cfp-select-section">
-            <label>Select Frameworks:</label>
+            <label>Select Subject:</label>
               <Select
                 isMulti
                 options={options}
@@ -53,9 +55,21 @@ const PublishedPapers = () => {
         </div>
       </div>
 
-      <div className="bg-gray-700 h-70 u-container">
-      </div>
+      <div className="u-container">
+        <div className="paper-section">
 
+          <div className="side-card">
+            <p>Article/Paper</p>
+            <p>(Date Published)</p>
+          </div>
+
+          <div className="main-card">
+            <p>(Title of paper)</p>
+            <p>(Description of Paper)</p>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 };

@@ -5,6 +5,8 @@ import HomePage from "./HomePage/HomePage";
 import PublishedPapers from "./components/sections/PublishedPapers/PublishedPapers";
 import ReviewerForm from "./components/sections/ReviewerForm/ReviewerForm";
 import AuthorForm from "./components/sections/AuthorForm/AuthorForm";
+import Journal_Information from "./components/sections/Journal_Information/Journal_Information";
+import Layout from "./Layout";
 
 const App = () => {
   return (
@@ -14,15 +16,53 @@ const App = () => {
           path="/"
           element={
             <>
-              <HomePage />
+              <Layout>
+                <HomePage />
+              </Layout>
             </>
           }
         />
-        <Route path="/Author" element={<Author />} />
+        <Route
+          path="/Author"
+          element={
+            <Layout>
+              <Author />
+            </Layout>
+          }
+        />
         <Route path="/SigninPage" element={<SigninPage />} />
-        <Route path="/PublishedPapers" element={<PublishedPapers />} />
-        <Route path="/apply-for-reviewer" element={<ReviewerForm />} />
-        <Route path="/apply-as-author" element={<AuthorForm />} />
+        <Route
+          path="/PublishedPapers"
+          element={
+            <Layout>
+              <PublishedPapers />
+            </Layout>
+          }
+        />
+        <Route
+          path="/apply-for-reviewer"
+          element={
+            <Layout>
+              <ReviewerForm />
+            </Layout>
+          }
+        />
+        <Route
+          path="/apply-as-author"
+          element={
+            <Layout>
+              <AuthorForm />
+            </Layout>
+          }
+        />
+        <Route
+          path="/journal-information"
+          element={
+            <Layout>
+              <Journal_Information />
+            </Layout>
+          }
+        />
       </Routes>
     </Router>
   );
