@@ -7,9 +7,11 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full bg-white border border-gray-300 px-8 py-3 flex items-center justify-between z-1000">
-      <nav className="flex w-full items-center justify-center mx-60 z-1000" onMouseLeave={() => setDropdown(null)}>
-        
+    <header
+      className="w-full bg-white border border-gray-300 px-8 py-3 flex items-center justify-between z-1000"
+      onMouseLeave={() => setDropdown(null)}
+    >
+      <nav className="flex w-full items-center justify-center mx-60 z-1000">
         {/* Logo */}
         <Link to="/" className="no-underline text-3xl font-bold">
           IJMTM
@@ -30,7 +32,10 @@ const NavBar = () => {
                 {dropdown === index && item.submenu && (
                   <ul className="absolute left-0 mt-2 w-50 bg-white border border-gray-300 shadow-md rounded-lg flex flex-col">
                     {item.submenu.map((subItem, subIndex) => (
-                      <li key={subIndex} className="px-4 py-2 hover:bg-gray-200 hover:rounded-lg">
+                      <li
+                        key={subIndex}
+                        className="px-4 py-2 hover:bg-gray-200 hover:rounded-lg"
+                      >
                         <Link to={subItem.path}>{subItem.name}</Link>
                       </li>
                     ))}

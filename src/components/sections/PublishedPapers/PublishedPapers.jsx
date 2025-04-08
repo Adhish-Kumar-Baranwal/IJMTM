@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import NavBar from "../../NavBar/NavBar";
 import "./PublishedPapers.css";
 import Select from "react-select";
-import Footer from "../../../Footer/Footer";
-import Layout from "../../../Layout";
 
 
 const PublishedPapers = () => {

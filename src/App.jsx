@@ -7,6 +7,8 @@ import ReviewerForm from "./components/sections/ReviewerForm/ReviewerForm";
 import AuthorForm from "./components/sections/AuthorForm/AuthorForm";
 import Journal_Information from "./components/sections/Journal_Information/Journal_Information";
 import Layout from "./Layout";
+import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
+import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
 
 const App = () => {
   return (
@@ -63,6 +65,15 @@ const App = () => {
             </Layout>
           }
         />
+        <Route
+          path="/about-reviewer"
+          element={
+            <Layout>
+              <AboutReviewerPage />
+            </Layout>
+          }
+        />
+        <Route path="/paper-submit" element={<PaperSubmissionForm />} />
       </Routes>
     </Router>
   );
