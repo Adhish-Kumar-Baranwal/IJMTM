@@ -14,7 +14,7 @@ const AccountToggle = () => {
         />
         <div className="text-start">
           <span className="text-sm font-bold block">
-            {loggedInAdmin.name}
+            {loggedInAdmin.first_name + " " + loggedInAdmin.last_name}
           </span>
           <span className="text-xs block text-stone-500">
             {loggedInAdmin.email}
