@@ -9,6 +9,7 @@ import Journal_Information from "./components/sections/Journal_Information/Journ
 import Layout from "./Layout";
 import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
 import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
 
 const App = () => {
   return (
@@ -74,6 +75,7 @@ const App = () => {
           }
         />
         <Route path="/paper-submit" element={<PaperSubmissionForm />} />
+        <Route path="/admin-panel" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
