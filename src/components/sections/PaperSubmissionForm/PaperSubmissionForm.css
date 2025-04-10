@@ -7,3 +7,18 @@
   font-size: 25px;
   font-weight: 500;
 }
+
+.author-container,
+.top-container{
+  display: flex;
+  margin: 0 10px;
+}
+
+.author-name-conatiner,
+.title-container{
+  margin: 10px;
+}
+
+.submit-ppr-type{
+  display: flex;
+}
