@@ -4,19 +4,15 @@ import NavBar from "../../NavBar/NavBar";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 
-
 const PaperSubmissionForm = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(null);
   const [numAuthors, setNumAuthors] = useState(1);
 
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      minHeight: "30px", // Adjust this to control height
-      height: "30px", // Optional, but usually not enough alone
-      paddingTop: "0px",
-      paddingBottom: "0px",
-      
+      minHeight: "30px",
+      height: "30px",
       backgroundColor: "#f0f0f0",
       borderColor: state.isFocused ? "#4f46e5" : "#ccc",
       boxShadow: state.isFocused ? "0 0 0 2px rgba(79,70,229,0.5)" : "none",
@@ -28,7 +24,7 @@ const PaperSubmissionForm = () => {
       ...provided,
       backgroundColor: state.isFocused ? "#e0e7ff" : "white",
       color: "black",
-      padding: "8px 12px", // Optionally reduce padding if you want smaller dropdown rows
+      padding: "8px 12px",
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
@@ -36,8 +32,6 @@ const PaperSubmissionForm = () => {
     }),
     valueContainer: (provided) => ({
       ...provided,
-      paddingTop: "0px",
-      paddingBottom: "0px",
       height: "30px",
     }),
   };
@@ -57,12 +51,12 @@ const PaperSubmissionForm = () => {
 
   const onSubmit = async (data) => {
     const file = data["uploaded-document"][0];
-  
+
     if (!file) {
       alert("Please upload a PDF");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("title", data["title-of-paper"]);
     formData.append("noAuthors", data["no-authors"]);
@@ -76,32 +70,22 @@ const PaperSubmissionForm = () => {
     formData.append("documentType", data["document-name"]);
     formData.append("abstract", data["abstract"]);
     formData.append("pdf", file);
-  
+
     try {
       const response = await fetch("http://localhost:5000/api/upload-paper", {
         method: "POST",
         body: formData,
       });
-  
+
       if (!response.ok) throw new Error("Failed to submit");
-  
+
       alert("Submission successful!");
       reset();
       setNumAuthors(1);
-      setSelectedOptions([]);
+      setSelectedOptions(null);
     } catch (err) {
       console.error(err);
       alert("Upload failed");
-    }
-  };
-  
-
-  const handleNumAuthorsChange = (e) => {
-    const value = parseInt(e.target.value);
-    if (!isNaN(value) && value > 0) {
-      setNumAuthors(value);
-    } else {
-      setNumAuthors(1);
     }
   };
 
@@ -150,78 +134,46 @@ const PaperSubmissionForm = () => {
             />
           </div>
         </div>
+
         <br />
 
         {Array.from({ length: numAuthors }).map((_, index) => (
           <div key={index} className="mb-4">
             <h3>Author {index + 1}</h3>
-<<<<<<< HEAD
-            <div>
-              <label>Name of author: </label>
-              <input
-                type="text"
-                className="border"
-                {...register(`authorName-${index}`, { required: true })}
-              />
-            </div>
-            <br />
-            <div>
-              <label>Email of author: </label>
-              <input
-                type="email"
-                className="border"
-                {...register(`authorEmail-${index}`, { required: true })}
-              />
-            </div>
-            <br />
-            <div>
-              <label>Institute Name: </label>
-              <input
-                type="text"
-                className="border"
-                {...register(`authorInstitute-${index}`, { required: true })}
-              />
-            </div>
-            <br />
-=======
             <div className="author-container">
-              <div className="author-name-conatiner">
+              <div className="author-name-container">
                 <label>Name of author: </label>
                 <input
                   type="text"
                   className="border"
-                  name={`authorName-${index}`}
                   {...register(`authorName-${index}`, { required: true })}
                 />
               </div>
 
               <br />
 
-              <div className="author-name-conatiner">
+              <div className="author-name-container">
                 <label>Email of author: </label>
                 <input
                   type="email"
                   className="border"
-                  name={`authorEmail-${index}`}
                   {...register(`authorEmail-${index}`, { required: true })}
                 />
               </div>
 
               <br />
 
-              <div className="author-name-conatiner">
+              <div className="author-name-container">
                 <label>Institute Name: </label>
                 <input
                   type="text"
                   className="border"
-                  name={`authorInstitute-${index}`}
                   {...register(`authorInstitute-${index}`, { required: true })}
                 />
               </div>
 
               <br />
             </div>
->>>>>>> ed26634f9ab3cb304cf51fff979a29de90aace4e
           </div>
         ))}
 
@@ -235,7 +187,7 @@ const PaperSubmissionForm = () => {
               <Select
                 {...field}
                 options={options}
-                styles={customStyles} // <-- custom styles here
+                styles={customStyles}
                 value={options.find((option) => option.value === field.value)}
                 onChange={(selectedOption) => {
                   field.onChange(selectedOption.value);
@@ -264,7 +216,7 @@ const PaperSubmissionForm = () => {
         <br />
 
         <div>
-          <label>Upload your {selectedOptions.label || "paper"}: </label>
+          <label>Upload your {selectedOptions?.label || "paper"}: </label>
           <input
             type="file"
             className="border"
@@ -274,7 +226,7 @@ const PaperSubmissionForm = () => {
         </div>
 
         <button className="border cursor-pointer mt-4" type="submit">
-          Submitttt
+          Submit
         </button>
       </form>
     </>
