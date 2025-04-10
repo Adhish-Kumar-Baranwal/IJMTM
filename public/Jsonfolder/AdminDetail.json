@@ -1,0 +1,22 @@
+[
+  {
+    "first_name": "Ashlie",
+    "last_name": "Nathon",
+    "email": "anathon0@digg.com",
+    "role": "Admin",
+    "permissions": ["read", "write", "delete", "manage_users"],
+    "phone": "+249 158 237 3851",
+    "password": "kR0>yn8}uqfT",
+    "password_hash": "$2a$04$JobE1i2ovi6mxYmEvqiHDesONi89wAhzp84c1euEBjPSN4z5U.OeO"
+  },
+  {
+    "first_name": "Bennie",
+    "last_name": "Burfoot",
+    "email": "bburfoot1@posterous.com",
+    "role": "Admin",
+    "permissions": ["read", "write", "delete", "manage_users"],
+    "phone": "+62 341 750 2520",
+    "password": "hA5`}NPs",
+    "password_hash": "$2a$04$ACVpm.0YtWGl1I7hZha/xeGeZesLX9VZGDUdaYjOyZSh5QzR1mL3a"
+  }
+]

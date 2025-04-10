@@ -1,10 +1,11 @@
 import React from 'react'
+import AccountToggle from './AccountToggle/AccountToggle'
 
 const SideBar = () => {
   return (
-    <div className='bg-stone-500'>
+    <div className='bg-stone-100'>
         <div className='sticky top-4 h-[96vh]'>
-            SideBar
+            <AccountToggle />
         </div>
     </div>
   )

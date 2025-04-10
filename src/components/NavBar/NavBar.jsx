@@ -11,7 +11,7 @@ const NavBar = () => {
       className="w-full bg-white border border-gray-300 px-8 py-3 flex items-center justify-between z-1000"
       onMouseLeave={() => setDropdown(null)}
     >
-      <nav className="flex w-full items-center justify-center mx-60 z-1000">
+      <nav className="flex w-full items-center justify-center mx-20 z-1000">
         {/* Logo */}
         <Link to="/" className="no-underline text-3xl font-bold">
           IJMTM
