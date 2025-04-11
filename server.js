@@ -11,11 +11,12 @@ import cors from 'cors';
 
 dotenv.config();
 connectDB();
-
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:4173', credentials: true}));
-app.use(express.json());
+  origin: ['http://localhost:4173', 'http://localhost:5173/'],
+  credentials: true
+}));
+
 
 const mongoURI = process.env.MONGO_URI;
 const client = new MongoClient(mongoURI);
