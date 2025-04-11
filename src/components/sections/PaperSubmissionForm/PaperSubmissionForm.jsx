@@ -11,8 +11,8 @@ const PaperSubmissionForm = () => {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      minHeight: "30px",
-      height: "30px",
+      minHeight: "36px",
+      height: "36px",
       backgroundColor: "#f0f0f0",
       borderColor: state.isFocused ? "#4f46e5" : "#ccc",
       boxShadow: state.isFocused ? "0 0 0 2px rgba(79,70,229,0.5)" : "none",
@@ -20,19 +20,20 @@ const PaperSubmissionForm = () => {
         borderColor: "#4f46e5",
       },
     }),
-    option: (provided, state) => ({
+    valueContainer: (provided) => ({
       ...provided,
-      backgroundColor: state.isFocused ? "#e0e7ff" : "white",
-      color: "black",
-      padding: "8px 12px",
+      height: "36px",
+      paddingTop: "0px",
+      paddingBottom: "0px",
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
-      height: "30px",
+      height: "36px",
     }),
-    valueContainer: (provided) => ({
+    input: (provided) => ({
       ...provided,
-      height: "30px",
+      margin: "0px",
+      padding: "0px",
     }),
   };
 
@@ -42,7 +43,7 @@ const PaperSubmissionForm = () => {
     watch,
     control,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   const handleSelectChange = (selected) => {
@@ -60,13 +61,16 @@ const PaperSubmissionForm = () => {
     const formData = new FormData();
     formData.append("title", data["title-of-paper"]);
     formData.append("noAuthors", data["no-authors"]);
-    formData.append("authors", JSON.stringify(
-      Array.from({ length: numAuthors }).map((_, index) => ({
-        name: data[`authorName-${index}`],
-        email: data[`authorEmail-${index}`],
-        institute: data[`authorInstitute-${index}`],
-      }))
-    ));
+    formData.append(
+      "authors",
+      JSON.stringify(
+        Array.from({ length: numAuthors }).map((_, index) => ({
+          name: data[`authorName-${index}`],
+          email: data[`authorEmail-${index}`],
+          institute: data[`authorInstitute-${index}`],
+        }))
+      )
+    );
     formData.append("documentType", data["document-name"]);
     formData.append("abstract", data["abstract"]);
     formData.append("pdf", file);
@@ -93,7 +97,7 @@ const PaperSubmissionForm = () => {
     { value: "research-paper", label: "Research Paper" },
     { value: "review-paper", label: "Review Paper" },
     { value: "case-studies", label: "Case Studies" },
-    { value: "conceptual-papers", label: "Conceptual Papers" }
+    { value: "conceptual-papers", label: "Conceptual Papers" },
   ];
 
   return (
@@ -177,8 +181,11 @@ const PaperSubmissionForm = () => {
           </div>
         ))}
 
-        <div className="submit-ppr-type">
-          <label>What are you submitting: </label>
+        <div className="submit-ppr-type flex items-center gap-2">
+          <label className="text-sm font-medium">
+            What are you submitting:
+          </label>
+
           <Controller
             name="document-name"
             control={control}
@@ -197,9 +204,6 @@ const PaperSubmissionForm = () => {
               />
             )}
           />
-          {errors["document-name"] && (
-            <p className="error-msg">{errors["document-name"].message}</p>
-          )}
         </div>
 
         <br />

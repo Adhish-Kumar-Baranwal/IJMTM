@@ -13,7 +13,7 @@ dotenv.config();
 connectDB();
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:4173', 'http://localhost:5173/'],
+  origin: ['http://localhost:5173', 'https://fw9vjsxr-5173.inc1.devtunnels.ms', 'https://fw9vjsxr-5000.inc1.devtunnels.ms/'],
   credentials: true
 }));
 

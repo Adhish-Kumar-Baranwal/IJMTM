@@ -12,7 +12,7 @@ const bgImage = {
 
 const Hero = () => {
   return (
-    <section className="pt-20 min-h-[800px] flex justify-center items-center" style={bgImage}>
+    <section className="min-h-[700px] flex justify-center items-center" style={bgImage}>
       <div className="container relative z-20 text-center space-y-6">
         <h1 className="text-5xl md:text-6xl font-bold">
           International Journal of Modern <br /> Technology and Management
