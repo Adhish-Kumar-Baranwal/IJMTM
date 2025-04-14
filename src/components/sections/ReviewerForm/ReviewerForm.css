@@ -1,80 +1,97 @@
-.reviewer-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 115vh;
-    background-color: #fdf7f7;
-  }
-  
-  .reviewer-form-wrapper {
-    width: 40%;
-    background: rgb(241, 240, 240);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-top: 70px;
-    
-  }
-  
-  .reviewer-form-title {
-    margin-bottom: 1rem;
-    color: #000b15;
-    font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 2px;
-  }
-  
-  .reviewer-switch-text {
-    font-size: 14px;
-    margin-bottom: 1rem;
-  }
-  
-  .reviewer-switch-link {
-    color: #003366;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .reviewer-form-group {
-    margin-bottom: 1rem;
-    text-align: left;
-  }
-  
-  .reviewer-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-  }
-  
-  .reviewer-input,
-  .reviewer-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .reviewer-textarea {
-    height: 70px;
-    resize: none;
-  }
-  
-  .reviewer-submit-btn {
-    width: 100%;
-    background-color: #003366;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 1rem;
-  }
-  
-  .reviewer-submit-btn:hover {
-    background-color: #002244;
-  }
-  
+.reviewer-form-container {
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.reviewer-title-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reviewer-form-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.reviewer-form-text {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.reviewer-form-link {
+  color: #003366;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reviewer-name-section,
+.reviewer-contact-section,
+.reviewer-info-section,
+.reviewer-password-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.reviewer-name-section div,
+.reviewer-contact-section div,
+.reviewer-info-section div,
+.reviewer-password-section div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-name-section div label,
+.reviewer-contact-section div label,
+.reviewer-info-section div label,
+.reviewer-password-section div label,
+.reviewer-textarea-section div label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.reviewer-name-input,
+.reviewer-textarea-input,
+.reviewer-password-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reviewer-textarea-input {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.reviewer-register-btn {
+  width: 40%;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #003366;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reviewer-register-btn:hover {
+  background-color: #00509e;
+}
+
+.reviewer-register-center-button{
+  display: flex;
+  justify-content: center;
+}

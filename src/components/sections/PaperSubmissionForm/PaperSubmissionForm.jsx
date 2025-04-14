@@ -3,10 +3,18 @@ import "./PaperSubmissionForm.css";
 import NavBar from "../../NavBar/NavBar";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
+import { FaUpload } from "react-icons/fa";
 
 const PaperSubmissionForm = () => {
   const [selectedOptions, setSelectedOptions] = useState(null);
   const [numAuthors, setNumAuthors] = useState(1);
+
+  const [fileName, setFileName] = useState("Upload File");
+
+  const handleFileName = (e) => {
+    const file = e.target.files[0];
+    setFileName(file ? file.name : "Upload File");
+  };
 
   const customStyles = {
     control: (provided, state) => ({
@@ -14,10 +22,10 @@ const PaperSubmissionForm = () => {
       minHeight: "36px",
       height: "36px",
       backgroundColor: "#f0f0f0",
-      borderColor: state.isFocused ? "#4f46e5" : "#ccc",
-      boxShadow: state.isFocused ? "0 0 0 2px rgba(79,70,229,0.5)" : "none",
+      borderColor: state.isFocused ? "#575757" : "#ccc",
+      boxShadow: state.isFocused ? "0 0 0 2px rgba(87, 87, 87, 0.5)" : "none",
       "&:hover": {
-        borderColor: "#4f46e5",
+        borderColor: "#575757",
       },
     }),
     valueContainer: (provided) => ({
@@ -97,7 +105,7 @@ const PaperSubmissionForm = () => {
     { value: "research-paper", label: "Research Paper" },
     { value: "review-paper", label: "Review Paper" },
     { value: "case-studies", label: "Case Studies" },
-    { value: "conceptual-papers", label: "Conceptual Papers" },
+    { value: "conceptual-papers", label: "Conceptual Paper" },
   ];
 
   return (
@@ -109,23 +117,57 @@ const PaperSubmissionForm = () => {
       >
         <h1 className="ppr-sub-title">Submit your paper</h1>
 
+        <p className="sub-container-title">Paper Information*</p>
         <div className="top-container">
+          <div className="submit-ppr-type">
+            <label>What are you submitting*:</label>
+
+            <Controller
+              name="document-name"
+              control={control}
+              rules={{ required: "Document type is required" }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  options={options}
+                  styles={customStyles}
+                  value={options.find((option) => option.value === field.value)}
+                  onChange={(selectedOption) => {
+                    field.onChange(selectedOption.value);
+                    handleSelectChange(selectedOption);
+                  }}
+                  className="w-[200px]"
+                />
+              )}
+            />
+          </div>
+
           <div className="title-container">
-            <label>Title of Paper: </label>
+            <label>Title of {selectedOptions?.label || "Paper"}*: </label>
             <input
               type="text"
-              className="border"
+              // className="border"
               {...register("title-of-paper", { required: true })}
             />
           </div>
 
-          <br />
+          <div className="abstract-container">
+            <label className="inline mb-1">Abstract*: </label>
+            <textarea
+              className="border rounded p-2 w-[50%]"
+              rows={4}
+              {...register("abstract", { required: true })}
+            />
+          </div>
+        </div>
 
-          <div className="title-container">
+        <p className="sub-container-title">Author Information*</p>
+
+        <div className="author-main-container">
+          <div className="author-number-container">
             <label>Number of authors: </label>
             <input
               type="number"
-              className="border w-15"
               min="1"
               defaultValue="1"
               {...register("no-authors", {
@@ -137,101 +179,65 @@ const PaperSubmissionForm = () => {
               })}
             />
           </div>
-        </div>
+          {Array.from({ length: numAuthors }).map((_, index) => (
+            <div key={index} className="author-sub-container">
+              <h3 className="author-number">Author {index + 1}</h3>
+              <div className="author-info-container">
+                <div className="author-name-container">
+                  <label>Name of author: </label>
+                  <input
+                    type="text"
+                    {...register(`authorName-${index}`, { required: true })}
+                  />
+                </div>
 
-        <br />
+                <div className="author-name-container">
+                  <label>Email of author: </label>
+                  <input
+                    type="email"
+                    {...register(`authorEmail-${index}`, { required: true })}
+                  />
+                </div>
 
-        {Array.from({ length: numAuthors }).map((_, index) => (
-          <div key={index} className="mb-4">
-            <h3>Author {index + 1}</h3>
-            <div className="author-container">
-              <div className="author-name-container">
-                <label>Name of author: </label>
-                <input
-                  type="text"
-                  className="border"
-                  {...register(`authorName-${index}`, { required: true })}
-                />
+                <div className="author-name-container">
+                  <label>Institute Name: </label>
+                  <input
+                    type="text"
+                    {...register(`authorInstitute-${index}`, {
+                      required: true,
+                    })}
+                  />
+                </div>
               </div>
-
-              <br />
-
-              <div className="author-name-container">
-                <label>Email of author: </label>
-                <input
-                  type="email"
-                  className="border"
-                  {...register(`authorEmail-${index}`, { required: true })}
-                />
-              </div>
-
-              <br />
-
-              <div className="author-name-container">
-                <label>Institute Name: </label>
-                <input
-                  type="text"
-                  className="border"
-                  {...register(`authorInstitute-${index}`, { required: true })}
-                />
-              </div>
-
-              <br />
             </div>
-          </div>
-        ))}
-
-        <div className="submit-ppr-type flex items-center gap-2">
-          <label className="text-sm font-medium">
-            What are you submitting:
-          </label>
-
-          <Controller
-            name="document-name"
-            control={control}
-            rules={{ required: "Document type is required" }}
-            render={({ field }) => (
-              <Select
-                {...field}
-                options={options}
-                styles={customStyles}
-                value={options.find((option) => option.value === field.value)}
-                onChange={(selectedOption) => {
-                  field.onChange(selectedOption.value);
-                  handleSelectChange(selectedOption);
-                }}
-                className="w-[200px]"
-              />
-            )}
-          />
+          ))}
         </div>
 
-        <br />
-
-        <div className="mb-4">
-          <label className="block mb-1">Abstract:</label>
-          <textarea
-            className="border rounded p-2 w-full"
-            rows={4}
-            {...register("abstract", { required: true })}
-          />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Upload your {selectedOptions?.label || "paper"}: </label>
+        <p className="sub-container-title">Files*</p>
+        <div className="file-upload-container">
+          <label>Upload your {selectedOptions?.label || "paper"}:</label>
           <input
             type="file"
-            className="border"
+            className="hidden"
+            id="file-upload-btn"
             accept="application/pdf"
-            {...register("uploaded-document", { required: true })}
+            {...register("uploaded-document", {
+              required: true,
+              onChange: handleFileName,
+            })}
           />
+          <label htmlFor="file-upload-btn" className="fileName-btn">
+            {" "}
+            {fileName === "Upload File" && <FaUpload />}
+            {fileName}{" "}
+          </label>
         </div>
 
-        <button className="border cursor-pointer mt-4" type="submit">
-          Submit
-        </button>
+        <div className="ppr-form-center-btn">
+          <button className="ppr-form-submit-btn" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </>
   );

@@ -49,7 +49,7 @@ const NavBar = () => {
         {/* Sign In Button */}
         <a
           href="/SigninPage"
-          className="px-4 py-2 bg-blue-400 rounded-md cursor-pointer font-semibold"
+          className="px-4 py-2 bg-blue-400 rounded-md cursor-pointer font-semibold text-white"
           onClick={() => navigate("/SigninPage")}
         >
           Sign In

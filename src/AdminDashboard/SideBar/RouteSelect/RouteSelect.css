@@ -1,0 +1,12 @@
+.route-select-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.route-links{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px 10px;
+}

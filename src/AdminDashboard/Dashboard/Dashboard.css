@@ -1,0 +1,8 @@
+.main-dashboard {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 95vh;
+  /* padding: 8px 20px; */
+  border-radius: 8px;
+}

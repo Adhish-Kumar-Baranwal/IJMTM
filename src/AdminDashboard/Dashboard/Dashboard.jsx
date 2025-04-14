@@ -1,8 +1,14 @@
 import React from 'react'
+import "./Dashboard.css";
+import TopBar from './TopBar/TopBar';
+import Grid from './Grid/Grid';
 
 const Dashboard = () => {
   return (
-    <div className='bg-amber-200'>Dashboard</div>
+    <div className='main-dashboard shadow'>
+      <TopBar />
+      <Grid />
+    </div>
   )
 }
 
