@@ -12,6 +12,7 @@ import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/Paper
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
 import ReviewersPage from "./AdminDashboard/ReviewersPage/ReviewersPage";
+import BrowseVolumes from "./components/sections/BrowseVolumes/BrowseVolumes";
 
 const App = () => {
   return (
@@ -36,7 +37,7 @@ const App = () => {
       />
       <Route path="/SigninPage" element={<SigninPage />} />
       <Route
-        path="/PublishedPapers"
+        path="/published-papers"
         element={
           <Layout>
             <PublishedPapers />
@@ -72,6 +73,14 @@ const App = () => {
         element={
           <Layout>
             <AboutReviewerPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/browse-volumes"
+        element={
+          <Layout>
+            <BrowseVolumes />
           </Layout>
         }
       />

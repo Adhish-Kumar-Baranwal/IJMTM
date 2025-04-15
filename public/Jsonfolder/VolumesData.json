@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Volume 1: Emerging Trends in AI",
+    "image": "/assets/vol1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Volume 2: Biomedical Innovations",
+    "image": "/assets/vol2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Volume 3: Advanced Materials",
+    "image": "/assets/vol3.jpg"
+  }
+]

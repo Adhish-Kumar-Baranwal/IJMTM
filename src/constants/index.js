@@ -15,9 +15,9 @@ export const navLists = [
     {
       name: "Browse",
       submenu: [
-        { name: "Browse Volumes", path: "/journals" },
-        { name: "Published Papers", path: "/PublishedPapers" },
-        { name: "Subjects", path: "/Author" },
+        { name: "Browse Volumes", path: "/browse-volumes" },
+        { name: "Published Papers", path: "/published-papers" },
+        { name: "Subjects", path: "/author" },
         { name: "Current Volume", path: "/recently-published" },
         // { name: "Trending Topics", path: "/popular-topics" },
       ],
@@ -26,8 +26,8 @@ export const navLists = [
       name: "About the Journal",
       submenu: [
         { name: "Jounal Information", path: "/journal-information" },
-        { name: "Editorial Board", path: "/PublishedPapers" },
-        { name: "Publishing Models", path: "/Author" },
+        { name: "Editorial Board", path: "/editorial-board" },
+        { name: "Publishing Models", path: "/publishing-models" },
         { name: "Journal Policies", path: "/recently-published" },
         // { name: "Popular Topics", path: "/popular-topics" },
       ],
