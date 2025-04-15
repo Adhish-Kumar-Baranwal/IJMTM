@@ -10,7 +10,6 @@ import Layout from "./Layout";
 import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
 import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
-import ReviewerForm2 from "./components/sections/ReviewerForm2/ReviewerForm2";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
 import ReviewersPage from "./AdminDashboard/ReviewersPage/ReviewersPage";
 
@@ -49,14 +48,6 @@ const App = () => {
         element={
           <Layout>
             <ReviewerForm />
-          </Layout>
-        }
-      />
-      <Route
-        path="/apply-for-reviewer-2"
-        element={
-          <Layout>
-            <ReviewerForm2 />
           </Layout>
         }
       />
