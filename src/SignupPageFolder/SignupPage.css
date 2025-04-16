@@ -1,0 +1,187 @@
+/* Main Container */
+.signup-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, #eef1f6, #fdfdfd);
+  }
+  .success-msg {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  .login-link {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 5px;
+  }
+  
+  /* Left Section */
+  .signup-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+    padding: 40px;
+  }
+  
+  /* Logo */
+  .signup-logo {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form */
+  .signup-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .signup-form label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  #username, #password {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .signup-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: #0070d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .signup-btn:hover {
+    background: #005bb5;
+  }
+  
+  /* Options */
+  .signup-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 12px;
+  }
+  
+  .signup-checkbox{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signup-image-container{
+    height: 300px;
+    width: 300px;
+  }
+  
+  .signup-links a {
+    color: #0070d2;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  .signup-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer */
+  .signup-footer {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .free-trial-btn {
+    background: transparent;
+    border: 1px solid #0070d2;
+    color: #0070d2;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .free-trial-btn:hover {
+    background: #0070d2;
+    color: white;
+  }
+  
+  /* Right Section */
+  .signup-right {
+    width: 50%;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/How-to-Write-the-Background-of-Your-Scientific-Paper.jpg'); /* Replace with actual image path */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image from repeating */
+  }
+  
+  .signup-right h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .signup-right p {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .cta-btn {
+    background: #0070d2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .cta-btn:hover {
+    background: #005bb5;
+  }
+  
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .signup-container {
+      flex-direction: column;
+    }
+    
+    .signup-left, .signup-right {
+      width: 100%;
+    }
+  
+    .signup-right {
+      padding: 20px;
+    }
+  }
+  

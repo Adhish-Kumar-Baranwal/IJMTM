@@ -7,10 +7,11 @@ import { Readable } from "stream";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 
+// Custom imports
 import connectDB from "./src/IJMTM Backend/config/db.js";
 import authRoutes from "./src/IJMTM Backend/routes/auth.js";
-import "./src/IJMTM Backend/routes/ResearchPaper.js";
-import "./src/IJMTM Backend/routes/Review.js";
+import researchPaperRoutes from "./src/IJMTM Backend/routes/researchPaper.js";
+import reviewRoutes from "./src/IJMTM Backend/routes/review.js";
 import reviewerRoutes from "./src/IJMTM Backend/routes/reviewer.js";
 import Reviewer from "./src/IJMTM Backend/models/Reviewer.js";
 import User from "./src/IJMTM Backend/models/User.js";
@@ -53,7 +54,8 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://fw9vjsxr-5173.inc1.devtunnels.ms",
-      "https://fw9vjsxr-5000.inc1.devtunnels.ms/",
+      "https://t4hxj7p8-5173.inc1.devtunnels.ms"
+
     ],
     credentials: true,
   })

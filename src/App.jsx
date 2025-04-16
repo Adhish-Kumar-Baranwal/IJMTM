@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import SigninPage from "./SigninPageFolder/SigninPage";
+import SignupPage from "./SignupPageFolder/SignupPage";
 import Author from "./Author Page/Author";
 import HomePage from "./HomePage/HomePage";
 import PublishedPapers from "./components/sections/PublishedPapers/PublishedPapers";
@@ -36,6 +37,7 @@ const App = () => {
         }
       />
       <Route path="/SigninPage" element={<SigninPage />} />
+      <Route path="/SignupPage" element={<SignupPage />} />
       <Route
         path="/published-papers"
         element={
