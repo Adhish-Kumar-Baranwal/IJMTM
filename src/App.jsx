@@ -14,6 +14,9 @@ import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
 import ReviewersPage from "./AdminDashboard/ReviewersPage/ReviewersPage";
 import BrowseVolumes from "./components/sections/BrowseVolumes/BrowseVolumes";
+import Subjects from "./components/sections/Subjects/Subjects";
+import AuthorInfoMain from "./AdminDashboard/AuthorInfo/AuthorInfoMain";
+import PapersDashboard from "./AdminDashboard/PapersDashboard/PapersDashboard";
 
 const App = () => {
   return (
@@ -63,6 +66,14 @@ const App = () => {
         }
       />
       <Route
+        path="/subjects"
+        element={
+          <Layout>
+            <Subjects />
+          </Layout>
+        }
+      />
+      <Route
         path="/journal-information"
         element={
           <Layout>
@@ -99,6 +110,8 @@ const App = () => {
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="reviewer-page" element={<ReviewersPage />} />
+        <Route path="author-info" element={<AuthorInfoMain />} />
+        <Route path="paper-dashboard" element={<PapersDashboard />} />
       </Route>
     </Routes>
   );

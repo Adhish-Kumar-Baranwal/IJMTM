@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "Aditya",
+    "lastName": "Sharma",
+    "degree": "M.Tech in Computer Science",
+    "appliedDate": "2025-04-12",
+    "designation": "Assistant Professor"
+  },
+  {
+    "firstName": "Sneha",
+    "lastName": "Sharma",
+    "degree": "Ph.D. in Data Science",
+    "appliedDate": "2025-04-10",
+    "designation": "Research Scientist"
+  },
+  {
+    "firstName": "Ravi",
+    "lastName": "Kumar",
+    "degree": "M.Sc in Information Technology",
+    "appliedDate": "2025-04-09",
+    "designation": "Technical Trainer"
+  },
+  {
+    "firstName": "Nikita",
+    "lastName": "Singh",
+    "degree": "Ph.D. in Artificial Intelligence",
+    "appliedDate": "2025-04-11",
+    "designation": "AI Specialist"
+  },
+  {
+    "firstName": "Ankit",
+    "lastName": "Verma",
+    "degree": "M.Tech in Software Engineering",
+    "appliedDate": "2025-04-08",
+    "designation": "Software Engineering Lecturer"
+  }
+]

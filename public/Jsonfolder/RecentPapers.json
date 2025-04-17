@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Advancements in AI for Healthcare Diagnostics",
+    "type": "Research Paper",
+    "submissionDate": "2025-04-02",
+    "authors": ["Dr. Ananya Verma", "Dr. Sameer Chawla"]
+  },
+  {
+    "title": "Analyzing Urban Traffic Patterns using IoT",
+    "type": "Case Studies",
+    "submissionDate": "2025-04-04",
+    "authors": ["Ishaan Rathore"]
+  },
+  {
+    "title": "A Review on Renewable Energy Adoption in India",
+    "type": "Review Paper",
+    "submissionDate": "2025-04-05",
+    "authors": ["Tanya Saxena", "Neha Sharma"]
+  },
+  {
+    "title": "Blockchain for Transparent Governance",
+    "type": "Conceptual Paper",
+    "submissionDate": "2025-04-07",
+    "authors": ["Rohan Gupta"]
+  },
+  {
+    "title": "The Role of Big Data in Personalized Marketing",
+    "type": "Research Paper",
+    "submissionDate": "2025-04-09",
+    "authors": ["Aditya Mehta", "Sneha Nair", "Rahul Kapoor"]
+  },
+  {
+    "title": "Case Study: Remote Learning in Rural Areas During COVID-19",
+    "type": "Case Studies",
+    "submissionDate": "2025-04-10",
+    "authors": ["Kiara Basu"]
+  },
+  {
+    "title": "Evaluating Psychological Impact of Social Media on Teens",
+    "type": "Review Paper",
+    "submissionDate": "2025-04-12",
+    "authors": ["Divya Reddy", "Jay Rajput"]
+  },
+  {
+    "title": "Conceptual Design of Smart Waste Management Systems",
+    "type": "Conceptual Paper",
+    "submissionDate": "2025-04-13",
+    "authors": ["Nikhil Patel"]
+  },
+  {
+    "title": "Comparative Study of Machine Learning Models for Stock Forecasting",
+    "type": "Research Paper",
+    "submissionDate": "2025-04-14",
+    "authors": ["Tarun Nanda", "Mohit Talwar"]
+  },
+  {
+    "title": "Digital Education Tools: Opportunities and Challenges",
+    "type": "Review Paper",
+    "submissionDate": "2025-04-16",
+    "authors": ["Aparna Dey", "Reyansh Chatterjee"]
+  }
+]

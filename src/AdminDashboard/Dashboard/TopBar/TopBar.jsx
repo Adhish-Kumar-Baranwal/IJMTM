@@ -2,6 +2,7 @@ import React from "react";
 import { FiBell } from "react-icons/fi";
 import "./TopBar.css";
 import adminData from "../../../../public/Jsonfolder/AdminDetail.json";
+import Notifications from "../../../components/sections/NotificationsBell/Notifications";
 
 const TopBar = () => {
   const loggedInAdmin = adminData[0];
@@ -24,10 +25,11 @@ const TopBar = () => {
           </span>
           <span className="text-xs block text-stone-500">{formattedDate}</span>
         </div>
-        <button className="flex text-sm items-center gap-2 bg-stone-100 transition-colors hover:bg-violet-100 hover:text-violet-700 px-3 py-1.5 rounded">
+        <Notifications />
+        {/* <button className="flex text-sm items-center gap-2 bg-stone-100 transition-colors hover:bg-violet-100 hover:text-violet-700 px-3 py-1.5 rounded">
           <FiBell />
           <span>Notifications</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );

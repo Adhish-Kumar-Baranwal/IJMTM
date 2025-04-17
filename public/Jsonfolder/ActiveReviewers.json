@@ -1,0 +1,38 @@
+[
+    {
+      "firstName": "Ishaan",
+      "lastName": "Rathore",
+      "papersAssigned": 4,
+      "reviewsDone": 2,
+      "reviewDeadline": "2025-05-10"
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Joshi",
+      "papersAssigned": 2,
+      "reviewsDone": 2,
+      "reviewDeadline": "2025-05-04"
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Saxena",
+      "papersAssigned": 3,
+      "reviewsDone": 1,
+      "reviewDeadline": "2025-05-12"
+    },
+    {
+      "firstName": "Kunal",
+      "lastName": "Deshmukh",
+      "papersAssigned": 5,
+      "reviewsDone": 4,
+      "reviewDeadline": "2025-04-29"
+    },
+    {
+      "firstName": "Arjun",
+      "lastName": "Pillai",
+      "papersAssigned": 1,
+      "reviewsDone": 0,
+      "reviewDeadline": "2025-05-06"
+    }
+  ]
+  

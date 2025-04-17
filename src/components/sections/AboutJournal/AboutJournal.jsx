@@ -3,9 +3,9 @@ import "./AboutJournal.css";
 
 const AboutJournal = () => {
   return (
-    <div className="about-journal-container">
+    <div className="u-container about-journal-container">
       <div className="about-section">
-        <h2 className="about-heading">About Our Journal</h2>
+        <h2 className="about-heading">About Our Journal</h2><hr/>
         <p className="about-description">
           The Journal of Advanced Research is a peer-reviewed, open access journal that publishes original research articles,
           review articles, and case studies across multiple disciplines.
@@ -35,7 +35,7 @@ const AboutJournal = () => {
       </div>
 
       <div className="info-section">
-        <h2 className="info-heading">Key Information</h2>
+        <h2 className="info-heading">Key Information</h2> <hr />
         <div className="info-item">
           <p className="info-label">Impact Factor</p>
           <p className="info-value">3.8</p>

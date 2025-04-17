@@ -102,7 +102,7 @@ const ReviewerForm = () => {
             </div>
           </div>
 
-          <div className="reviewer-password-section">
+          {/* <div className="reviewer-password-section">
             <div>
               <label>Password*: </label>
               <input
@@ -119,7 +119,7 @@ const ReviewerForm = () => {
                 {...register("published_papers", { required: true })}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="reviewer-register-center-button">
           <button type="submit" className="reviewer-register-btn">

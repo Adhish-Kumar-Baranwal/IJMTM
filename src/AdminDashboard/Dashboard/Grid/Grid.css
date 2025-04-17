@@ -1,0 +1,8 @@
+/* p-4 pt-0 grid gap-3 grid-cols-12 */
+
+.admin-main-dashboard-grid{
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
+}

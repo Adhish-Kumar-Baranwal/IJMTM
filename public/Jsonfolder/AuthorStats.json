@@ -1,0 +1,177 @@
+[
+  {
+    "firstName": "Ananya",
+    "lastName": "Verma",
+    "submissions": 3,
+    "publications": 2,
+    "designation": "PhD Student"
+  },
+  {
+    "firstName": "Rahul",
+    "lastName": "Kapoor",
+    "submissions": 5,
+    "publications": 4,
+    "designation": "Associate Professor"
+  },
+  {
+    "firstName": "Sneha",
+    "lastName": "Nair",
+    "submissions": 2,
+    "publications": 1,
+    "designation": "MTech Student"
+  },
+  {
+    "firstName": "Aditya",
+    "lastName": "Mehta",
+    "submissions": 4,
+    "publications": 4,
+    "designation": "Postdoctoral Researcher"
+  },
+  {
+    "firstName": "Neha",
+    "lastName": "Sharma",
+    "submissions": 1,
+    "publications": 0,
+    "designation": "Undergraduate Student"
+  },
+  {
+    "firstName": "Vikram",
+    "lastName": "Iyer",
+    "submissions": 6,
+    "publications": 5,
+    "designation": "Senior Scientist"
+  },
+  {
+    "firstName": "Divya",
+    "lastName": "Reddy",
+    "submissions": 2,
+    "publications": 2,
+    "designation": "Lecturer"
+  },
+  {
+    "firstName": "Rohan",
+    "lastName": "Gupta",
+    "submissions": 3,
+    "publications": 1,
+    "designation": "PhD Student"
+  },
+  {
+    "firstName": "Isha",
+    "lastName": "Malhotra",
+    "submissions": 5,
+    "publications": 3,
+    "designation": "Research Assistant"
+  },
+  {
+    "firstName": "Nikhil",
+    "lastName": "Patel",
+    "submissions": 4,
+    "publications": 2,
+    "designation": "MSc Student"
+  },
+  {
+    "firstName": "Tara",
+    "lastName": "Bhagat",
+    "submissions": 3,
+    "publications": 3,
+    "designation": "Assistant Professor"
+  },
+  {
+    "firstName": "Manoj",
+    "lastName": "Singhania",
+    "submissions": 6,
+    "publications": 5,
+    "designation": "Senior Lecturer"
+  },
+  {
+    "firstName": "Aparna",
+    "lastName": "Dey",
+    "submissions": 2,
+    "publications": 1,
+    "designation": "BTech Student"
+  },
+  {
+    "firstName": "Sameer",
+    "lastName": "Chawla",
+    "submissions": 7,
+    "publications": 6,
+    "designation": "Professor"
+  },
+  {
+    "firstName": "Kiara",
+    "lastName": "Basu",
+    "submissions": 1,
+    "publications": 0,
+    "designation": "Undergraduate Student"
+  },
+  {
+    "firstName": "Jay",
+    "lastName": "Rajput",
+    "submissions": 4,
+    "publications": 2,
+    "designation": "PhD Student"
+  },
+  {
+    "firstName": "Harshit",
+    "lastName": "Vyas",
+    "submissions": 2,
+    "publications": 2,
+    "designation": "Research Scholar"
+  },
+  {
+    "firstName": "Sanya",
+    "lastName": "Puri",
+    "submissions": 3,
+    "publications": 1,
+    "designation": "Graduate Student"
+  },
+  {
+    "firstName": "Kritika",
+    "lastName": "Mishra",
+    "submissions": 2,
+    "publications": 0,
+    "designation": "Junior Research Fellow"
+  },
+  {
+    "firstName": "Tarun",
+    "lastName": "Nanda",
+    "submissions": 6,
+    "publications": 4,
+    "designation": "Associate Professor"
+  },
+  {
+    "firstName": "Zoya",
+    "lastName": "Qureshi",
+    "submissions": 1,
+    "publications": 1,
+    "designation": "Postgraduate Student"
+  },
+  {
+    "firstName": "Arnav",
+    "lastName": "Kohli",
+    "submissions": 5,
+    "publications": 3,
+    "designation": "Assistant Professor"
+  },
+  {
+    "firstName": "Devika",
+    "lastName": "Seth",
+    "submissions": 4,
+    "publications": 4,
+    "designation": "Senior Research Scientist"
+  },
+  {
+    "firstName": "Mohit",
+    "lastName": "Talwar",
+    "submissions": 2,
+    "publications": 1,
+    "designation": "Research Intern"
+  },
+  {
+    "firstName": "Reyansh",
+    "lastName": "Chatterjee",
+    "submissions": 3,
+    "publications": 3,
+    "designation": "Research Associate"
+  }
+]

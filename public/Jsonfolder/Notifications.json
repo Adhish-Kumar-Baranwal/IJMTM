@@ -1,0 +1,17 @@
+[
+  {
+    "role": "Author",
+    "message": "Your paper 'XYZ' has been approved.",
+    "date": "2025-04-17"
+  },
+  {
+    "role": "Reviewer",
+    "message": "You have been assigned a new paper to review.",
+    "date": "2025-04-16"
+  },
+  {
+    "role": "Admin",
+    "message": "New author registration request received.",
+    "date": "2025-04-15"
+  }
+]

@@ -1,8 +1,13 @@
-.admin-main-dashboard {
+.admin-reviewer-page {
   display: flex;
   flex-direction: column;
   background-color: white;
   height: auto;
   /* padding: 8px 20px; */
   border-radius: 8px;
+}
+
+.admin-reviewer-page-tables{
+    padding: 16px;
+    gap: 12px;
 }

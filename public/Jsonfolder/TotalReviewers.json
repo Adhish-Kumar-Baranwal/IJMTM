@@ -1,0 +1,58 @@
+[
+  {
+    "firstName": "Ishaan",
+    "lastName": "Rathore",
+    "reviewsDone": 2,
+    "designation": "Associate Professor",
+    "experience": 8
+  },
+  {
+    "firstName": "Meera",
+    "lastName": "Joshi",
+    "reviewsDone": 2,
+    "designation": "Postdoctoral Fellow",
+    "experience": 4
+  },
+  {
+    "firstName": "Tanya",
+    "lastName": "Saxena",
+    "reviewsDone": 1,
+    "designation": "Assistant Professor",
+    "experience": 6
+  },
+  {
+    "firstName": "Kunal",
+    "lastName": "Deshmukh",
+    "reviewsDone": 4,
+    "designation": "Senior Researcher",
+    "experience": 10
+  },
+  {
+    "firstName": "Arjun",
+    "lastName": "Pillai",
+    "reviewsDone": 0,
+    "designation": "PhD Scholar",
+    "experience": 2
+  },
+  {
+    "firstName": "Ritika",
+    "lastName": "Mehrotra",
+    "reviewsDone": 3,
+    "designation": "Lecturer",
+    "experience": 5
+  },
+  {
+    "firstName": "Samar",
+    "lastName": "Sharma",
+    "reviewsDone": 5,
+    "designation": "Principal Scientist",
+    "experience": 12
+  },
+  {
+    "firstName": "Nivedita",
+    "lastName": "Garg",
+    "reviewsDone": 2,
+    "designation": "Research Fellow",
+    "experience": 3
+  }
+]

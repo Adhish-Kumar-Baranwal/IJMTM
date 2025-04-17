@@ -1,0 +1,53 @@
+[
+    {
+      "icon": "publication",
+      "title": "Latest Publications",
+      "subtitle": "Explore our most recent published papers",
+      "content": [
+        "Advances in Machine Learning: A Comprehensive Review",
+        "Climate Change Impact on Biodiversity: Current Evidence",
+        "Novel Approaches to Sustainable Energy Production"
+      ],
+      "buttons": [
+        {
+          "text": "View all papers",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "icon": "volume",
+      "title": "Current Volume",
+      "subtitle": "Volume 12, Issue 3 - September 2023",
+      "content": [
+        "Special issue on Sustainable Development and Environmental Conservation",
+        "Guest Editors: Dr. Jane Smith, University of California and Dr. John Doe, Oxford University"
+      ],
+      "buttons": [
+        {
+          "text": "View this volume",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "icon": "team",
+      "title": "Join Our Team",
+      "subtitle": "Become a reviewer or submit your research",
+      "content": [
+        "We’re looking for expert reviewers across multiple disciplines.",
+        "Authors are invited to submit original research papers."
+      ],
+      "buttons": [
+        {
+          "text": "Apply as Reviewer",
+          "link": "#"
+        },
+        {
+          "text": "Submit Paper",
+          "link": "#"
+        }
+      ]
+    }
+  ]
+  

@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
 import { GrSchedule } from "react-icons/gr";
+import { SiBookstack } from "react-icons/si";
 
 const RouteSelect = () => {
   return (
@@ -22,14 +23,19 @@ const RouteSelect = () => {
         <span>Reviewers</span>
       </Link>
 
-      <Link to="" className="route-links">
+      <Link to="author-info" className="route-links">
         <FiUsers />
         <span>Authors</span>
       </Link>
 
-      <Link to="" className="route-links">
+      <Link to="paper-dashboard" className="route-links">
         <MdOutlineDocumentScanner />
         <span>Papers</span>
+      </Link>
+
+      <Link to="" className="route-links">
+      <SiBookstack />
+        <span>Volumes</span>
       </Link>
 
       <Link to="" className="route-links">

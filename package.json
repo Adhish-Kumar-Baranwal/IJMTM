@@ -19,6 +19,7 @@
     "@mui/material": "^6.4.7",
     "@mui/system": "^6.4.7",
     "@tailwindcss/vite": "^4.0.14",
+    "@tanstack/react-table": "^8.21.3",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",

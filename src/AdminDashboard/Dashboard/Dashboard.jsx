@@ -5,7 +5,7 @@ import Grid from './Grid/Grid';
 
 const Dashboard = () => {
   return (
-    <div className='main-dashboard shadow'>
+    <div className='admin-main-dashboard shadow'>
       <TopBar />
       <Grid />
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { navLists } from "../../constants";
+import Notifications from "../sections/NotificationsBell/Notifications"; // 👈 Import your Notifications component
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState();
@@ -32,12 +33,14 @@ const NavBar = () => {
                 {dropdown === index && item.submenu && (
                   <ul className="absolute left-0 mt-2 w-50 bg-white border border-gray-300 shadow-md rounded-lg flex flex-col">
                     {item.submenu.map((subItem, subIndex) => (
-                      <li
-                        key={subIndex}
-                        className="px-4 py-2 hover:bg-gray-200 hover:rounded-lg"
-                      >
-                        <Link to={subItem.path}>{subItem.name}</Link>
-                      </li>
+                      <Link to={subItem.path}>
+                        <li
+                          key={subIndex}
+                          className="px-4 py-2 hover:bg-gray-200 hover:rounded-lg"
+                        >
+                          {subItem.name}
+                        </li>
+                      </Link>
                     ))}
                   </ul>
                 )}
@@ -46,14 +49,17 @@ const NavBar = () => {
           </ul>
         </div>
 
-        {/* Sign In Button */}
-        <a
-          href="/SigninPage"
-          className="px-4 py-2 bg-blue-400 rounded-md cursor-pointer font-semibold text-white"
-          onClick={() => navigate("/SigninPage")}
-        >
-          Sign In
-        </a>
+        {/* Right-side Buttons */}
+        <div className="flex items-center gap-4">
+          {/* <Notifications role="Author" /> 👈 Role-based bell icon */}
+          <a
+            href="/SigninPage"
+            className="px-4 py-2 bg-blue-400 rounded-md cursor-pointer font-semibold text-white"
+            onClick={() => navigate("/SigninPage")}
+          >
+            Sign In
+          </a>
+        </div>
       </nav>
     </header>
   );

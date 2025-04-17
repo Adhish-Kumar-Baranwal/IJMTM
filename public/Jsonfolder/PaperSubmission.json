@@ -1,0 +1,44 @@
+[
+  {
+    "title": "AI-Powered Medical Imaging",
+    "type": "Research Paper",
+    "date": "2025-04-01",
+    "authors": ["John Doe", "Jane Smith"],
+    "status": "Under Review"
+  },
+  {
+    "title": "Blockchain in Education",
+    "type": "Review Paper",
+    "date": "2025-03-27",
+    "authors": ["Emily Johnson"],
+    "status": "Assigned"
+  },
+  {
+    "title": "Smart Cities: A Case Study",
+    "type": "Case Studies",
+    "date": "2025-03-15",
+    "authors": ["Michael Brown", "Sarah Davis"],
+    "status": "Final Review Pending"
+  },
+  {
+    "title": "Quantum Computing Principles",
+    "type": "Conceptual Paper",
+    "date": "2025-04-05",
+    "authors": ["Chris Martin"],
+    "status": "Revision Requested"
+  },
+  {
+    "title": "Cybersecurity Challenges in IoT",
+    "type": "Research Paper",
+    "date": "2025-04-10",
+    "authors": ["Alex Wilson"],
+    "status": "Rejected"
+  },
+  {
+    "title": "Green Computing Evolution",
+    "type": "Review Paper",
+    "date": "2025-03-30",
+    "authors": ["Sophia Turner", "Daniel Moore"],
+    "status": "Not Assigned"
+  }
+]
