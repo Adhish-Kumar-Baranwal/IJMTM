@@ -1,7 +1,6 @@
 import React from 'react'
-import Dashboard from './Dashboard/Dashboard'
 import SideBar from './SideBar/SideBar'
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
