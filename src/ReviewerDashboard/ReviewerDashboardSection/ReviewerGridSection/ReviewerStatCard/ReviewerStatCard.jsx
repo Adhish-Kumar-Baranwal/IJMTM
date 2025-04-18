@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./StatCard.css";
+import "./ReviewerStatCard.css";
 
 const Card = ({ title, value, icon, period }) => {
   return (
-    <div className="p-4 col-span-3 rounded border border-stone-300">
+    <div className="p-4 col-span-6 rounded border border-stone-300">
       <div className="flex mb-8 items-start justify-between">
         <div>
           <h3 className="text-stone-500 mb-2 text-sm">{title}</h3>
@@ -14,7 +14,7 @@ const Card = ({ title, value, icon, period }) => {
           className={`text-xs flex items-center gap-1 font-medium px-2 py-1 rounded`}
         ></span>
       </div>
-      <p className="text-xs text-stone-500">{period}</p>
+      {/* <p className="text-xs text-stone-500">{period}</p> */}
     </div>
   );
 };
@@ -25,19 +25,17 @@ Card.propTypes = {
   period: PropTypes.string.isRequired,
 };
 
-const StatCards = () => {
+const ReviewerStatCard = () => {
   return (
     <>
       <Card
-        title="Total Submissions"
-        value="245"
-        period="+12% from last month"
+        title="Reviews Done"
+        value="12"
+        // period="+1 from last month"
       />
-      <Card title="Pending Reviews" value="32" period="-4% from last month" />
-      <Card title="Papers Published" value="68" period="+8% from last month" />
-      <Card title="Active Reviewers" value="124" period="+6% from last month" />
+      <Card title="Pending Reviews" value="32" />
     </>
   );
 };
 
-export default StatCards;
+export default ReviewerStatCard;

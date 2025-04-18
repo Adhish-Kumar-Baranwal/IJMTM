@@ -1,0 +1,17 @@
+.author-route-select-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .author-route-links{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+      padding: 5px 10px;
+  }
+  
+  .author-route-links.active{
+    background-color: #ffffff;
+    color: #0c0a09;
+  }
