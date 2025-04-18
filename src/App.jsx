@@ -22,6 +22,8 @@ import ReviewedDashboard from "./ReviewerDashboard/ReviewedDashboard/ReviewedDas
 import AssignedPapers from "./ReviewerDashboard/AssignedPapers/AssignedPapers";
 import AuthorDashboard from "./AuthorDashboard/AuthorDashboard";
 import AuthorDashboardSection from "./AuthorDashboard/AuthorDashboardSection/AuthorDashboardSection";
+import PaperSubmittedMain from "./AuthorDashboard/PaperSubmittedMain/PaperSubmittedMain";
+import PaperPublishedMain from "./AuthorDashboard/PaperPublishedMain/PaperPublishedMain";
 
 const App = () => {
   return (
@@ -120,13 +122,13 @@ const App = () => {
         <Route path="assignedPaper" element={<AssignedPapers />} />
         <Route path="reviewedPaper" element={<ReviewedDashboard />} />
       </Route>
-      
+
       {/* Author */}
       <Route path="/author" element={<AuthorDashboard />}>
         <Route index element={<AuthorDashboardSection />} />
         <Route path="authorDashboard" element={<AuthorDashboardSection />} />
-        {/* <Route path="assignedPaper" element={<AssignedPapers />} />
-        <Route path="reviewedPaper" element={<ReviewedDashboard />} /> */}
+        <Route path="paperSubmitted" element={<PaperSubmittedMain />} />
+        <Route path="paperPublished" element={<PaperPublishedMain />} />
       </Route>
     </Routes>
   );
