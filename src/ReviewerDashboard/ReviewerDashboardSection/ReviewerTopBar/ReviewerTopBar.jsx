@@ -1,10 +1,10 @@
 import React from "react";
-import "./TopBar.css";
-import adminData from "../../../../public/Jsonfolder/AdminDetail.json";
+import "./ReviewerTopBar.css";
+import reviewerData from "../../../../public/Jsonfolder/ReviewerDetail.json"
 import Notifications from "../../../components/sections/NotificationsBell/Notifications";
 
-const TopBar = () => {
-  const loggedInAdmin = adminData[0];
+const ReviewerTopBar = () => {
+  const loggedInReviewer = reviewerData[0];
 
   const date = new Date();
 
@@ -20,7 +20,7 @@ const TopBar = () => {
       <div className="flex items-center justify-between p-0.5">
         <div>
           <span className="text-sm font-bold block">
-            Hello {loggedInAdmin.first_name}
+            Hello {loggedInReviewer.first_name}
           </span>
           <span className="text-xs block text-stone-500">{formattedDate}</span>
         </div>
@@ -30,4 +30,4 @@ const TopBar = () => {
   );
 };
 
-export default TopBar;
+export default ReviewerTopBar;

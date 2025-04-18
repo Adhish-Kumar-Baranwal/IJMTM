@@ -10,3 +10,8 @@
     gap: 5px;
     padding: 5px 10px;
 }
+
+.route-links.active{
+  background-color: #ffffff;
+  color: #0c0a09;
+}

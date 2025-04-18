@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import SigninPage from "./SigninPageFolder/SigninPage";
 import SignupPage from "./SignupPageFolder/SignupPage";
-import Author from "./Author Page/Author";
 import HomePage from "./HomePage/HomePage";
 import PublishedPapers from "./components/sections/PublishedPapers/PublishedPapers";
 import ReviewerForm from "./components/sections/ReviewerForm/ReviewerForm";
@@ -17,6 +16,12 @@ import BrowseVolumes from "./components/sections/BrowseVolumes/BrowseVolumes";
 import Subjects from "./components/sections/Subjects/Subjects";
 import AuthorInfoMain from "./AdminDashboard/AuthorInfo/AuthorInfoMain";
 import PapersDashboard from "./AdminDashboard/PapersDashboard/PapersDashboard";
+import ReviewerDashboard from "./ReviewerDashboard/ReviewerDashboard";
+import ReviewerDashboardSection from "./ReviewerDashboard/ReviewerDashboardSection/ReviewerDashboardSection";
+import ReviewedDashboard from "./ReviewerDashboard/ReviewedDashboard/ReviewedDashboard";
+import AssignedPapers from "./ReviewerDashboard/AssignedPapers/AssignedPapers";
+import AuthorDashboard from "./AuthorDashboard/AuthorDashboard";
+import AuthorDashboardSection from "./AuthorDashboard/AuthorDashboardSection/AuthorDashboardSection";
 
 const App = () => {
   return (
@@ -29,14 +34,6 @@ const App = () => {
               <HomePage />
             </Layout>
           </>
-        }
-      />
-      <Route
-        path="/Author"
-        element={
-          <Layout>
-            <Author />
-          </Layout>
         }
       />
       <Route path="/SigninPage" element={<SigninPage />} />
@@ -106,12 +103,30 @@ const App = () => {
           </Layout>
         }
       />
+
+      {/* Admin */}
       <Route path="/admin-panel" element={<AdminDashboard />}>
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="reviewer-page" element={<ReviewersPage />} />
-        <Route path="author-info" element={<AuthorInfoMain />} />
-        <Route path="paper-dashboard" element={<PapersDashboard />} />
+        <Route path="reviewerPage" element={<ReviewersPage />} />
+        <Route path="authorInfo" element={<AuthorInfoMain />} />
+        <Route path="paperDashboard" element={<PapersDashboard />} />
+      </Route>
+
+      {/* Reviewer */}
+      <Route path="/reviewer-dashboard" element={<ReviewerDashboard />}>
+        <Route index element={<ReviewerDashboardSection />} />
+        <Route path="dashboard" element={<ReviewerDashboardSection />} />
+        <Route path="assignedPaper" element={<AssignedPapers />} />
+        <Route path="reviewedPaper" element={<ReviewedDashboard />} />
+      </Route>
+      
+      {/* Author */}
+      <Route path="/author" element={<AuthorDashboard />}>
+        <Route index element={<AuthorDashboardSection />} />
+        <Route path="authorDashboard" element={<AuthorDashboardSection />} />
+        {/* <Route path="assignedPaper" element={<AssignedPapers />} />
+        <Route path="reviewedPaper" element={<ReviewedDashboard />} /> */}
       </Route>
     </Routes>
   );

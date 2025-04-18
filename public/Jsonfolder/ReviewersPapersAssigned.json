@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Exploring Edge Computing in Smart Cities",
+    "type": "Research Paper",
+    "submittedDate": "2025-03-28",
+    "status": "Assigned",
+    "authors": ["Dr. Riya Mehta", "Dr. Kunal Sharma"]
+  },
+  {
+    "title": "Review of Ethical Concerns in AI Systems",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-01",
+    "status": "Under Review",
+    "authors": ["Ishita Nair"]
+  },
+  {
+    "title": "Case Study: Water Conservation Initiatives in Rajasthan",
+    "type": "Case Studies",
+    "submittedDate": "2025-03-30",
+    "status": "Revision Requested",
+    "authors": ["Yash Rajput", "Sneha Khandelwal"]
+  },
+  {
+    "title": "Conceptualizing the Metaverse in Education",
+    "type": "Conceptual Paper",
+    "submittedDate": "2025-04-05",
+    "status": "Assigned",
+    "authors": ["Mehul Desai"]
+  },
+  {
+    "title": "Investigating Quantum Cryptography Applications",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-03",
+    "status": "Under Review",
+    "authors": ["Dr. Simranjeet Singh", "Arjun Mahajan"]
+  },
+  {
+    "title": "A Review on Smart Agriculture Using IoT",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-07",
+    "status": "Assigned",
+    "authors": ["Neha Joshi"]
+  },
+  {
+    "title": "Case Study: Disaster Response Through Drones",
+    "type": "Case Studies",
+    "submittedDate": "2025-03-31",
+    "status": "Revision Requested",
+    "authors": ["Sahil Verma", "Priya Chopra"]
+  },
+  {
+    "title": "Design Thinking as a Tool for Innovation",
+    "type": "Conceptual Paper",
+    "submittedDate": "2025-04-06",
+    "status": "Under Review",
+    "authors": ["Anvi Bansal"]
+  },
+  {
+    "title": "Research on Noise Reduction Techniques in Urban Planning",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-09",
+    "status": "Assigned",
+    "authors": ["Dr. Tanvi Shetty"]
+  },
+  {
+    "title": "Review of Renewable Energy Storage Systems",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-02",
+    "status": "Under Review",
+    "authors": ["Dev Malik", "Radhika Menon"]
+  }
+]

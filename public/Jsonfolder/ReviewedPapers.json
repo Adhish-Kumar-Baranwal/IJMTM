@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Integrating Blockchain in Supply Chain Management",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-02",
+    "reviewDoneDate": "2025-04-10",
+    "authors": ["Dr. Rakesh Iyer", "Saanvi Menon"]
+  },
+  {
+    "title": "Review of Cybersecurity Practices in SMEs",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-01",
+    "reviewDoneDate": "2025-04-09",
+    "authors": ["Ankit Das"]
+  },
+  {
+    "title": "Case Study: Digital Health Implementation in Rural India",
+    "type": "Case Studies",
+    "submittedDate": "2025-04-03",
+    "reviewDoneDate": "2025-04-11",
+    "authors": ["Megha Sharma", "Arvind Nair"]
+  },
+  {
+    "title": "Conceptual Framework for Sustainable Urban Mobility",
+    "type": "Conceptual Paper",
+    "submittedDate": "2025-04-05",
+    "reviewDoneDate": "2025-04-13",
+    "authors": ["Siddharth Rao"]
+  },
+  {
+    "title": "Machine Learning Approaches in Weather Forecasting",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-06",
+    "reviewDoneDate": "2025-04-14",
+    "authors": ["Dr. Kavita Kulkarni", "Rehan Sheikh"]
+  },
+  {
+    "title": "A Review of AI-Driven Language Translation Tools",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-04",
+    "reviewDoneDate": "2025-04-12",
+    "authors": ["Shruti Deshmukh"]
+  },
+  {
+    "title": "Case Study: Flood Management using IoT Sensors",
+    "type": "Case Studies",
+    "submittedDate": "2025-04-07",
+    "reviewDoneDate": "2025-04-15",
+    "authors": ["Rajeev Sinha", "Dr. Nisha Kapoor"]
+  },
+  {
+    "title": "Design Principles for Virtual Reality in Education",
+    "type": "Conceptual Paper",
+    "submittedDate": "2025-04-08",
+    "reviewDoneDate": "2025-04-16",
+    "authors": ["Tanaya Ghosh"]
+  },
+  {
+    "title": "Evaluating Green Building Technologies in Urban Areas",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-09",
+    "reviewDoneDate": "2025-04-17",
+    "authors": ["Dr. Aditya Bansal", "Neelam Patil"]
+  },
+  {
+    "title": "Review of Online Learning Effectiveness During Pandemic",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-10",
+    "reviewDoneDate": "2025-04-18",
+    "authors": ["Zoya Khan"]
+  }
+]

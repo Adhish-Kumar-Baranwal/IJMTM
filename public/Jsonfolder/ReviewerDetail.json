@@ -1,0 +1,22 @@
+[
+  {
+    "first_name": "Ash",
+    "last_name": "Drake",
+    "email": "drake.ash@digg.com",
+    "role": "Reviewer",
+    "permissions": ["read", "write"],
+    "phone": "+249 158 237 3851",
+    "password": "hA5`}NPs",
+    "password_hash": "$2a$04$ACVpm.0YtWGl1I7hZha/xeGeZesLX9VZGDUdaYjOyZSh5QzR1mL3a"
+  },
+  {
+    "first_name": "Wade",
+    "last_name": "Wilson",
+    "email": "wade.019@posterous.com",
+    "role": "Reviewer",
+    "permissions": ["read", "write"],
+    "phone": "+62 341 750 2520",
+    "password": "kR0>yn8}uqfT",
+    "password_hash": "$2a$04$JobE1i2ovi6mxYmEvqiHDesONi89wAhzp84c1euEBjPSN4z5U.OeO"
+  }
+]

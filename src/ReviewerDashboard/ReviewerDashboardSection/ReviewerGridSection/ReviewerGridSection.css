@@ -1,4 +1,4 @@
-.admin-main-dashboard-grid{
+.reviewer-main-dashboard-grid{
     padding: 16px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./RouteSelect.css";
 import {
   MdOutlineDashboard,
@@ -11,24 +11,28 @@ import { GrSchedule } from "react-icons/gr";
 import { SiBookstack } from "react-icons/si";
 
 const RouteSelect = () => {
+
+  const location = useLocation();
+  const isActive = (path) => location.pathname.includes(path);
+
   return (
     <div className="route-select-section">
-      <Link to="dashboard" className="route-links">
+      <Link to="dashboard" className={`route-links ${isActive('dashboard') ? "active shadow" : ""}`}>
         <MdOutlineDashboard />
         <span>Dashboard</span>
       </Link>
 
-      <Link to="reviewer-page" className="route-links">
+      <Link to="reviewerPage" className={`route-links ${isActive('reviewerPage') ? "active shadow" : ""}`}>
         <FiUsers />
         <span>Reviewers</span>
       </Link>
 
-      <Link to="author-info" className="route-links">
+      <Link to="authorInfo" className={`route-links ${isActive('authorInfo') ? "active shadow" : ""}`}>
         <FiUsers />
         <span>Authors</span>
       </Link>
 
-      <Link to="paper-dashboard" className="route-links">
+      <Link to="paperDashboard" className={`route-links ${isActive('paperDashboard') ? "active shadow" : ""}`}>
         <MdOutlineDocumentScanner />
         <span>Papers</span>
       </Link>

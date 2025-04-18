@@ -1,13 +1,12 @@
 import React from "react";
-import "./TopBar.css";
-import adminData from "../../../../public/Jsonfolder/AdminDetail.json";
+import "./AuthorTopBar.css";
+import authorData from "../../../../public/Jsonfolder/AuthorDetail.json";
 import Notifications from "../../../components/sections/NotificationsBell/Notifications";
 
-const TopBar = () => {
-  const loggedInAdmin = adminData[0];
+const AuthorTopBar = () => {
+  const loggedInAuthor = authorData[0];
 
   const date = new Date();
-
   const formattedDate = date.toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
@@ -20,14 +19,14 @@ const TopBar = () => {
       <div className="flex items-center justify-between p-0.5">
         <div>
           <span className="text-sm font-bold block">
-            Hello {loggedInAdmin.first_name}
+            Hello {loggedInAuthor.first_name}
           </span>
           <span className="text-xs block text-stone-500">{formattedDate}</span>
         </div>
-        <Notifications />
+        <Notifications role="Author" />
       </div>
     </div>
   );
 };
 
-export default TopBar;
+export default AuthorTopBar;
