@@ -185,15 +185,15 @@ const ReviewerForm = () => {
               </select>
             </div>
 
-            <div>
-              <label>Institute*: </label>
+          </div>
+            <div className="institute-section">
+              <label>Institute Name*: </label>
               <input
                 className="reviewer-name-input"
                 type="text"
                 {...register("institute", { required: true })}
               />
             </div>
-          </div>
 
           <div className="reviewer-textarea-section">
             <div>
