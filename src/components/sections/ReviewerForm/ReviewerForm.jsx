@@ -16,6 +16,28 @@ const ReviewerForm = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/reviewer/apply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        alert("Your application has been submitted successfully!");
+        reset();
+      } else {
+        alert("Application submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Try again later.");
+    }
+  };
+  
   return (
     <>
       <NavBar />
@@ -76,14 +98,15 @@ const ReviewerForm = () => {
           </div>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+
           <div className="reviewer-name-section">
             <div>
               <label>First Name*: </label>
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("first_name", { required: true })}
+                {...register("firstName", { required: true })}
               />
             </div>
             <div>
@@ -91,7 +114,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("last_name", { required: true })}
+                {...register("lastName", { required: true })}
               />
             </div>
           </div>
@@ -102,7 +125,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-name-input"
                 type="email"
-                {...register("email_id", { required: true })}
+                {...register("email", { required: true })}
               />
             </div>
 
@@ -111,7 +134,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("contact_no", { required: true })}
+                {...register("contact", { required: true })}
               />
             </div>
           </div>
@@ -200,7 +223,7 @@ const ReviewerForm = () => {
               <label>Why should you join as a reviewer*: </label>
               <textarea
                 className="reviewer-textarea-input"
-                {...register("why_be_reviewer", { required: true })}
+                {...register("whyBeReviewer", { required: true })}
               />
             </div>
           </div>
@@ -211,7 +234,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-password-input"
                 type="password"
-                {...register("published_papers", { required: true })}
+                {...register("password", { required: true })}
               />
             </div>
             <div>
@@ -219,7 +242,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-password-input"
                 type="password"
-                {...register("published_papers", { required: true })}
+                {...register("password", { required: true })}
               />
             </div>
           </div>

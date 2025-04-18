@@ -98,7 +98,18 @@ app.use(
   researchPaperRoutes
 );
 app.use("/api/review", authMiddleware(["Reviewer", "Admin"]), reviewRoutes);
-app.use("/api/reviewer", authMiddleware(["Admin"]), reviewerRoutes);
+// app.use("/api/reviewer", authMiddleware(["Admin"]), reviewerRoutes);
+app.post("/api/reviewer/apply", async (req, res) => {
+  try {
+    const reviewer = new Reviewer(req.body);
+    await reviewer.save();
+    res.status(201).json({ message: "Reviewer application submitted" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 // PDF Upload Route (only for Authors)
 // Temporarily remove the authMiddleware for testing
