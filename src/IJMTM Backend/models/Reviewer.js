@@ -14,7 +14,11 @@ const ReviewerSchema = new mongoose.Schema({
   institute: { type: String, required: true },
   whyBeReviewer: { type: String, required: true },
   password: { type: String, required: true },
-  isApproved: { type: Boolean, default: false }
+  isApproved: { type: Boolean, default: false },
+  status: {
+    type: String,
+    default: "Pending", // So admin can approve later
+  }
 }, { timestamps: true });
 
 const Reviewer = mongoose.model("Reviewer", ReviewerSchema);
