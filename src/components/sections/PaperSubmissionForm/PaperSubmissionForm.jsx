@@ -4,6 +4,7 @@ import NavBar from "../../NavBar/NavBar";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
+import { FiChevronLeft } from "react-icons/fi";
 
 const PaperSubmissionForm = () => {
   const [selectedOptions, setSelectedOptions] = useState(null);
@@ -107,6 +108,8 @@ const PaperSubmissionForm = () => {
     { value: "Conceptual Papers", label: "Conceptual Paper" },
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <NavBar />
@@ -115,6 +118,44 @@ const PaperSubmissionForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="ppr-sub-title">Submit your paper</h1>
+
+        <div className="rounded-md my-3">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="ppr-sub-guidelines-btn"
+          >
+            <span>Submission Guidelines</span>
+            <FiChevronLeft
+              className={`chevron-icon ${isOpen ? "rotate" : ""}`}
+            />
+          </button>
+
+          <div className={`ppr-sub-guidelines-wrapper ${isOpen ? "open" : ""}`}>
+            <div className="space-y-4 p-4 ppr-sub-guidelines">
+              <p>
+                Before submitting your paper, please ensure that it meets the
+                following requirements:
+              </p>
+              <ul>
+                <li>
+                  The paper must be original and not previously published or
+                  under consideration elsewhere.
+                </li>
+                <li>
+                  The paper should be formatted according to the journal's
+                  template (available for download below).
+                </li>
+                <li>The paper should be submitted as a PDF file.</li>
+                <li>The paper should include an abstract of 150-250 words.</li>
+                <li>
+                  All figures and tables should be properly labeled and
+                  referenced in the text.
+                </li>
+                <li>References should follow the journal's citation style.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <p className="sub-container-title">Paper Information*</p>
         <div className="top-container">
@@ -156,6 +197,15 @@ const PaperSubmissionForm = () => {
               className="border rounded p-2 w-[50%]"
               rows={4}
               {...register("abstract", { required: true })}
+            />
+          </div>
+          <div className="keyword-container">
+            <label className="inline mb-1">Keywords*: </label>
+            <input
+              type="text"
+              // className="border rounded p-2 w-[50%]"
+              rows={4}
+              {...register("keywords", { required: true })}
             />
           </div>
         </div>
@@ -232,9 +282,17 @@ const PaperSubmissionForm = () => {
           </label>
         </div>
 
+        <div className="ppr-sub-acknowledgement">
+          <input type="checkbox" id="acknowledgement" {...register("acknowledgement", { required: true })} />
+          <label htmlFor="acknowledgement">
+            I confirm that this paper is original, has not been published
+            elsewhere, and is not under consideration by another journal
+          </label>
+        </div>
+
         <div className="ppr-form-center-btn">
           <button className="ppr-form-submit-btn" type="submit">
-            Submit
+            Submit {selectedOptions?.label || "Paper"}
           </button>
         </div>
       </form>

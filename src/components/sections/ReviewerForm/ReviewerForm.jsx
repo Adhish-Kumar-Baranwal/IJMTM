@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../../NavBar/NavBar";
 import { useForm } from "react-hook-form";
 import "./ReviewerForm.css";
+import { FiChevronLeft } from "react-icons/fi";
 
 const ReviewerForm = () => {
   const {
@@ -13,17 +14,66 @@ const ReviewerForm = () => {
     reset,
   } = useForm();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <NavBar />
 
       <div className="reviewer-form-container">
         <div className="reviewer-title-section">
-          <h2 className="reviewer-form-title">Reviewer Registration</h2>
+          <h2 className="reviewer-form-title">Become a Reviewer</h2>
           <p className="reviewer-form-text">
-            Already have and account?{" "}
-            <span className="reviewer-form-link">Login</span>
+            Apply to join our team of expert reviewers
           </p>
+
+          <div className="my-5 py-4 border-b-2">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="ppr-sub-guidelines-btn"
+            >
+              <span>Reviewer Information</span>
+              <FiChevronLeft
+                className={`chevron-icon ${isOpen ? "rotate" : ""}`}
+              />
+            </button>
+
+            <div
+              className={`ppr-sub-guidelines-wrapper ${isOpen ? "open" : ""}`}
+            >
+              <div className="space-y-4 p-4 ppr-sub-guidelines">
+                <p>
+                  The Journal of Advanced Research is looking for qualified
+                  reviewers to join our peer review team. Reviewers play a
+                  crucial role in maintaining the quality and integrity of our
+                  published research.
+                </p>
+                <p>
+                  <strong>Requirements:</strong>
+                </p>
+                <ul>
+                  <li>Ph.D. or equivalent in a relevant field</li>
+                  <li>Publication record in peer-reviewed journals</li>
+                  <li>Expertise in one or more of our subject areas</li>
+                  <li>
+                    Ability to provide thorough, constructive, and timely
+                    reviews
+                  </li>
+                </ul>
+                <p>
+                  <strong>Benefits:</strong>
+                </p>
+                <ul>
+                  <li>
+                    Recognition as a reviewer in our annual acknowledgment
+                  </li>
+                  <li>Access to reviewer resources and training</li>
+                  <li>Opportunity to contribute to your field</li>
+                  <li>Certificate of recognition after completing reviews</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
 
         <form>
@@ -122,9 +172,9 @@ const ReviewerForm = () => {
           </div> */}
 
           <div className="reviewer-register-center-button">
-          <button type="submit" className="reviewer-register-btn">
-            Register
-          </button>
+            <button type="submit" className="reviewer-register-btn">
+              Submit Application
+            </button>
           </div>
         </form>
       </div>
