@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./SignupPage.css"; // Reuse your existing CSS
-// import bgImage1 from "../assets/How-to-Write-the-Background-of-Your-Scientific-Paper.jpg"; 
+// import bgImage1 from "../assets/How-to-Write-the-Background-of-Your-Scientific-Paper.jpg";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +31,10 @@ const SignupPage = () => {
     console.log("Login form data:", formData);
 
     try {
-      const res = await axios.post("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/register", formData);
+      const res = await axios.post(
+        "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/register",
+        formData
+      );
       setSuccess("Registration successful! You can now log in.");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
@@ -44,7 +47,11 @@ const SignupPage = () => {
   return (
     <div className="signup-container">
       <div className="signup-left">
-        <a href="/" id="nav-title" className="no-underline p-5 text-2xl font-semibold">
+        <a
+          href="/"
+          id="nav-title"
+          className="no-underline p-5 text-2xl font-semibold"
+        >
           IJMTM
         </a>
         <form className="signup-form" onSubmit={handleSubmit}>
@@ -69,24 +76,6 @@ const SignupPage = () => {
             onChange={handleChange}
             required
           />
-        <label htmlFor="password">Password</label>
-           <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <label className="show-password">
-  <input
-    type="checkbox"
-    checked={showPassword}
-    onChange={() => setShowPassword(!showPassword)}
-  />
-  Show Password
-</label>
 
           <label htmlFor="designation">Designation</label>
           <input
@@ -108,15 +97,24 @@ const SignupPage = () => {
             onChange={handleChange}
           />
 
-          <label htmlFor="publishedPapers">Published Papers (comma separated)</label>
+          <label htmlFor="password">Password</label>
           <input
-            type="text"
-            id="publishedPapers"
-            name="publishedPapers"
-            placeholder="Paper 1, Paper 2"
-            value={formData.publishedPapers}
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            value={formData.password}
             onChange={handleChange}
+            required
           />
+          <label className="show-password">
+            <input
+              type="checkbox"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            Show Password
+          </label>
 
           <button type="submit" className="signup-btn" disabled={loading}>
             {loading ? "Registering..." : "Sign Up"}
@@ -124,12 +122,13 @@ const SignupPage = () => {
 
           {error && <p className="error-msg">{error}</p>}
           {success && (
-  <p className="success-msg">
-    {success.split("You can now log in.")[0]}
-    <a href="/SigninPage" className="login-link">Login</a>
-  </p>
-)}
-
+            <p className="success-msg">
+              {success.split("You can now log in.")[0]}
+              <a href="/SigninPage" className="login-link">
+                Login
+              </a>
+            </p>
+          )}
         </form>
       </div>
 

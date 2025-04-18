@@ -16,7 +16,7 @@ const JournalPolicies = () => {
     <>
       <NavBar />
       
-      <div className="journal-policies-wrapper">
+      <div className="u-container journal-policies-wrapper">
         <h2 className="journal-policies-title"> IJMTM Journal Policies</h2>
         <p className="journal-policies-intro">
           The Journal Policies are designed to ensure a transparent, ethical,

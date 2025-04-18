@@ -18,7 +18,7 @@ export const navLists = [
         { name: "Browse Volumes", path: "/browse-volumes" },
         { name: "Published Papers", path: "/published-papers" },
         { name: "Subjects", path: "/subjects" },
-        { name: "Current Volume", path: "/recently-published" },
+        { name: "Current Volume", path: "/current-volume" },
         // { name: "Trending Topics", path: "/popular-topics" },
       ],
     },
