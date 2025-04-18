@@ -8,6 +8,7 @@ import {
 import { FiMoreHorizontal } from "react-icons/fi";
 import { TbUsersPlus } from "react-icons/tb";
 import applications from "../../../../../public/Jsonfolder/ReviewersApplied.json";
+import ReviewerActionDialog from "../../../ReviewerActionDialog/ReviewerActionDialog";
 
 const ReviewersApplied = () => {
   const data = useMemo(() => applications, []);
@@ -15,6 +16,9 @@ const ReviewersApplied = () => {
     pageIndex: 0,
     pageSize: 5,
   });
+
+  const [selectedReviewerId, setSelectedReviewerId] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const columns = useMemo(
     () => [
@@ -41,8 +45,14 @@ const ReviewersApplied = () => {
       {
         id: "actions",
         header: "Actions",
-        cell: () => (
-          <button className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8">
+        cell: ({ row }) => (
+          <button
+            className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8"
+            onClick={() => {
+              setSelectedReviewerId(row.original.id); // assuming id is in your data
+              setIsDialogOpen(true);
+            }}
+          >
             <FiMoreHorizontal />
           </button>
         ),
@@ -66,7 +76,7 @@ const ReviewersApplied = () => {
     <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="flex items-center gap-1.5 font-medium">
-        <TbUsersPlus /> Reviewers Applied
+          <TbUsersPlus /> Reviewers Applied
         </h3>
         <button className="text-sm cursor-pointer hover:underline">
           See all
@@ -128,7 +138,17 @@ const ReviewersApplied = () => {
           Next
         </button>
       </div>
-
+      <ReviewerActionDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        reviewerId={selectedReviewerId}
+        onDecision={(decision, formData) => {
+          console.log(`Reviewer ${formData.firstName} has been ${decision}`);
+          // TODO: Call backend API to update status
+          // await fetch(`/api/approve-reviewer/${formData.id}`, { method: 'POST', body: JSON.stringify({ status: decision }) });
+          setIsDialogOpen(false);
+        }}
+      />
     </div>
   );
 };

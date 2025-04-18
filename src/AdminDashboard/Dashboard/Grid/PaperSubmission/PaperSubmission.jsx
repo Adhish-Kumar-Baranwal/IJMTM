@@ -8,6 +8,7 @@ import {
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import submissions from "../../../../../public/Jsonfolder/PaperSubmission.json";
+import RowActionDialog from "../../../../components/RowActionDialog/RowActionDialog";
 
 const PaperSubmission = () => {
   const data = useMemo(() => submissions, []);
@@ -15,6 +16,9 @@ const PaperSubmission = () => {
     pageIndex: 0,
     pageSize: 5,
   });
+
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const columns = useMemo(
     () => [
@@ -65,8 +69,14 @@ const PaperSubmission = () => {
       {
         id: "actions",
         header: "Action",
-        cell: () => (
-          <button className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8">
+        cell: ({ row }) => (
+          <button
+            className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8"
+            onClick={() => {
+              setSelectedRow(row.original);
+              setIsDialogOpen(true);
+            }}
+          >
             <FiMoreHorizontal />
           </button>
         ),
@@ -152,6 +162,15 @@ const PaperSubmission = () => {
           Next
         </button>
       </div>
+      <RowActionDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        rowData={selectedRow}
+        onAssign={(assignee) => {
+          console.log(`Assigned to ${assignee}`, selectedRow);
+          // Optional: Add backend call or state update here
+        }}
+      />
     </div>
   );
 };

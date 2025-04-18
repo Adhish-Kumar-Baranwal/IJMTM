@@ -10,17 +10,17 @@ import {
 const AuthorRouteSelect = () => {
   return (
     <div className="author-route-select-section">
-      <Link to="dashboard" className="author-route-links">
+      <Link to="authorDashboard" className="author-route-links">
         <MdOutlineDashboard />
         <span>Dashboard</span>
       </Link>
 
-      <Link to="" className="author-route-links">
+      <Link to="paperSubmitted" className="author-route-links">
         <MdOutlineDocumentScanner />
         <span>Submitted Papers</span>
       </Link>
 
-      <Link to="" className="author-route-links">
+      <Link to="paperPublished" className="author-route-links">
         <MdDocumentScanner />
         <span>Published Papers</span>
       </Link>

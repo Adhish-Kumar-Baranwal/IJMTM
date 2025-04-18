@@ -1,8 +1,5 @@
-/* * {
-  box-sizing: border-box;
-} */
-
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap");
 
 @layer base {
   *,
@@ -15,6 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Libre Baskerville";
   }
   .nav-height {
     @apply h-[calc(100vh-60px)];

@@ -8,6 +8,7 @@ import AuthorForm from "./components/sections/AuthorForm/AuthorForm";
 import Journal_Information from "./components/sections/Journal_Information/Journal_Information";
 import Layout from "./Layout";
 import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
+import JournalPolicies from "./components/sections/JournalPolicies/JournalPolicies";
 import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
@@ -22,6 +23,8 @@ import ReviewedDashboard from "./ReviewerDashboard/ReviewedDashboard/ReviewedDas
 import AssignedPapers from "./ReviewerDashboard/AssignedPapers/AssignedPapers";
 import AuthorDashboard from "./AuthorDashboard/AuthorDashboard";
 import AuthorDashboardSection from "./AuthorDashboard/AuthorDashboardSection/AuthorDashboardSection";
+import PaperSubmittedMain from "./AuthorDashboard/PaperSubmittedMain/PaperSubmittedMain";
+import PaperPublishedMain from "./AuthorDashboard/PaperPublishedMain/PaperPublishedMain";
 
 const App = () => {
   return (
@@ -79,6 +82,14 @@ const App = () => {
         }
       />
       <Route
+        path="/journal-policies"
+        element={
+          <Layout>
+            <JournalPolicies />
+          </Layout>
+        }
+      />
+      <Route
         path="/about-reviewer"
         element={
           <Layout>
@@ -120,13 +131,13 @@ const App = () => {
         <Route path="assignedPaper" element={<AssignedPapers />} />
         <Route path="reviewedPaper" element={<ReviewedDashboard />} />
       </Route>
-      
+
       {/* Author */}
       <Route path="/author" element={<AuthorDashboard />}>
         <Route index element={<AuthorDashboardSection />} />
         <Route path="authorDashboard" element={<AuthorDashboardSection />} />
-        {/* <Route path="assignedPaper" element={<AssignedPapers />} />
-        <Route path="reviewedPaper" element={<ReviewedDashboard />} /> */}
+        <Route path="paperSubmitted" element={<PaperSubmittedMain />} />
+        <Route path="paperPublished" element={<PaperPublishedMain />} />
       </Route>
     </Routes>
   );
