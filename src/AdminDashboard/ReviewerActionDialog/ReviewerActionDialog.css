@@ -5,8 +5,8 @@
 }
 
 .action-button.reject:hover {
-    background-color: #ff3232;
-    margin-left: 0.75rem;
+  background-color: #ff3232;
+  margin-left: 0.75rem;
 }
 
 .action-button {
@@ -17,4 +17,9 @@
 .action-button:hover {
   background-color: #2ce044;
   margin-left: 0.75rem;
+}
+
+.dialog-overlay {
+  height: auto;
+  width: 80%;
 }
