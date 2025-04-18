@@ -1,0 +1,70 @@
+.journal-policies-wrapper {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .journal-policies-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+  
+  .journal-policies-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+  
+  .journal-policies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .policy-card {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border-left: 4px solid #3b82f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .policy-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .policy-points {
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+  
+  .policy-points li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .journal-policies-wrapper {
+      padding: 1.5rem;
+    }
+  
+    .journal-policies-title {
+      font-size: 1.5rem;
+    }
+  
+    .policy-title {
+      font-size: 1rem;
+    }
+  
+    .policy-points li {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -28,7 +28,7 @@ export const navLists = [
         { name: "Jounal Information", path: "/journal-information" },
         { name: "Editorial Board", path: "/editorial-board" },
         { name: "Publishing Models", path: "/publishing-models" },
-        { name: "Journal Policies", path: "/recently-published" },
+        { name: "Journal Policies", path: "/journal-policies" },
         // { name: "Popular Topics", path: "/popular-topics" },
       ],
     },

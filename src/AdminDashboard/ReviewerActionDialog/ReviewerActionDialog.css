@@ -1,0 +1,20 @@
+.action-button.reject {
+  background-color: #dc2626;
+  margin-left: 0.75rem;
+  transition: 0.5s ease;
+}
+
+.action-button.reject:hover {
+    background-color: #ff3232;
+    margin-left: 0.75rem;
+}
+
+.action-button {
+  background-color: #20bb34;
+  margin-left: 0.75rem;
+  transition: 0.5s ease;
+}
+.action-button:hover {
+  background-color: #2ce044;
+  margin-left: 0.75rem;
+}

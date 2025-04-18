@@ -8,6 +8,7 @@ import AuthorForm from "./components/sections/AuthorForm/AuthorForm";
 import Journal_Information from "./components/sections/Journal_Information/Journal_Information";
 import Layout from "./Layout";
 import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
+import JournalPolicies from "./components/sections/JournalPolicies/JournalPolicies";
 import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
@@ -77,6 +78,14 @@ const App = () => {
         element={
           <Layout>
             <Journal_Information />
+          </Layout>
+        }
+      />
+      <Route
+        path="/journal-policies"
+        element={
+          <Layout>
+            <JournalPolicies />
           </Layout>
         }
       />

@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-table";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
+import RowActionDialog from "../../../components/RowActionDialog/RowActionDialog"; // adjust path as needed
 
 const RecentSubmission = () => {
   const [data, setData] = useState([]);
@@ -14,6 +15,9 @@ const RecentSubmission = () => {
     pageIndex: 0,
     pageSize: 5,
   });
+
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchRecentSubmissions = async () => {
@@ -86,8 +90,14 @@ const RecentSubmission = () => {
       {
         id: "actions",
         header: "Action",
-        cell: () => (
-          <button className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8">
+        cell: ({ row }) => (
+          <button
+            className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8"
+            onClick={() => {
+              setSelectedRow(row.original);
+              setIsDialogOpen(true);
+            }}
+          >
             <FiMoreHorizontal />
           </button>
         ),
@@ -173,6 +183,16 @@ const RecentSubmission = () => {
           Next
         </button>
       </div>
+
+      <RowActionDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        rowData={selectedRow}
+        onAssign={(assignee) => {
+          console.log(`Assigned to ${assignee}`, selectedRow);
+          // Optional: Add backend call or state update here
+        }}
+      />
     </div>
   );
 };
