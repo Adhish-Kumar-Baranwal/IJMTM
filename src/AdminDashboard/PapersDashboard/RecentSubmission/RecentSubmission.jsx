@@ -55,6 +55,10 @@ const RecentSubmission = () => {
         accessorKey: "documentType",
       },
       {
+        header: "Domain",
+        accessorKey: "domain",
+      },
+      {
         header: "Submission Date",
         accessorKey: "submissionDate",
         cell: ({ getValue }) => {

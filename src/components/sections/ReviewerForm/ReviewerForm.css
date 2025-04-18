@@ -40,6 +40,12 @@
   margin-bottom: 15px;
 }
 
+.reviewer-name-input select {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+
 .reviewer-name-section div,
 .reviewer-contact-section div,
 .reviewer-info-section div,

@@ -112,7 +112,7 @@ app.post(
         return res.status(400).json({ message: "No file uploaded" });
       }
 
-      const { title, noAuthors, authors, documentType, abstract } = req.body;
+      const { title,domain, noAuthors, authors, documentType, abstract } = req.body;
       const fileStream = Readable.from(req.file.buffer);
       const filename = `${Date.now()}-${req.file.originalname}`;
 
@@ -132,6 +132,7 @@ app.post(
 
           const doc = {
             title,
+            domain,
             noAuthors: parseInt(noAuthors),
             authors: JSON.parse(authors),
             documentType,

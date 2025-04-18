@@ -69,9 +69,10 @@ const PaperSubmissionForm = () => {
   
     const formData = new FormData();
     formData.append("title", data["title-of-paper"]);
+    formData.append("domain", data["domain-of-paper"]);
     formData.append("documentType", data["document-name"]); 
     formData.append("abstract", data["abstract"]);
-    formData.append("submissionDate", new Date().toISOString()); // ✅ added
+    formData.append("submissionDate", new Date().toISOString()); 
     formData.append("authors", JSON.stringify(
       Array.from({ length: numAuthors }).map((_, index) => ({
         name: data[`authorName-${index}`],
@@ -197,6 +198,15 @@ const PaperSubmissionForm = () => {
               className="border rounded p-2 w-[50%]"
               rows={4}
               {...register("abstract", { required: true })}
+            />
+          </div>
+          <div className="title-container">
+          <label className="inline mb-1">Domain*: </label>
+            <input
+              type="text"
+              // className="border rounded p-2 w-[50%]"
+              rows={4}
+              {...register("domain-of-paper", { required: true })}
             />
           </div>
           <div className="keyword-container">

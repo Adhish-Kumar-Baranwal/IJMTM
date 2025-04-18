@@ -83,7 +83,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("first_name", { required: true, min: 3 })}
+                {...register("first_name", { required: true })}
               />
             </div>
             <div>
@@ -91,7 +91,7 @@ const ReviewerForm = () => {
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("last_name", { required: true, min: 3 })}
+                {...register("last_name", { required: true })}
               />
             </div>
           </div>
@@ -116,33 +116,86 @@ const ReviewerForm = () => {
             </div>
           </div>
 
-          <div className="reviewer-info-section">
+          <div className="reviewer-name-section">
             <div>
               <label>Designation*: </label>
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("designation", { required: true, min: 5 })}
+                {...register("designation", { required: true })}
               />
             </div>
+            <div>
+              <label>Degree/Education*: </label>
+              <input
+                className="reviewer-name-input"
+                type="text"
+                {...register("degree", { required: true })}
+              />
+            </div>
+            <div>
+              <label>Experience*: </label>
+              <select
+                className="reviewer-name-input"
+                {...register("experience", { required: true })}
+              >
+                <option value="" disabled hidden>Select experience</option>
+                <option value="0-1yr">0-1yr</option>
+                <option value="1-2yrs">1-2yrs</option>
+                <option value="3+yrs">3+yrs</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Domain*: </label>
+              <select
+                className="reviewer-name-input"
+                {...register("domain", { required: true })}
+              >
+                <option value="" disabled hidden>Select domain</option>
+                <option value="Generative AI">Generative AI</option>
+                <option value="Natural Language Processing Using Machine Learning">
+                  Natural Language Processing Using Machine Learning
+                </option>
+                <option value="Generative Artificial Intelligence (GenAI), Machine Learning, & Web Development">
+                  Generative Artificial Intelligence (GenAI), Machine Learning,
+                  & Web Development
+                </option>
+                <option value="Deep learning & Geospatial">
+                  Deep learning & Geospatial
+                </option>
+                <option value="Deep Learning and Machine learning">
+                  Deep Learning and Machine learning
+                </option>
+                <option value="Web Development & NLP">
+                  Web Development & NLP
+                </option>
+                <option value="Natural Language Processing & Machine Learning">
+                  Natural Language Processing & Machine Learning
+                </option>
+                <option value="Blockchain + Web Development">
+                  Blockchain + Web Development
+                </option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="Networking">Networking</option>
+                <option value="Cyber Security">Cyber Security</option>
+                <option value="IOT & AIML">IOT & AIML</option>
+                <option value="Data Analytics">Data Analytics</option>
+                
+              </select>
+            </div>
+
             <div>
               <label>Institute*: </label>
               <input
                 className="reviewer-name-input"
                 type="text"
-                {...register("institute", { required: true, min: 5 })}
+                {...register("institute", { required: true })}
               />
             </div>
           </div>
 
           <div className="reviewer-textarea-section">
-            <div>
-              <label>Published Papers*: </label>
-              <textarea
-                className="reviewer-textarea-input"
-                {...register("published_papers", { required: true })}
-              />
-            </div>
             <div>
               <label>Why should you join as a reviewer*: </label>
               <textarea
@@ -152,7 +205,7 @@ const ReviewerForm = () => {
             </div>
           </div>
 
-          {/* <div className="reviewer-password-section">
+          <div className="reviewer-password-section">
             <div>
               <label>Password*: </label>
               <input
@@ -169,7 +222,7 @@ const ReviewerForm = () => {
                 {...register("published_papers", { required: true })}
               />
             </div>
-          </div> */}
+          </div>
 
           <div className="reviewer-register-center-button">
             <button type="submit" className="reviewer-register-btn">

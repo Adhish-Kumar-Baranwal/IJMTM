@@ -19,7 +19,7 @@ const Hero = () => {
         </h1>
         <p className="text-lg">International Peer Reviewed & Refereed Journal <br /> Open Access To Our Whole Library </p>
         <div className="mt-6 flex justify-center">
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
       </div>
     </section>
