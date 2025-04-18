@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -7,23 +7,37 @@ import {
 } from "@tanstack/react-table";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
-import recentPapers from "../../../../public/Jsonfolder/RecentPapers.json";
-
-/* 
-  {
-    "title": "Advancements in AI for Healthcare Diagnostics",
-    "type": "Research Paper",
-    "submissionDate": "2025-04-02",
-    "authors": ["Dr. Ananya Verma", "Dr. Sameer Chawla"]
-  },
-*/
 
 const RecentSubmission = () => {
-  const data = useMemo(() => recentPapers, []);
+  const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 5,
   });
+
+  useEffect(() => {
+    const fetchRecentSubmissions = async () => {
+      try {
+        const response = await fetch(
+          "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/recent-submissions"
+        );
+        if (!response.ok) throw new Error("Failed to fetch data");
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        console.error("Error fetching submissions:", err);
+      }
+    };
+
+    fetchRecentSubmissions();
+  }, []);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return "N/A";
+    const date = new Date(dateString);
+    if (isNaN(date)) return "Invalid Date";
+    return date.toLocaleDateString("en-GB");
+  };
 
   const columns = useMemo(
     () => [
@@ -31,23 +45,39 @@ const RecentSubmission = () => {
         header: "Title",
         accessorKey: "title",
         cell: ({ row }) => (
-          <a href="#" className="font-semibold flex items-center gap-1">
+          <span className="font-semibold flex items-center gap-1">
             {row.original.title}
-          </a>
+          </span>
         ),
       },
       {
         header: "Type",
-        accessorKey: "type",
+        accessorKey: "documentType",
       },
       {
         header: "Submission Date",
         accessorKey: "submissionDate",
+        cell: ({ getValue }) => {
+          const rawDate = getValue();
+          if (!rawDate) return "N/A";
+
+          const date = new Date(rawDate);
+          return isNaN(date.getTime())
+            ? "Invalid Date"
+            : date.toLocaleDateString("en-GB");
+        },
       },
+      ,
       {
         header: "Author(s)",
         accessorKey: "authors",
-        cell: ({ getValue }) => getValue().join(", "),
+        cell: ({ getValue }) => {
+          const authors = getValue();
+          if (Array.isArray(authors)) {
+            return authors.map((a) => a.name).join(", ");
+          }
+          return "-";
+        },
       },
       {
         id: "actions",
@@ -63,7 +93,7 @@ const RecentSubmission = () => {
   );
 
   const table = useReactTable({
-    data: recentPapers,
+    data,
     columns,
     state: {
       pagination,

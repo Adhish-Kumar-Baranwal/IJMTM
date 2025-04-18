@@ -36,6 +36,7 @@ const SignupPage = () => {
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     }
+    console.log("🚀 Sending registration data:", formData);
 
     setLoading(false);
   };

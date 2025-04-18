@@ -60,52 +60,51 @@ const PaperSubmissionForm = () => {
 
   const onSubmit = async (data) => {
     const file = data["uploaded-document"][0];
-
+  
     if (!file) {
       alert("Please upload a PDF");
       return;
     }
-
+  
     const formData = new FormData();
     formData.append("title", data["title-of-paper"]);
-    formData.append("noAuthors", data["no-authors"]);
-    formData.append(
-      "authors",
-      JSON.stringify(
-        Array.from({ length: numAuthors }).map((_, index) => ({
-          name: data[`authorName-${index}`],
-          email: data[`authorEmail-${index}`],
-          institute: data[`authorInstitute-${index}`],
-        }))
-      )
-    );
-    formData.append("documentType", data["document-name"]);
+    formData.append("documentType", data["document-name"]); 
     formData.append("abstract", data["abstract"]);
+    formData.append("submissionDate", new Date().toISOString()); // ✅ added
+    formData.append("authors", JSON.stringify(
+      Array.from({ length: numAuthors }).map((_, index) => ({
+        name: data[`authorName-${index}`],
+        email: data[`authorEmail-${index}`],
+        institute: data[`authorInstitute-${index}`],
+      }))
+    ));
     formData.append("pdf", file);
-
+  
     try {
-      const response = await fetch("http://localhost:5000/api/upload-paper", {
+      const response = await fetch("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/upload-paper", {
         method: "POST",
         body: formData,
       });
-
+  
       if (!response.ok) throw new Error("Failed to submit");
-
+  
       alert("Submission successful!");
       reset();
       setNumAuthors(1);
       setSelectedOptions(null);
+      setFileName("Upload File");
     } catch (err) {
       console.error(err);
       alert("Upload failed");
     }
   };
+  
 
   const options = [
-    { value: "research-paper", label: "Research Paper" },
-    { value: "review-paper", label: "Review Paper" },
-    { value: "case-studies", label: "Case Studies" },
-    { value: "conceptual-papers", label: "Conceptual Paper" },
+    { value: "Research Paper", label: "Research Paper" },
+    { value: "Review Paper", label: "Review Paper" },
+    { value: "Case Studies", label: "Case Studies" },
+    { value: "Conceptual Papers", label: "Conceptual Paper" },
   ];
 
   return (

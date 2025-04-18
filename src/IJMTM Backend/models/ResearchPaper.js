@@ -6,7 +6,7 @@ const ResearchPaperSchema = new mongoose.Schema({
   fileUrl: { type: String, required: true },
   status: { type: String, enum: ['pending', 'rejected', 'approved'], default: 'pending' },
   assignedReviewers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  createdAt: { type: Date, default: Date.now }
+  submissionDate: { type: Date, default: Date.now }
 });
 
 const ResearchPaper = mongoose.model('ResearchPaper', ResearchPaperSchema);

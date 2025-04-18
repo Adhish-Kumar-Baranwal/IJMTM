@@ -7,6 +7,15 @@ const router = express.Router();
 
 // JWT Secret from .env
 const JWT_SECRET = process.env.JWT_SECRET;
+//Auhtor info table
+router.get("/authors", async (req, res) => {
+  try {
+    const authors = await User.find({ role: "Author" }).select("-password");
+    res.json(authors);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch authors" });
+  }
+});
 
 // REGISTER Route
 router.post("/register", async (req, res) => {

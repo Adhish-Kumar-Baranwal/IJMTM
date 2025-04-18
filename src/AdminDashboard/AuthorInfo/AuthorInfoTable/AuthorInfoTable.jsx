@@ -1,59 +1,70 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   useReactTable,
   getCoreRowModel,
-  flexRender,
   getPaginationRowModel,
+  flexRender,
 } from "@tanstack/react-table";
-import { FiMoreHorizontal, FiUsers } from "react-icons/fi";
-import authorInfo from "../../../../public/Jsonfolder/AuthorStats.json"
-
-/* 
-  {
-    "firstName": "Ananya",
-    "lastName": "Verma",
-    "submissions": 3,
-    "publications": 2,
-    "designation": "PhD Student"
-  },
-*/
+import {  FiUsers } from "react-icons/fi";
 
 const AuthorInfoTable = () => {
-  const data = useMemo(() => authorInfo, []);
+  const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
   });
 
+  useEffect(() => {
+    axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
+      .then((res) => {
+        // Map response to include submissions and publications as "Null"
+        const formatted = res.data.map((author) => ({
+          ...author,
+          submissions: "Null",
+          publications: "Null",
+        }));
+        setData(formatted);
+      })
+      .catch((err) => console.error("Error fetching authors:", err));
+  }, []);
+
   const columns = useMemo(
     () => [
       {
         header: "Name",
-        accessorKey: "firstName", // still needed for sorting/filtering
+        accessorKey: "fullName",
         cell: ({ row }) => {
-          const { firstName, lastName } = row.original;
-          return `${firstName} ${lastName}`;
+          const { name } = row.original;
+          return name || "N/A";
         },
       },
       {
         header: "Submissions",
         accessorKey: "submissions",
+        cell: () => "Null",
       },
       {
         header: "Publications",
         accessorKey: "publications",
+        cell: () => "Null",
       },
       {
         header: "Designation",
         accessorKey: "designation",
+        cell: ({ row }) => row.original.designation || "N/A",
       },
       {
         id: "actions",
         header: "Actions",
         cell: () => (
-          <button className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8">
-            <FiMoreHorizontal />
-          </button>
+          <Link
+            to="/profile" 
+            className="text-blue-600 hover:underline text-sm"
+          >
+            Visit Profile 👤
+          </Link>
         ),
       },
     ],
@@ -61,7 +72,7 @@ const AuthorInfoTable = () => {
   );
 
   const table = useReactTable({
-    data: authorInfo,
+    data,
     columns,
     state: {
       pagination,

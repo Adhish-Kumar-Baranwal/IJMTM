@@ -101,9 +101,10 @@ app.use("/api/review", authMiddleware(["Reviewer", "Admin"]), reviewRoutes);
 app.use("/api/reviewer", authMiddleware(["Admin"]), reviewerRoutes);
 
 // PDF Upload Route (only for Authors)
+// Temporarily remove the authMiddleware for testing
 app.post(
   "/api/upload-paper",
-  authMiddleware(["Author"]),
+  // authMiddleware(["Author"]),  // Commented out for testing
   upload.single("pdf"),
   async (req, res) => {
     try {
@@ -136,17 +137,15 @@ app.post(
             documentType,
             abstract,
             pdfFileId: uploadStream.id,
-            submittedAt: new Date(),
+            submissionDate: new Date(),
           };
 
           await collection.insertOne(doc);
 
-          res
-            .status(201)
-            .json({
-              message: "Submission successful",
-              fileId: uploadStream.id,
-            });
+          res.status(201).json({
+            message: "Submission successful",
+            fileId: uploadStream.id,
+          });
         });
     } catch (err) {
       console.error(err);
@@ -154,6 +153,25 @@ app.post(
     }
   }
 );
+//submission route
+app.get("/api/recent-submissions", async (req, res) => {
+  try {
+    const db = client.db();
+    const collection = db.collection("submissions");
+
+    // Fetch the latest 5 submissions
+    const submissions = await collection
+      .find()
+      .sort({ submissionDate: -1 })  // Sort by submission date descending
+      
+      .toArray();
+
+    res.status(200).json(submissions);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch submissions" });
+  }
+});
 
 // View PDF File
 app.get("/api/papers/:id", async (req, res) => {
