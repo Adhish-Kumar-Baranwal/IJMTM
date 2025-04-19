@@ -30,7 +30,7 @@ const Hero = () => {
             to="/journal-information"
             className="px-6 py-2 rounded-md bg-black text-white font-medium border border-black hover:bg-gray-900 transition"
           >
-            Browse Volumes
+            Journal Information
           </Link>
         </div>
       </div>
