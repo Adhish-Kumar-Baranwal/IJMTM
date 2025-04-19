@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { navLists } from "../../constants";
-import Notifications from "../sections/NotificationsBell/Notifications"; // 👈 Import your Notifications component
+import { useAuth } from "../../context/AuthContext";
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState();
   const navigate = useNavigate();
+  const { userType } = useAuth(); // 'author', 'admin', 'reviewer', or null
+
+  const goToDashboard = () => {
+    if (userType === "author") navigate("/author/authorDashboard");
+    else if (userType === "admin") navigate("/adminPanel/dashboard");
+    else if (userType === "reviewer") navigate("/reviewerDashboard/dashboard");
+  };
 
   return (
     <header
@@ -49,16 +56,22 @@ const NavBar = () => {
           </ul>
         </div>
 
-        {/* Right-side Buttons */}
         <div className="flex items-center gap-4">
-          {/* <Notifications role="Author" /> 👈 Role-based bell icon */}
-          <a
-            href="/SigninPage"
-            className="px-4 py-2 bg-blue-400 rounded-md cursor-pointer font-semibold text-white"
-            onClick={() => navigate("/SigninPage")}
-          >
-            Sign In
-          </a>
+          {userType ? (
+            <button
+              onClick={goToDashboard}
+              className="px-4 py-2 bg-green-500 rounded-md cursor-pointer font-semibold text-white"
+            >
+              Profile
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate("/SigninPage")}
+              className="px-4 py-2 bg-blue-400 rounded-md cursor-pointer font-semibold text-white"
+            >
+              Sign In
+            </button>
+          )}
         </div>
       </nav>
     </header>

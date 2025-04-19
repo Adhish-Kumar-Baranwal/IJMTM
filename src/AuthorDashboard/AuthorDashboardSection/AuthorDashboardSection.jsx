@@ -3,6 +3,7 @@ import "./AuthorDashboardSection.css";
 import AuthorTopBar from "./AuthorTopBar/AuthorTopBar";
 import PapersSubmitted from "./PapersSubmitted/PapersSubmitted";
 import PapersPublished from "./PapersPublished/PapersPublished";
+import PapersApproved from "./PapersApproved/PapersApproved";
 
 const AuthorDashboardSection = () => {
   return (
@@ -10,6 +11,7 @@ const AuthorDashboardSection = () => {
       <AuthorTopBar />
       <div className="px-5">
         <PapersSubmitted />
+        <PapersApproved />
         <PapersPublished />
       </div>
     </div>

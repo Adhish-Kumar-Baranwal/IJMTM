@@ -11,8 +11,8 @@
   }
   
   .about-section {
-      flex: 1;
-    min-width: 300px;
+    flex: 1;
+    min-width: 60%;
   }
   
   .about-heading {

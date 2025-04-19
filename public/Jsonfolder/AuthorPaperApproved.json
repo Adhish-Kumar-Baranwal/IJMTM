@@ -1,0 +1,38 @@
+[
+    {
+      "title": "Advances in Quantum Computing Algorithms",
+      "type": "Research Paper",
+      "authors": ["Dr. Aayushi Mehta", "Karan Dev"],
+      "submittedDate": "2025-03-28",
+      "approvedDate": "2025-04-03"
+    },
+    {
+      "title": "A Review on Graph Neural Networks",
+      "type": "Review Paper",
+      "authors": ["Neha Rao", "Dr. Aayushi Mehta"],
+      "submittedDate": "2025-04-01",
+      "approvedDate": "2025-04-07"
+    },
+    {
+      "title": "Case Study on Digital Health Implementation in Rural Areas",
+      "type": "Case Studies",
+      "authors": ["Sameer Kulkarni", "Aditi Joshi", "Dr. Aayushi Mehta"],
+      "submittedDate": "2025-04-02",
+      "approvedDate": "2025-04-10"
+    },
+    {
+      "title": "Conceptual Design of AI-based Smart Traffic Systems",
+      "type": "Conceptual Paper",
+      "authors": ["Dr. Aayushi Mehta"],
+      "submittedDate": "2025-03-31",
+      "approvedDate": "2025-04-05"
+    },
+    {
+      "title": "Enhancing Blockchain Scalability",
+      "type": "Research Paper",
+      "authors": ["Rishabh Malhotra", "Dr. Aayushi Mehta"],
+      "submittedDate": "2025-04-04",
+      "approvedDate": "2025-04-12"
+    }
+  ]
+  

@@ -1,0 +1,51 @@
+[
+    {
+      "title": "Exploring AI in Healthcare",
+      "type": "Research Paper",
+      "authors": ["Dr. Aayushi Mehta", "Karan Dev"],
+      "publishedDate": "2025-03-22"
+    },
+    {
+      "title": "Blockchain for Supply Chain Management",
+      "type": "Review Paper",
+      "authors": ["Neha Rao", "Dr. Aayushi Mehta", "Vikram Iyer"],
+      "publishedDate": "2025-03-25"
+    },
+    {
+      "title": "Impact of 5G on Internet of Things",
+      "type": "Conceptual Paper",
+      "authors": ["Tanvi Shah", "Dr. Aayushi Mehta"],
+      "publishedDate": "2025-03-28"
+    },
+    {
+      "title": "Autonomous Vehicles: Future of Transportation",
+      "type": "Research Paper",
+      "authors": ["Vishal Chauhan", "Dr. Aayushi Mehta", "Meera Joshi"],
+      "publishedDate": "2025-04-02"
+    },
+    {
+      "title": "AI in Education: A Case Study",
+      "type": "Case Studies",
+      "authors": ["Rishabh Malhotra", "Dr. Aayushi Mehta"],
+      "publishedDate": "2025-03-30"
+    },
+    {
+      "title": "The Role of Edge Computing in Modern IoT Systems",
+      "type": "Research Paper",
+      "authors": ["Sameer Kulkarni", "Dr. Aayushi Mehta"],
+      "publishedDate": "2025-04-01"
+    },
+    {
+      "title": "Deep Learning for Natural Language Processing",
+      "type": "Review Paper",
+      "authors": ["Sanya Gupta", "Dr. Aayushi Mehta", "Kavya Ramesh"],
+      "publishedDate": "2025-04-04"
+    },
+    {
+      "title": "Advancements in Quantum Computing",
+      "type": "Conceptual Paper",
+      "authors": ["Ankit Sharma", "Dr. Aayushi Mehta"],
+      "publishedDate": "2025-03-29"
+    }
+  ]
+  

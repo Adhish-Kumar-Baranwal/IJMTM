@@ -10,6 +10,7 @@ import Layout from "./Layout";
 import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
 import JournalPolicies from "./components/sections/JournalPolicies/JournalPolicies";
 import PublishingModels from "./components/sections/PublishingModels/PublishingModels";
+import CurrentVolume from "./components/sections/CurrentVolume/CurrentVolume";
 import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
@@ -26,6 +27,8 @@ import AuthorDashboard from "./AuthorDashboard/AuthorDashboard";
 import AuthorDashboardSection from "./AuthorDashboard/AuthorDashboardSection/AuthorDashboardSection";
 import PaperSubmittedMain from "./AuthorDashboard/PaperSubmittedMain/PaperSubmittedMain";
 import PaperPublishedMain from "./AuthorDashboard/PaperPublishedMain/PaperPublishedMain";
+import PaperApprovedMain from "./AuthorDashboard/PaperApprovedMain/PaperApprovedMain";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -71,6 +74,14 @@ const App = () => {
         element={
           <Layout>
             <Subjects />
+          </Layout>
+        }
+      />
+      <Route
+        path="/current-volume"
+        element={
+          <Layout>
+            <CurrentVolume />
           </Layout>
         }
       />
@@ -125,6 +136,14 @@ const App = () => {
       />
 
       {/* Admin */}
+      {/* <Route
+        path="/adminPanel"
+        element={
+          <ProtectedRoute allowedRoles={["Admin"]}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      > */}
       <Route path="/adminPanel" element={<AdminDashboard />}>
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
@@ -134,6 +153,14 @@ const App = () => {
       </Route>
 
       {/* Reviewer */}
+      {/* <Route
+        path="/reviewerDashboard"
+        element={
+          <ProtectedRoute allowedRoles={["Reviewer"]}>
+            <ReviewerDashboard />
+          </ProtectedRoute>
+        }
+      > */}
       <Route path="/reviewerDashboard" element={<ReviewerDashboard />}>
         <Route index element={<ReviewerDashboardSection />} />
         <Route path="dashboard" element={<ReviewerDashboardSection />} />
@@ -142,11 +169,20 @@ const App = () => {
       </Route>
 
       {/* Author */}
+      {/* <Route
+        path="/author"
+        element={
+          <ProtectedRoute allowedRoles={["Author"]}>
+            <AuthorDashboard />
+          </ProtectedRoute>
+        }
+      > */}
       <Route path="/author" element={<AuthorDashboard />}>
         <Route index element={<AuthorDashboardSection />} />
         <Route path="authorDashboard" element={<AuthorDashboardSection />} />
         <Route path="paperSubmitted" element={<PaperSubmittedMain />} />
         <Route path="paperPublished" element={<PaperPublishedMain />} />
+        <Route path="paperApproved" element={<PaperApprovedMain />} />
       </Route>
     </Routes>
   );

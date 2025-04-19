@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Emerging Trends in Edge Computing",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-11",
+    "authors": ["Dr. Aayushi Mehta"]
+  },
+  {
+    "title": "A Review on Cybersecurity Measures in IoT",
+    "type": "Review Paper",
+    "submittedDate": "2025-04-12",
+    "authors": ["Dr. Aayushi Mehta", "Niharika Jain"]
+  },
+  {
+    "title": "Case Study on Remote Learning Technologies",
+    "type": "Case Studies",
+    "submittedDate": "2025-04-09",
+    "authors": ["Vishal Chauhan", "Dr. Aayushi Mehta"]
+  },
+  {
+    "title": "Conceptual Paper on Emotional AI in Customer Service",
+    "type": "Conceptual Paper",
+    "submittedDate": "2025-04-13",
+    "authors": ["Dr. Aayushi Mehta"]
+  },
+  {
+    "title": "Research Paper on Data Integrity in Multi-Cloud Environments",
+    "type": "Research Paper",
+    "submittedDate": "2025-04-10",
+    "authors": ["Kavya Ramesh", "Dr. Aayushi Mehta"]
+  }
+]

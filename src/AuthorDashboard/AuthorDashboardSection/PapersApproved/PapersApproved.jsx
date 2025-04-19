@@ -8,15 +8,19 @@ import {
 } from "@tanstack/react-table";
 import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
-import papersPublished from "../../../../public/Jsonfolder/AuthorsPublishedPapers.json"
+import papersApproved from "../../../../public/Jsonfolder/AuthorPaperApproved.json";
+import AuthorPaymentDialogBox from "../../AuthorPaymentDialogBox/AuthorPaymentDialogBox";
 
-const PapersPublished = () => {
+const PapersApproved = () => {
   // const [data, setData] = useState([]);
-  const data  = useMemo(() => papersPublished, []);
+  const data = useMemo(() => papersApproved, []);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
   });
+
+  const [selectedRowData, setSelectedRowData] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // useEffect(() => {
   //   axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
@@ -31,16 +35,6 @@ const PapersPublished = () => {
   //     .catch((err) => console.error("Error fetching authors:", err));
   // }, []);
 
-
-  
-/* 
-    {
-      "title": "Exploring AI in Healthcare",
-      "type": "Research Paper",
-      "authors": ["Dr. Aayushi Mehta", "Karan Dev"],
-      "publishedDate": "2025-03-22"
-    },
-*/
   const columns = useMemo(
     () => [
       {
@@ -59,17 +53,28 @@ const PapersPublished = () => {
         // cell: ({ row }) => row.original.publicationTitle || "N/A",
       },
       {
-        header: "Published Date",
-        accessorKey: "publishedDate",
+        header: "Submitted Date",
+        accessorKey: "submittedDate",
+        // cell: ({ row }) => row.original.datePublished,
+      },
+      {
+        header: "Approved Date",
+        accessorKey: "approvedDate",
         // cell: ({ row }) => row.original.datePublished,
       },
       {
         id: "actions",
         header: "Actions",
-        cell: () => (
-          <Link to="/profile" className="text-blue-600 hover:underline text-sm">
-            View
-          </Link>
+        cell: ({ row }) => (
+          <button
+            onClick={() => {
+              setSelectedRowData(row.original);
+              setIsDialogOpen(true);
+            }}
+            className="text-sm text-white cursor-pointer bg-green-600 hover:bg-green-700 rounded px-3 py-1"
+          >
+            Pay
+          </button>
         ),
       },
     ],
@@ -77,7 +82,7 @@ const PapersPublished = () => {
   );
 
   const table = useReactTable({
-    data: papersPublished,
+    data: papersApproved,
     columns,
     state: { pagination },
     onPaginationChange: setPagination,
@@ -86,21 +91,29 @@ const PapersPublished = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 mt-5 mb-7">
+    <div className="col-span-12 p-4 rounded border border-stone-300 my-5">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="flex items-center gap-1.5 font-medium">
-          <MdLibraryBooks /> Papers Published
+          <MdLibraryBooks /> Papers Approved
         </h3>
-        <button className="text-sm cursor-pointer hover:underline">See all</button>
+        <button className="text-sm cursor-pointer hover:underline">
+          See all
+        </button>
       </div>
 
       <table className="w-full table-auto border border-stone-300 border-collapse">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
+            <tr
+              key={headerGroup.id}
+              className="text-sm font-normal text-stone-500"
+            >
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
-                  {flexRender(header.column.columnDef.header, header.getContext())}
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
                 </th>
               ))}
             </tr>
@@ -131,7 +144,8 @@ const PapersPublished = () => {
           Prev
         </button>
         <span className="text-sm">
-          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()}
         </span>
         <button
           onClick={() => table.nextPage()}
@@ -141,8 +155,26 @@ const PapersPublished = () => {
           Next
         </button>
       </div>
+      <AuthorPaymentDialogBox
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        rowData={selectedRowData}
+        actionButton={
+          <button
+            onClick={() => {
+              // Placeholder for redirecting to payment gateway
+              // Replace with your backend redirect later
+              // replace with window.location.href = `https://your-backend.com/pay?paperId=${selectedRowData.id}`;
+              alert("Redirecting to payment gateway...");
+              setIsDialogOpen(false);
+            }}
+          >
+            Proceed to Payment
+          </button>
+        }
+      />
     </div>
   );
 };
 
-export default PapersPublished;
+export default PapersApproved;

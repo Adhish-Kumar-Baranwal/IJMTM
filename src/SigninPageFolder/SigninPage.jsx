@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SigninPage.css";
-import bgImage1 from "../assets/How-to-Write-the-Background-of-Your-Scientific-Paper.jpg";
+import { useAuth } from "../context/AuthContext";
 
 const SigninPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -13,6 +13,9 @@ const SigninPage = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const { login } = useAuth();         // ✅ Get login method
+  const navigate = useNavigate();      // ✅ Navigation hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +42,18 @@ const SigninPage = () => {
       } else {
         window.location.href = "/author";
       }
+
+      const { user } = res.data;
+      alert(`Login successful! Welcome, ${user.name}`);
+
+      // ✅ Save role in context
+      login(user.role); // e.g., "author"
+
+      // ✅ Redirect to respective dashboard
+      if (user.role === "admin") navigate("/adminPanel");
+      else if (user.role === "reviewer") navigate("/reviewerDashboard");
+      else if (user.role === "author") navigate("/author");
+
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
