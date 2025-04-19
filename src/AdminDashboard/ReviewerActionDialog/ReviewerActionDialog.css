@@ -5,8 +5,8 @@
 }
 
 .action-button.reject:hover {
-    background-color: #ff3232;
-    margin-left: 0.75rem;
+  background-color: #ff3232;
+  margin-left: 0.75rem;
 }
 
 .action-button {
@@ -17,4 +17,18 @@
 .action-button:hover {
   background-color: #2ce044;
   margin-left: 0.75rem;
+}
+
+.dialog-box {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 600px; /* 👈 Update width here */
+  max-width: 90%;
+  height: 500px; /* 👈 Update height here */
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  animation: fadeIn 0.2s ease-in-out;
 }

@@ -1,3 +1,4 @@
+//model User.js
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
@@ -25,3 +26,5 @@ userSchema.methods.matchPassword = function (enteredPassword) {
 };
 
 export default mongoose.model("User", userSchema);
+
+

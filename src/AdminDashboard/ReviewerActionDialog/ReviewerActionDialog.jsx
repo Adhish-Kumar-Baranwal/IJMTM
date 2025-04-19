@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from "react";
-import "./ReviewerActionDialog.css"; // Reuse the same CSS
+import React from "react";
+import "./ReviewerActionDialog.css";
+import axios from "axios";
 
-const ReviewerActionDialog = ({ isOpen, onClose, reviewerId, onDecision }) => {
-  const [formData, setFormData] = useState(null);
-  const [loading, setLoading] = useState(true);
+const ReviewerActionDialog = ({
+  isOpen,
+  onClose,
+  reviewerData,
+  onDecision,
+}) => {
+  if (!isOpen || !reviewerData) return null;
 
-  useEffect(() => {
-    if (reviewerId && isOpen) {
-      const fetchFormData = async () => {
-        try {
-          const response = await fetch(
-            `https://your-backend-api.com/api/reviewer-form/${reviewerId}`
-          );
-          const data = await response.json();
-          setFormData(data);
-        } catch (error) {
-          console.error("Failed to fetch form data", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      fetchFormData();
-    }
-  }, [reviewerId, isOpen]);
-
-  if (!isOpen) return null;
+  const {
+    firstName,
+    lastName,
+    email,
+    contact,
+    degree,
+    designation,
+    experience,
+    domain,
+    institute,
+    whyBeReviewer,
+    appliedDate,
+  } = reviewerData;
 
   return (
     <div className="dialog-overlay">
@@ -38,34 +35,60 @@ const ReviewerActionDialog = ({ isOpen, onClose, reviewerId, onDecision }) => {
         </div>
 
         <div className="dialog-body">
-          {loading ? (
-            <p>Loading...</p>
-          ) : formData ? (
-            <>
-              <p><strong>Name:</strong> {formData.firstName} {formData.lastName}</p>
-              <p><strong>Email:</strong> {formData.email}</p>
-              <p><strong>Degree:</strong> {formData.degree}</p>
-              <p><strong>Applied Date:</strong> {formData.appliedDate}</p>
-              <p><strong>Designation:</strong> {formData.designation}</p>
-              <p><strong>Experience:</strong> {formData.experience}</p>
-              <p><strong>Motivation:</strong> {formData.motivation}</p>
-              {/* Add more fields as per your backend response */}
-            </>
-          ) : (
-            <p>Unable to load data.</p>
-          )}
+          <p>
+            <strong>Name:</strong> {firstName} {lastName}
+          </p>
+          <p>
+            <strong>Email:</strong> {email}
+          </p>
+          <p>
+            <strong>Contact:</strong> {contact}
+          </p>
+          <p>
+            <strong>Degree:</strong> {degree}
+          </p>
+          <p>
+            <strong>Designation:</strong> {designation}
+          </p>
+          <p>
+            <strong>Experience:</strong> {experience}
+          </p>
+          <p>
+            <strong>Domain:</strong> {domain}
+          </p>
+          <p>
+            <strong>Institute:</strong> {institute}
+          </p>
+          <p>
+            <strong>Why be Reviewer:</strong> {whyBeReviewer}
+          </p>
+          <p>
+            <strong>Applied Date:</strong>{" "}
+            {appliedDate ? new Date(appliedDate).toLocaleDateString() : "N/A"}
+          </p>
         </div>
 
         <div className="dialog-footer">
           <button
             className="action-button"
-            onClick={() => onDecision("approved", formData)}
+            onClick={async () => {
+              try {
+                // Send PATCH request to backend to approve reviewer
+                await axios.patch(
+                  `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/approve/${reviewerData._id}`
+                );
+
+                onDecision("approved", reviewerData); // ✅ Corrected from formData
+              } catch (error) {
+                console.error("Failed to approve reviewer", error);
+              }
+            }}
           >
             Approve
           </button>
           <button
             className="action-button reject"
-            onClick={() => onDecision("rejected", formData)}
+            onClick={() => onDecision("rejected", reviewerData)}
           >
             Reject
           </button>

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -7,24 +7,35 @@ import {
 } from "@tanstack/react-table";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { TbUsersPlus } from "react-icons/tb";
-import applications from "../../../../../public/Jsonfolder/ReviewersApplied.json";
+import axios from "axios";
 import ReviewerActionDialog from "../../../ReviewerActionDialog/ReviewerActionDialog";
+import { format } from "date-fns";
 
 const ReviewersApplied = () => {
-  const data = useMemo(() => applications, []);
+  const [reviewers, setReviewers] = useState([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 5,
   });
-
-  const [selectedReviewerId, setSelectedReviewerId] = useState(null);
+  const [selectedReviewerData, setSelectedReviewerData] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/reviewers-applied")
+      .then((res) => {
+        setReviewers(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch reviewers:", err);
+      });
+  }, []);
 
   const columns = useMemo(
     () => [
       {
         header: "Name",
-        accessorKey: "firstName", // still needed for sorting/filtering
+        accessorKey: "firstName",
         cell: ({ row }) => {
           const { firstName, lastName } = row.original;
           return `${firstName} ${lastName}`;
@@ -37,6 +48,10 @@ const ReviewersApplied = () => {
       {
         header: "Applied Date",
         accessorKey: "appliedDate",
+        cell: ({ row }) => {
+          const appliedDate = row.original.appliedDate;
+          return appliedDate ? format(new Date(appliedDate), "MM/dd/yyyy") : "N/A";
+        },
       },
       {
         header: "Designation",
@@ -49,7 +64,7 @@ const ReviewersApplied = () => {
           <button
             className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8"
             onClick={() => {
-              setSelectedReviewerId(row.original.id); // assuming id is in your data
+              setSelectedReviewerData(row.original); // Pass full reviewer object
               setIsDialogOpen(true);
             }}
           >
@@ -62,7 +77,7 @@ const ReviewersApplied = () => {
   );
 
   const table = useReactTable({
-    data: applications,
+    data: reviewers,
     columns,
     state: {
       pagination,
@@ -86,16 +101,10 @@ const ReviewersApplied = () => {
       <table className="w-full table-auto border border-stone-300 border-collapse">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr
-              key={headerGroup.id}
-              className="text-sm font-normal text-stone-500"
-            >
+            <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
+                  {flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
             </tr>
@@ -127,8 +136,7 @@ const ReviewersApplied = () => {
           Prev
         </button>
         <span className="text-sm">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
-          {table.getPageCount()}
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </span>
         <button
           onClick={() => table.nextPage()}
@@ -138,14 +146,14 @@ const ReviewersApplied = () => {
           Next
         </button>
       </div>
+
+      {/* Action Dialog */}
       <ReviewerActionDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
-        reviewerId={selectedReviewerId}
+        reviewerData={selectedReviewerData} // pass full reviewer object
         onDecision={(decision, formData) => {
           console.log(`Reviewer ${formData.firstName} has been ${decision}`);
-          // TODO: Call backend API to update status
-          // await fetch(`/api/approve-reviewer/${formData.id}`, { method: 'POST', body: JSON.stringify({ status: decision }) });
           setIsDialogOpen(false);
         }}
       />

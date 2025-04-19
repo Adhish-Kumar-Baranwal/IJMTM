@@ -1,3 +1,4 @@
+//routes //reviewer.js
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -72,6 +73,16 @@ router.patch("/approve/:id", async (req, res) => {
   }
 });
 
+//Applied 
+router.get("/reviewers-applied", async (req, res) => {
+  try {
+    const reviewers = await Reviewer.find();
+    res.json(reviewers);
+  } catch (err) {
+    res.status(500).json({ error: "Server Error" });
+  }
+});
+
 
 // Reviewer Login
 router.post("/login", async (req, res) => {
@@ -84,13 +95,52 @@ router.post("/login", async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Invalid password" });
 
     if (!reviewer.isApproved) {
-      return res.status(403).json({ message: "Reviewer not approved by Admin" });
+      return res.status(403).json({ message: "Your account has not been approved yet." });
     }
 
     const token = jwt.sign({ id: reviewer._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
     res.json({ message: "Login successful", token });
   } catch (error) {
+    console.error("Login Error:", error);
     res.status(500).json({ message: "Server error", error });
+  }
+});
+
+// PATCH /api/approve/:id
+router.patch("/approve/:id", async (req, res) => {
+  try {
+    const reviewer = await Reviewer.findByIdAndUpdate(
+      req.params.id,
+      { approved: true },
+      { new: true }
+    );
+
+    if (!reviewer) {
+      return res.status(404).json({ message: "Reviewer not found" });
+    }
+
+    // Check if reviewer is already a User
+    const existingUser = await User.findOne({ email: reviewer.email });
+    if (existingUser) {
+      return res.status(200).json({ message: "Reviewer already approved as user", reviewer });
+    }
+
+    // Create User from reviewer
+    const newUser = new User({
+      name: `${reviewer.firstName} ${reviewer.lastName}`,
+      email: reviewer.email,
+      password: reviewer.password, // assuming you're storing it in plaintext (not ideal!)
+      designation: reviewer.designation,
+      contactNumber: reviewer.contact,
+      role: "Reviewer",
+    });
+
+    await newUser.save();
+
+    res.status(200).json({ message: "Reviewer approved and added as user", reviewer, newUser });
+  } catch (error) {
+    console.error("Approval Error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 

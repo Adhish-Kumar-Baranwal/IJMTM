@@ -1,5 +1,4 @@
-
-// // models/Reviewer.js
+// models/Reviewer.js
 import mongoose from "mongoose";
 
 const ReviewerSchema = new mongoose.Schema({
@@ -18,7 +17,8 @@ const ReviewerSchema = new mongoose.Schema({
   status: {
     type: String,
     default: "Pending", // So admin can approve later
-  }
+  },
+  appliedDate: { type: Date, default: Date.now }, // New field added
 }, { timestamps: true });
 
 const Reviewer = mongoose.model("Reviewer", ReviewerSchema);
