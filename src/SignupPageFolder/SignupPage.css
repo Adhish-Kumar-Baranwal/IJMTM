@@ -52,7 +52,7 @@
     color: #333;
   }
   
-  #username, #password {
+  #username, #password, #name, #email, #designation, #contactNumber{
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -185,3 +185,12 @@
     }
   }
   
+
+  .name-field{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name-field input{
+
+  }

@@ -1,0 +1,23 @@
+[
+    {
+      "type": "Research Paper",
+      "description": "A Research Paper presents original findings based on thorough investigation and analysis. It contributes new insights or results to the field and is backed by rigorous methodology.",
+      "templateLink": "/templates/research-paper-template.docx"
+    },
+    {
+      "type": "Review Paper",
+      "description": "A Review Paper critically analyzes and summarizes existing literature in a particular domain. It provides an overview of recent developments and highlights key trends and gaps.",
+      "templateLink": "/templates/review-paper-template.docx"
+    },
+    {
+      "type": "Case Study",
+      "description": "A Case Study explores a real-life issue within a specific context. It aims to identify the challenges, analyze outcomes, and offer lessons or recommendations for similar scenarios.",
+      "templateLink": "/templates/case-study-template.docx"
+    },
+    {
+      "type": "Conceptual Paper",
+      "description": "A Conceptual Paper discusses new ideas or theoretical frameworks. It focuses on proposing novel perspectives or models that can advance academic or practical understanding.",
+      "templateLink": "/templates/conceptual-paper-template.docx"
+    }
+  ]
+  

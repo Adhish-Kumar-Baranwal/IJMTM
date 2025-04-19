@@ -9,6 +9,7 @@ import Journal_Information from "./components/sections/Journal_Information/Journ
 import Layout from "./Layout";
 import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
 import JournalPolicies from "./components/sections/JournalPolicies/JournalPolicies";
+import PublishingModels from "./components/sections/PublishingModels/PublishingModels";
 import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
@@ -90,6 +91,14 @@ const App = () => {
         }
       />
       <Route
+        path="/publishing-models"
+        element={
+          <Layout>
+            <PublishingModels />
+          </Layout>
+        }
+      />
+      <Route
         path="/about-reviewer"
         element={
           <Layout>
@@ -116,7 +125,7 @@ const App = () => {
       />
 
       {/* Admin */}
-      <Route path="/admin-panel" element={<AdminDashboard />}>
+      <Route path="/adminPanel" element={<AdminDashboard />}>
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="reviewerPage" element={<ReviewersPage />} />
@@ -125,7 +134,7 @@ const App = () => {
       </Route>
 
       {/* Reviewer */}
-      <Route path="/reviewer-dashboard" element={<ReviewerDashboard />}>
+      <Route path="/reviewerDashboard" element={<ReviewerDashboard />}>
         <Route index element={<ReviewerDashboardSection />} />
         <Route path="dashboard" element={<ReviewerDashboardSection />} />
         <Route path="assignedPaper" element={<AssignedPapers />} />
