@@ -28,7 +28,7 @@ import AuthorDashboardSection from "./AuthorDashboard/AuthorDashboardSection/Aut
 import PaperSubmittedMain from "./AuthorDashboard/PaperSubmittedMain/PaperSubmittedMain";
 import PaperPublishedMain from "./AuthorDashboard/PaperPublishedMain/PaperPublishedMain";
 import PaperApprovedMain from "./AuthorDashboard/PaperApprovedMain/PaperApprovedMain";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   return (

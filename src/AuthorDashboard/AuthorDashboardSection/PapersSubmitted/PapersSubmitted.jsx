@@ -31,18 +31,6 @@ const PapersSubmitted = () => {
       .catch((err) => console.error("Error fetching authors:", err));
   }, []);
 
-  // useEffect(() => {
-  //   axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
-  //     .then((res) => {
-  //       const formatted = res.data.map((author) => ({
-  //         ...author,
-  //         submissionTitle: "Sample Submission",
-  //         dateSubmitted: "N/A",
-  //       }));
-  //       setData(formatted);
-  //     })
-  //     .catch((err) => console.error("Error fetching authors:", err));
-  // }, []);
 
   const columns = useMemo(
     () => [

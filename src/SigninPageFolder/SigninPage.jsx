@@ -43,17 +43,6 @@ const SigninPage = () => {
         window.location.href = "/author";
       }
 
-      const { user } = res.data;
-      alert(`Login successful! Welcome, ${user.name}`);
-
-      // ✅ Save role in context
-      login(user.role); // e.g., "author"
-
-      // ✅ Redirect to respective dashboard
-      if (user.role === "admin") navigate("/adminPanel");
-      else if (user.role === "reviewer") navigate("/reviewerDashboard");
-      else if (user.role === "author") navigate("/author");
-
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
