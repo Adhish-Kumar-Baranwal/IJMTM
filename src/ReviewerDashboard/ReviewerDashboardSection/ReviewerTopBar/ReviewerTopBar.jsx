@@ -1,13 +1,11 @@
 import React from "react";
 import "./ReviewerTopBar.css";
-import reviewerData from "../../../../public/Jsonfolder/ReviewerDetail.json"
 import Notifications from "../../../components/sections/NotificationsBell/Notifications";
 
 const ReviewerTopBar = () => {
-  const loggedInReviewer = reviewerData[0];
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const date = new Date();
-
   const formattedDate = date.toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
@@ -20,11 +18,11 @@ const ReviewerTopBar = () => {
       <div className="flex items-center justify-between p-0.5">
         <div>
           <span className="text-sm font-bold block">
-            Hello {loggedInReviewer.first_name}
+            Hello {user?.name || "Reviewer Name"}
           </span>
           <span className="text-xs block text-stone-500">{formattedDate}</span>
         </div>
-        <Notifications />
+        <Notifications role="Reviewer" />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ const router = express.Router();
 
 // JWT Secret from .env
 const JWT_SECRET = process.env.JWT_SECRET;
+
 //Auhtor info table
 router.get("/authors", async (req, res) => {
   try {
@@ -51,37 +52,101 @@ router.post("/register", async (req, res) => {
 });
 
 
+
+const adminReviewerUsers  = [
+  {
+    email: process.env.ADMIN_EMAIL,
+    password: process.env.ADMIN_PASSWORD,
+    role: 'admin',
+  },
+  {
+    email: process.env.REVIEWER1_EMAIL,
+    password: process.env.REVIEWER1_PASSWORD,
+    role: 'reviewer',
+  },
+  {
+    email: process.env.REVIEWER2_EMAIL,
+    password: process.env.REVIEWER2_PASSWORD,
+    role: 'reviewer',
+  },
+  {
+    email: process.env.REVIEWER3_EMAIL,
+    password: process.env.REVIEWER3_PASSWORD,
+    role: 'reviewer',
+  },
+  {
+    email: process.env.REVIEWER4_EMAIL,
+    password: process.env.REVIEWER4_PASSWORD,
+    role: 'reviewer',
+  },
+];
+
+// LOGIN Route
 // LOGIN Route
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log("Login request body:", req.body);
 
-    const user = await User.findOne({ email });
-    if (!user) {
-      console.log("❌ User not found");
-      return res.status(400).json({ message: "Invalid email or password" });
+    // 1️⃣ Check for Admin login
+    if (
+      email === process.env.ADMIN_EMAIL &&
+      password === process.env.ADMIN_PASSWORD
+    ) {
+      const token = jwt.sign({ userId: "admin", role: "Admin" }, JWT_SECRET, {
+        expiresIn: "7d",
+      });
+
+      return res.status(200).json({
+        token,
+        user: {
+          name: "Admin",
+          email,
+          role: "Admin",
+        },
+      });
     }
+
+    // 2️⃣ Check for Reviewer login (loop over 4 reviewers)
+    for (let i = 1; i <= 4; i++) {
+      if (
+        email === process.env[`REVIEWER${i}_EMAIL`] &&
+        password === process.env[`REVIEWER${i}_PASSWORD`]
+      ) {
+        const token = jwt.sign({ userId: `reviewer${i}`, role: "Reviewer" }, JWT_SECRET, {
+          expiresIn: "7d",
+        });
+
+        return res.status(200).json({
+          token,
+          user: {
+            name: `Reviewer ${i}`,
+            email,
+            role: "Reviewer",
+          },
+        });
+      }
+    }
+
+    // 3️⃣ If not Admin or Reviewer, check as Author from DB
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: "Invalid email or password" });
 
     const isMatch = await user.matchPassword(password);
-    console.log("Password match:", isMatch);
-
-    if (!isMatch) {
-      console.log("❌ Password mismatch");
-      return res.status(400).json({ message: "Invalid email or password" });
-    }
+    if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
 
     const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, {
       expiresIn: "7d",
     });
 
-    console.log("✅ Login successful:", user.email);
     res.status(200).json({ token, user });
+
   } catch (error) {
     console.error("🔥 Login error:", error);
     res.status(500).json({ message: "Something went wrong" });
   }
 });
+
+
 
 
 export default router;

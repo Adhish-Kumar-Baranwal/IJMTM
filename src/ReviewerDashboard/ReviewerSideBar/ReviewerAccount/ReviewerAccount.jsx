@@ -1,8 +1,7 @@
 import React from "react";
-import reviewerData from "../../../../public/Jsonfolder/ReviewerDetail.json";
 
 const ReviewerAccount = () => {
-  const loggedInAdmin = reviewerData[0]; // simulate currently logged-in admin
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="border-b mb-4 mt-2 pb-2 border-stone-300">
@@ -14,10 +13,10 @@ const ReviewerAccount = () => {
         />
         <div className="text-start">
           <span className="text-sm font-bold block">
-            {loggedInAdmin.first_name + " " + loggedInAdmin.last_name}
+            {user?.name || "Reviewer Name"}
           </span>
           <span className="text-xs block text-stone-500">
-            {loggedInAdmin.email}
+            {user?.email || "reviewer@email.com"}
           </span>
         </div>
       </button>

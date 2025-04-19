@@ -11,11 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-<<<<<<< HEAD
-    /* font-family: "Libre Baskerville";   */
-=======
-    /* font-family: "Libre Baskerville"; */
->>>>>>> 3a6207a2891212c420335c9835c2f6b6def43234
+
   }
   .nav-height {
     @apply h-[calc(100vh-60px)];

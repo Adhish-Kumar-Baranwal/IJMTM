@@ -19,17 +19,26 @@ const SigninPage = () => {
     setError("");
     setLoading(true);
 
-    console.log("Login form data:", formData);
-
-
     try {
       const res = await axios.post(
-        
         "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/login",
         formData
       );
-      console.log("Submitting login:", formData);
+
+      // Save token and user data to localStorage
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
       alert(`Login successful! Welcome, ${res.data.user.name}`);
+
+      // Redirect based on role
+      if (res.data.user.role === "Admin") {
+        window.location.href = "/adminPanel";
+      } else if (res.data.user.role === "Reviewer") {
+        window.location.href = "/reviewerDashboard";
+      } else {
+        window.location.href = "/author";
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
@@ -70,14 +79,13 @@ const SigninPage = () => {
             required
           />
           <label className="show-password">
-  <input
-    type="checkbox"
-    checked={showPassword}
-    onChange={() => setShowPassword(!showPassword)}
-  />
-  Show Password
-</label>
-
+            <input
+              type="checkbox"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            Show Password
+          </label>
 
           <button type="submit" className="signin-btn" disabled={loading}>
             {loading ? "Logging in..." : "Log In"}

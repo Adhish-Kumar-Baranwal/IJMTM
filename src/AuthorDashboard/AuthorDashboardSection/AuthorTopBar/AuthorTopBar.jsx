@@ -1,10 +1,10 @@
 import React from "react";
 import "./AuthorTopBar.css";
-import authorData from "../../../../public/Jsonfolder/AuthorDetail.json";
 import Notifications from "../../../components/sections/NotificationsBell/Notifications";
 
 const AuthorTopBar = () => {
-  const loggedInAuthor = authorData[0];
+  // Get user from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const date = new Date();
   const formattedDate = date.toLocaleDateString("en-US", {
@@ -19,7 +19,7 @@ const AuthorTopBar = () => {
       <div className="flex items-center justify-between p-0.5">
         <div>
           <span className="text-sm font-bold block">
-            Hello {loggedInAuthor.first_name}
+            Hello {user?.name || "Author"}
           </span>
           <span className="text-xs block text-stone-500">{formattedDate}</span>
         </div>

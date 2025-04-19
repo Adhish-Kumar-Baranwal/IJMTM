@@ -100,7 +100,7 @@ const PaperSubmission = () => {
     <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="flex items-center gap-1.5 font-medium">
-          <MdOutlineDocumentScanner /> Paper Submissions
+          <MdOutlineDocumentScanner /> Paper Submissionssss
         </h3>
         <button className="text-sm cursor-pointer hover:underline">
           See all
