@@ -8,6 +8,7 @@ import {
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import RowActionDialog from "../../../components/RowActionDialog/RowActionDialog"; // adjust path as needed
+import { Link } from "react-router-dom";
 
 const RecentSubmission = () => {
   const [data, setData] = useState([]);
@@ -100,6 +101,15 @@ const RecentSubmission = () => {
           >
             <FiMoreHorizontal />
           </button>
+        ),
+      },
+      {
+        id: "viewPdf",
+        header: "Actions",
+        cell: () => (
+          <Link to="" className="text-blue-600 hover:underline text-sm">
+            View PDF
+          </Link>
         ),
       },
     ],
