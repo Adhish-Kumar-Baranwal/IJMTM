@@ -1,3 +1,4 @@
+//server.js
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -6,7 +7,7 @@ import { MongoClient, ObjectId } from "mongodb";
 import { Readable } from "stream";
 import cors from "cors";
 import jwt from "jsonwebtoken";
-
+//
 // Custom imports
 import connectDB from "./src/IJMTM Backend/config/db.js";
 import authRoutes from "./src/IJMTM Backend/routes/auth.js";

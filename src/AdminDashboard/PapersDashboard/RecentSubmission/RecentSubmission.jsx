@@ -1,3 +1,4 @@
+// RecentSubmission.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import {
   useReactTable,
@@ -37,13 +38,6 @@ const RecentSubmission = () => {
     fetchRecentSubmissions();
   }, []);
 
-  const formatDate = (dateString) => {
-    if (!dateString) return "N/A";
-    const date = new Date(dateString);
-    if (isNaN(date)) return "Invalid Date";
-    return date.toLocaleDateString("en-GB");
-  };
-
   const columns = useMemo(
     () => [
       {
@@ -69,14 +63,12 @@ const RecentSubmission = () => {
         cell: ({ getValue }) => {
           const rawDate = getValue();
           if (!rawDate) return "N/A";
-
           const date = new Date(rawDate);
           return isNaN(date.getTime())
             ? "Invalid Date"
             : date.toLocaleDateString("en-GB");
         },
       },
-      ,
       {
         header: "Author(s)",
         accessorKey: "authors",
@@ -86,6 +78,25 @@ const RecentSubmission = () => {
             return authors.map((a) => a.name).join(", ");
           }
           return "-";
+        },
+      },
+      {
+        id: "viewPdf",
+        header: "PDF",
+        cell: ({ row }) => {
+          const fileId = row.original?.pdfFileId; // <<<<<< Corrected here
+          return fileId ? (
+            <a
+              href={`https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${fileId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline text-sm"
+            >
+              View PDF
+            </a>
+          ) : (
+            <span className="text-stone-400 italic text-sm">No file</span>
+          );
         },
       },
       {
@@ -101,15 +112,6 @@ const RecentSubmission = () => {
           >
             <FiMoreHorizontal />
           </button>
-        ),
-      },
-      {
-        id: "viewPdf",
-        header: "Actions",
-        cell: () => (
-          <Link to="" className="text-blue-600 hover:underline text-sm">
-            View PDF
-          </Link>
         ),
       },
     ],
@@ -141,10 +143,7 @@ const RecentSubmission = () => {
       <table className="w-full table-auto border border-stone-300 border-collapse">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr
-              key={headerGroup.id}
-              className="text-sm font-normal text-stone-500"
-            >
+            <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
                   {flexRender(
