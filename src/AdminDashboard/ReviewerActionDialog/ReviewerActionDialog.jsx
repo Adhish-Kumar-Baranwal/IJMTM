@@ -87,11 +87,21 @@ const ReviewerActionDialog = ({
             Approve
           </button>
           <button
-            className="action-button reject"
-            onClick={() => onDecision("rejected", reviewerData)}
-          >
-            Reject
-          </button>
+  className="action-button reject"
+  onClick={async () => {
+    try {
+      await axios.patch(
+        `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/reject/${reviewerData._id}`
+      );
+      onDecision("rejected", reviewerData);
+    } catch (error) {
+      console.error("Failed to reject reviewer", error);
+    }
+  }}
+>
+  Reject
+</button>
+
         </div>
       </div>
     </div>

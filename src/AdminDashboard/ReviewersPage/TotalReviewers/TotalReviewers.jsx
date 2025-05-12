@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -6,30 +6,33 @@ import {
   getPaginationRowModel,
 } from "@tanstack/react-table";
 import { FiMoreHorizontal, FiUsers } from "react-icons/fi";
-import reviewerInfo from "../../../../public/Jsonfolder/TotalReviewers.json";
-
-/* 
-    {
-        "firstName": "Ishaan",
-        "lastName": "Rathore",
-        "reviewsDone": 2,
-        "designation": "Associate Professor",
-        "experience": 8
-    },
-*/
 
 const TotalReviewers = () => {
-  const data = useMemo(() => reviewerInfo, []);
+  const [reviewers, setReviewers] = useState([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 5,
   });
 
+  useEffect(() => {
+    const fetchReviewers = async () => {
+      try {
+        const res = await fetch("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/reviewers-approved");
+        const data = await res.json();
+        setReviewers(data);
+      } catch (error) {
+        console.error("Failed to fetch approved reviewers:", error);
+      }
+    };
+
+    fetchReviewers();
+  }, []);
+
   const columns = useMemo(
     () => [
       {
         header: "Name",
-        accessorKey: "firstName", // still needed for sorting/filtering
+        accessorKey: "firstName",
         cell: ({ row }) => {
           const { firstName, lastName } = row.original;
           return `${firstName} ${lastName}`;
@@ -62,7 +65,7 @@ const TotalReviewers = () => {
   );
 
   const table = useReactTable({
-    data: reviewerInfo,
+    data: reviewers,
     columns,
     state: {
       pagination,
@@ -76,7 +79,7 @@ const TotalReviewers = () => {
     <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="flex items-center gap-1.5 font-medium">
-        <FiUsers /> Total Reviewers
+          <FiUsers /> Total Reviewers
         </h3>
         <button className="text-sm cursor-pointer hover:underline">
           See all
@@ -117,7 +120,6 @@ const TotalReviewers = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
       <div className="mt-4 flex justify-end items-center gap-4">
         <button
           onClick={() => table.previousPage()}
@@ -138,7 +140,6 @@ const TotalReviewers = () => {
           Next
         </button>
       </div>
-
     </div>
   );
 };

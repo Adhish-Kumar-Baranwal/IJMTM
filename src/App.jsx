@@ -152,15 +152,6 @@ const App = () => {
         <Route path="paperDashboard" element={<PapersDashboard />} />
       </Route>
 
-      {/* Reviewer */}
-      {/* <Route
-        path="/reviewerDashboard"
-        element={
-          <ProtectedRoute allowedRoles={["Reviewer"]}>
-            <ReviewerDashboard />
-          </ProtectedRoute>
-        }
-      > */}
       <Route path="/reviewerDashboard" element={<ReviewerDashboard />}>
         <Route index element={<ReviewerDashboardSection />} />
         <Route path="dashboard" element={<ReviewerDashboardSection />} />
@@ -168,15 +159,6 @@ const App = () => {
         <Route path="reviewedPaper" element={<ReviewedDashboard />} />
       </Route>
 
-      {/* Author */}
-      {/* <Route
-        path="/author"
-        element={
-          <ProtectedRoute allowedRoles={["Author"]}>
-            <AuthorDashboard />
-          </ProtectedRoute>
-        }
-      > */}
       <Route path="/author" element={<AuthorDashboard />}>
         <Route index element={<AuthorDashboardSection />} />
         <Route path="authorDashboard" element={<AuthorDashboardSection />} />

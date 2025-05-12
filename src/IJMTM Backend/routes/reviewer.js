@@ -1,14 +1,12 @@
-//routes //reviewer.js
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import Reviewer from "../models/Reviewer.js";
+import User from "../models/User.js";
 
 dotenv.config();
 const router = express.Router();
-
-
 
 // Register Reviewer
 router.post("/register", async (req, res) => {
@@ -47,42 +45,17 @@ router.post("/register", async (req, res) => {
       institute,
       whyBeReviewer,
       password: hashedPassword,
+      isApproved: false,
+      status: "Pending",
     });
 
     await newReviewer.save();
     res.status(201).json({ message: "Reviewer registered successfully" });
-
   } catch (error) {
     console.error("Registration Error:", error);
     res.status(500).json({ message: "Server error", error });
   }
 });
-
-// Approve Reviewer
-router.patch("/approve/:id", async (req, res) => {
-  try {
-    const reviewer = await Reviewer.findById(req.params.id);
-    if (!reviewer) return res.status(404).json({ message: "Reviewer not found" });
-
-    reviewer.isApproved = true;
-    await reviewer.save();
-
-    res.status(200).json({ message: "Reviewer approved successfully" });
-  } catch (err) {
-    res.status(500).json({ message: "Server error", error: err });
-  }
-});
-
-//Applied 
-router.get("/reviewers-applied", async (req, res) => {
-  try {
-    const reviewers = await Reviewer.find();
-    res.json(reviewers);
-  } catch (err) {
-    res.status(500).json({ error: "Server Error" });
-  }
-});
-
 
 // Reviewer Login
 router.post("/login", async (req, res) => {
@@ -106,30 +79,36 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// PATCH /api/approve/:id
+// Get all applied reviewers (status: "Pending")
+router.get("/reviewers-applied", async (req, res) => {
+  try {
+    const reviewers = await Reviewer.find({ status: "Pending" });
+    res.json(reviewers);
+  } catch (err) {
+    res.status(500).json({ error: "Server Error" });
+  }
+});
+
+// Approve Reviewer
 router.patch("/approve/:id", async (req, res) => {
   try {
-    const reviewer = await Reviewer.findByIdAndUpdate(
-      req.params.id,
-      { approved: true },
-      { new: true }
-    );
+    const reviewer = await Reviewer.findById(req.params.id);
+    if (!reviewer) return res.status(404).json({ message: "Reviewer not found" });
 
-    if (!reviewer) {
-      return res.status(404).json({ message: "Reviewer not found" });
-    }
+    reviewer.isApproved = true;
+    reviewer.status = "Approved";
+    await reviewer.save();
 
-    // Check if reviewer is already a User
+    // Check if already a user
     const existingUser = await User.findOne({ email: reviewer.email });
     if (existingUser) {
       return res.status(200).json({ message: "Reviewer already approved as user", reviewer });
     }
 
-    // Create User from reviewer
     const newUser = new User({
       name: `${reviewer.firstName} ${reviewer.lastName}`,
       email: reviewer.email,
-      password: reviewer.password, // assuming you're storing it in plaintext (not ideal!)
+      password: reviewer.password, // Already hashed
       designation: reviewer.designation,
       contactNumber: reviewer.contact,
       role: "Reviewer",
@@ -144,5 +123,33 @@ router.patch("/approve/:id", async (req, res) => {
   }
 });
 
+// Get All Approved Reviewers
+router.get("/reviewers-approved", async (req, res) => {
+  try {
+    const approvedReviewers = await Reviewer.find({ status: "Approved" });
+    res.status(200).json(approvedReviewers);
+  } catch (error) {
+    console.error("Fetch Approved Reviewers Error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+// Reject Reviewer
+router.patch("/reject/:id", async (req, res) => {
+  try {
+    const reviewer = await Reviewer.findById(req.params.id);
+    if (!reviewer) return res.status(404).json({ message: "Reviewer not found" });
+
+    reviewer.isApproved = false;
+    reviewer.status = "Rejected";
+    await reviewer.save();
+
+    res.status(200).json({ message: "Reviewer rejected successfully", reviewer });
+  } catch (error) {
+    console.error("Rejection Error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 export default router;

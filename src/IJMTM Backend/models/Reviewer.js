@@ -16,6 +16,7 @@ const ReviewerSchema = new mongoose.Schema({
   isApproved: { type: Boolean, default: false },
   status: {
     type: String,
+     enum: ["Pending", "Approved", "Rejected"],
     default: "Pending", // So admin can approve later
   },
   appliedDate: { type: Date, default: Date.now }, // New field added
@@ -23,3 +24,4 @@ const ReviewerSchema = new mongoose.Schema({
 
 const Reviewer = mongoose.model("Reviewer", ReviewerSchema);
 export default Reviewer;
+
