@@ -162,10 +162,11 @@ const PaperSubmissionForm = () => {
         <p className="sub-container-title">Paper Information*</p>
         <div className="top-container">
           <div className="submit-ppr-type">
-            <label>What are you submitting*:</label>
+            <label htmlFor="document-name">What are you submitting*:</label>
 
             <Controller
               name="document-name"
+              id = "document-name"
               control={control}
               rules={{ required: "Document type is required" }}
               render={({ field }) => (

@@ -1,0 +1,142 @@
+.volume-create-title {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.volume-create-sub-title {
+  color: #868686;
+}
+
+.volume-create-title-container {
+  margin: 0 0 25px 0;
+}
+
+.volume-info-container {
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.volume-info-container > h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.volume-info-container > p {
+  font-size: 15px;
+  color: #7d7d7d;
+}
+
+.info-input-container {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.info-vol-num {
+  width: 50%;
+}
+
+.info-vol-num > label,
+.info-vol-title > label,
+.info-vol-description > label,
+.vol-details-aim > label,
+.vol-publication-setting > label,
+.date-month-year-select > label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.info-vol-num > input,
+.info-vol-title > input,
+.info-vol-description > textarea,
+.vol-details-aim > textarea,
+.vol-publication-setting > select,
+.date-month-year-select > select {
+  width: 100%;
+  border: 1px solid #939393;
+  border-radius: 4px;
+  padding: 7px;
+  /* Firefox */
+  -moz-appearance: textfield;
+}
+
+/* Chrome, Safari, Edge */
+.info-vol-num > input::-webkit-inner-spin-button,
+.info-vol-num > input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.info-vol-title,
+.info-input-container,
+.info-vol-description,
+.vol-details-aim,
+.vol-publication-setting {
+  margin: 15px 0;
+}
+
+.info-vol-title > p,
+.vol-publication-setting > p {
+  font-size: 12px;
+  font-weight: 500;
+  color: #868686;
+}
+
+.info-vol-description > textarea,
+.info-vol-description > textarea,
+.vol-details-aim > textarea {
+  min-height: 100px;
+}
+
+.date-month-year-select {
+  width: 33%;
+}
+
+.date-month-year-container {
+  display: flex;
+  width: 50%;
+  gap: 8px;
+}
+
+.vol-btn-container {
+  display: flex;
+  justify-content: end;
+  margin: 20px 0;
+}
+
+.vol-create-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 0 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.vol-create-btn:hover {
+  background-color: #4a5161;
+}
+
+.vol-cancel-btn {
+  border: 1px solid #4a5161;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 0 0 0 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.vol-cancel-btn:hover {
+  background-color: #4a5161;
+  color: white;
+}

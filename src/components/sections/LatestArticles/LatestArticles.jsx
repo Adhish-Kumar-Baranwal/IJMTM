@@ -18,6 +18,7 @@ const LatestArticles = () => {
   };
 
   return (
+    <div className="u-container">
     <div className="latest-articles-section">
       <h2 className="latest-articles-title">Latest Articles</h2>
       <div className="latest-articles-list">
@@ -47,6 +48,7 @@ const LatestArticles = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

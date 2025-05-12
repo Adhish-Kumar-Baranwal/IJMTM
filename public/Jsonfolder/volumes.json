@@ -1,0 +1,27 @@
+[
+    {
+      "volume": "Volume 12",
+      "year": 2023,
+      "issues": 3,
+      "papers": 41,
+      "specialIssue": "Sustainable Development and Environment",
+      "status": "Active"
+    },
+    {
+      "volume": "Volume 11",
+      "year": 2022,
+      "issues": 4,
+      "papers": 56,
+      "specialIssue": "Artificial Intelligence and Machine Learning",
+      "status": "Published"
+    },
+    {
+      "volume": "Volume 10",
+      "year": 2021,
+      "issues": 4,
+      "papers": 52,
+      "specialIssue": "COVID-19 Research and Implications",
+      "status": "Archived"
+    }
+  ]
+  

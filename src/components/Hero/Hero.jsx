@@ -12,7 +12,10 @@ const bgImage = {
 
 const Hero = () => {
   return (
-    <section className="min-h-[700px] flex justify-center items-center" style={bgImage}>
+    <section
+      className="min-h-[700px] flex justify-center items-center"
+      style={bgImage}
+    >
       <div className="container relative z-20 text-center space-y-6">
         <h1 className="text-5xl md:text-6xl font-bold">
           International Journal of Modern <br /> Technology and Management
@@ -28,7 +31,7 @@ const Hero = () => {
           </Link>
           <Link
             to="/journal-information"
-            className="px-6 py-2 rounded-md bg-black text-white font-medium border border-black hover:bg-gray-900 transition"
+            className="px-6 py-2 rounded-md bg-black text-white font-medium border border-black hover:bg-[#4a5161] transition"
           >
             Journal Information
           </Link>

@@ -16,6 +16,7 @@ import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
 import ReviewersPage from "./AdminDashboard/ReviewersPage/ReviewersPage";
 import BrowseVolumes from "./components/sections/BrowseVolumes/BrowseVolumes";
+import ContactUs from "./components/ContactUs/ContactUs";
 import Subjects from "./components/sections/Subjects/Subjects";
 import AuthorInfoMain from "./AdminDashboard/AuthorInfo/AuthorInfoMain";
 import PapersDashboard from "./AdminDashboard/PapersDashboard/PapersDashboard";
@@ -29,6 +30,8 @@ import PaperSubmittedMain from "./AuthorDashboard/PaperSubmittedMain/PaperSubmit
 import PaperPublishedMain from "./AuthorDashboard/PaperPublishedMain/PaperPublishedMain";
 import PaperApprovedMain from "./AuthorDashboard/PaperApprovedMain/PaperApprovedMain";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import VolumesCreate from "./AdminDashboard/Volumes/VolumesCreate/VolumesCreate";
+import Volumes from "./AdminDashboard/Volumes/Volumes";
 
 const App = () => {
   return (
@@ -126,6 +129,14 @@ const App = () => {
         }
       />
       <Route
+        path="/contact-us"
+        element={
+          <Layout>
+            <ContactUs />
+          </Layout>
+        }
+      />
+      <Route
         path="/paper-submit"
         element={
           <Layout>
@@ -150,6 +161,8 @@ const App = () => {
         <Route path="reviewerPage" element={<ReviewersPage />} />
         <Route path="authorInfo" element={<AuthorInfoMain />} />
         <Route path="paperDashboard" element={<PapersDashboard />} />
+        <Route path="volumes" element={<Volumes />} />
+        <Route path="volumes/create" element={<VolumesCreate />} /> {/* Moved out */}
       </Route>
 
       <Route path="/reviewerDashboard" element={<ReviewerDashboard />}>
