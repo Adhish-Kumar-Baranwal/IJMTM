@@ -31,7 +31,7 @@ const AboutJournal = () => {
           </p>
         </div>
 
-        <button className="about-btn">Learn more about us</button>
+        <button className="about-btn">Learn More</button>
       </div>
 
       <div className="info-section">

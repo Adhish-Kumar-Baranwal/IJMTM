@@ -1,0 +1,129 @@
+.volumes-container {
+    padding: 0 16px;
+    color: #111;
+    font-family: sans-serif;
+  }
+  
+  .volumes-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .volumes-header-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .create-volume-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-volume-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .search-filter-bar {
+    margin: 1.5rem 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .search-filter-bar input,
+  .search-filter-bar select,
+  .search-filter-bar button {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .volumes-table {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  
+  .volumes-header,
+  .volumes-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin-left: 0px;
+    padding: 0.7rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .volumes-header {
+    font-weight: bold;
+    background-color: #f8f8f8;
+  }
+  
+  .volumes-row .bold {
+    font-weight: 600;
+  }
+  
+  .badge {
+    background-color: #eee;
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .status-badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    text-transform: capitalize;
+  }
+  
+  .status-badge.active {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .status-badge.published {
+    background-color: #dbeafe;
+    color: #1e40af;
+  }
+  
+  .status-badge.archived {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+  
+  @media (max-width: 768px) {
+    .volumes-header,
+    .volumes-row {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: auto;
+      padding: 1rem;
+    }
+  
+    .volumes-row span:nth-child(4),
+    .volumes-row span:nth-child(5),
+    .volumes-row span:nth-child(7),
+    .volumes-header span:nth-child(4),
+    .volumes-header span:nth-child(5),
+    .volumes-header span:nth-child(7) {
+      display: none;
+    }
+  
+    .create-volume-btn {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+  
