@@ -1,4 +1,4 @@
-//researchPaper.js
+//route/researchPaper.js
 import express from 'express';
 import ResearchPaper from '../models/ResearchPaper.js';
 import { authenticate, authorizeRoles } from '../middleware/authMiddleware.js';
