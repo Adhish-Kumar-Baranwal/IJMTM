@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+//ActiveReviewers.jsx
+import  {  useMemo, useEffect, useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -6,23 +7,24 @@ import {
   getPaginationRowModel,
 } from "@tanstack/react-table";
 import { FiMoreHorizontal, FiUsers } from "react-icons/fi";
-import activeReviewers from "../../../../public/Jsonfolder/ActiveReviewers.json";
-
-/* 
-    {
-        "firstName": "Ishaan",
-        "lastName": "Rathore",
-        "papersAssigned": 4,
-        "reviewDeadline": "2025-05-10"
-    },
-*/
+import axios from "axios";
 
 const ActiveReviewers = () => {
-  const data = useMemo(() => activeReviewers, []);
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 5,
-  });
+  const [data, setData] = useState([]);
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+
+  useEffect(() => {
+    const fetchActiveReviewers = async () => {
+      try {
+        const res = await axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/reviewers-active");
+        setData(res.data);
+      } catch (err) {
+        console.error("Failed to fetch active reviewers", err);
+      }
+    };
+    fetchActiveReviewers();
+  }, []);
+
 
   const columns = useMemo(
     () => [
@@ -59,8 +61,8 @@ const ActiveReviewers = () => {
     []
   );
 
-  const table = useReactTable({
-    data: activeReviewers,
+    const table = useReactTable({
+    data: data,
     columns,
     state: {
       pagination,
@@ -69,6 +71,7 @@ const ActiveReviewers = () => {
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
+
 
   return (
     <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">

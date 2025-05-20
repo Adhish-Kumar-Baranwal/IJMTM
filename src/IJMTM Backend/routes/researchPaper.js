@@ -42,4 +42,32 @@ router.get('/', authenticate, authorizeRoles(['admin']), async (req, res) => {
   res.json(papers);
 });
 
+// Assign reviewers to a paper
+router.post("/assign-reviewers", async (req, res) => {
+  const { paperId, reviewers } = req.body;
+
+  if (!paperId || !Array.isArray(reviewers)) {
+    return res.status(400).json({ message: "Missing paperId or reviewers" });
+  }
+
+  try {
+    const paper = await ResearchPaper.findById(paperId);
+
+    if (!paper) {
+      return res.status(404).json({ message: "Research paper not found" });
+    }
+
+    paper.assignedReviewers = reviewers;
+    paper.reviewDeadline = new Date(deadline);
+
+    await paper.save();
+
+    res.status(200).json({ message: "Reviewers assigned successfully" });
+  } catch (error) {
+    console.error("Error assigning reviewers:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
 export default router;

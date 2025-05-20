@@ -32,7 +32,7 @@ const SignupPage = () => {
 
     try {
       const res = await axios.post(
-        "https://fw9vjsxr-5000.inc1.devtunnels.ms/api/auth/register",
+        "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/register",
         formData
       );
       setSuccess("Registration successful! You can now log in.");

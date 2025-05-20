@@ -66,3 +66,42 @@
   border-radius: 6px;
   cursor: pointer;
 }
+.reviewer-list {
+  margin-top: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.reviewer-item {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.reviewer-item:hover {
+  background-color: #f1f1f1;
+}
+
+.reviewer-item.selected {
+  background-color: #d1ffd1;
+  font-weight: bold;
+}
+
+.reviewer-item .tick {
+  color: green;
+  font-weight: bold;
+}
+
+.deadline-input {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
