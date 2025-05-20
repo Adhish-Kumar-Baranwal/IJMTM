@@ -10,6 +10,7 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import submissions from "../../../../../public/Jsonfolder/PaperSubmission.json";
 import RowActionDialog from "../../../../components/RowActionDialog/RowActionDialog";
+import "./PaperSubmission.css"
 
 const PaperSubmission = () => {
   const data = useMemo(() => submissions, []);
@@ -27,7 +28,7 @@ const PaperSubmission = () => {
         header: "Title",
         accessorKey: "title",
         cell: ({ row }) => (
-          <a href="#" className="font-semibold flex items-center gap-1">
+          <a href="#" className="ppr-submit-title">
             {row.original.title}
           </a>
         ),
@@ -51,16 +52,16 @@ const PaperSubmission = () => {
         cell: ({ getValue }) => {
           const status = getValue();
           const statusColorMap = {
-            Assigned: "bg-blue-100 text-blue-600",
+            "Assigned": "bg-blue-100 text-blue-600",
             "Not Assigned": "bg-stone-100 text-stone-600",
             "Under Review": "bg-yellow-100 text-yellow-700",
             "Final Review Pending": "bg-orange-100 text-orange-700",
-            Rejected: "bg-red-100 text-red-600",
+            "Rejected": "bg-red-100 text-red-600",
             "Revision Requested": "bg-purple-100 text-purple-600",
           };
           return (
             <span
-              className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusColorMap[status]}`}
+              className={`ppr-submission-status-span ${statusColorMap[status]}`}
             >
               {status}
             </span>
@@ -72,7 +73,7 @@ const PaperSubmission = () => {
         header: "Action",
         cell: ({ row }) => (
           <button
-            className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8"
+            className="ppr-submission-action"
             onClick={() => {
               setSelectedRow(row.original);
               setIsDialogOpen(true);
@@ -98,22 +99,17 @@ const PaperSubmission = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center gap-1.5 font-medium">
-          <MdOutlineDocumentScanner /> Paper Submissionssss
-        </h3>
-        <button className="text-sm cursor-pointer hover:underline">
-          See all
-        </button>
-      </div>
+    <div className="ppr-submission-table-container">
+      <h3 className="ppr-submission-table-title">
+        <MdOutlineDocumentScanner /> Paper Submissionssss
+      </h3>
 
-      <table className="w-full table-auto border border-stone-300 border-collapse">
+      <table className="ppr-submission-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
               key={headerGroup.id}
-              className="text-sm font-normal text-stone-500"
+              className="ppr-submission-table-headers"
             >
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
@@ -143,11 +139,11 @@ const PaperSubmission = () => {
       </table>
 
       {/* Pagination */}
-      <div className="mt-4 flex justify-end items-center gap-4">
+      <div className="ppr-submission-btn-section">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-submission-prev-btn disabled:opacity-50"
         >
           Prev
         </button>
@@ -158,7 +154,7 @@ const PaperSubmission = () => {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-submission-next-btn disabled:opacity-50"
         >
           Next
         </button>

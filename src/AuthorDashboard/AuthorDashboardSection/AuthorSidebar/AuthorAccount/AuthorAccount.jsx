@@ -1,16 +1,17 @@
 import React from "react";
+import "./AuthorAccount.css"
 
 const AuthorAccount = () => {
   // Get user info from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div className="border-b mb-4 mt-2 pb-2 border-stone-300">
-      <button className="author-button flex p-0.5 hover:bg-stone-200 rounded transition-colors relative gap-2 w-full items-center">
+    <div className="author-acc-container">
+      <button className="author-acc-button">
         <img
           src="https://api.dicebear.com/9.x/notionists/svg?seed=Aneka"
           alt="avatar"
-          className="author-avatar size-8 rounded shrink-0 bg-violet-500 shadow"
+          className="author-acc-avatar shadow"
         />
         <div className="author-text text-start">
           <span className="author-name text-sm font-bold block">

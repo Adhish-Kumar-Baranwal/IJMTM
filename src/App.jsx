@@ -1,23 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import SigninPage from "./SigninPageFolder/SigninPage";
-import SignupPage from "./SignupPageFolder/SignupPage";
-import HomePage from "./HomePage/HomePage";
-import PublishedPapers from "./components/sections/PublishedPapers/PublishedPapers";
-import ReviewerForm from "./components/sections/ReviewerForm/ReviewerForm";
+import SigninPage from "./pages/SigninPageFolder/SigninPage";
+import SignupPage from "./pages/SignupPageFolder/SignupPage";
+import HomePage from "./pages/HomePage/HomePage";
+import PublishedPapers from "./pages/PublishedPapers/PublishedPapers";
 import AuthorForm from "./components/sections/AuthorForm/AuthorForm";
-import Journal_Information from "./components/sections/Journal_Information/Journal_Information";
-import Layout from "./Layout";
-import AboutReviewerPage from "./components/sections/AboutReviewer/AboutReviewerPage";
-import JournalPolicies from "./components/sections/JournalPolicies/JournalPolicies";
-import PublishingModels from "./components/sections/PublishingModels/PublishingModels";
-import CurrentVolume from "./components/sections/CurrentVolume/CurrentVolume";
-import PaperSubmissionForm from "./components/sections/PaperSubmissionForm/PaperSubmissionForm";
+import Journal_Information from "./pages/Journal_Information/Journal_Information";
+import AboutReviewerPage from "./pages/AboutReviewer/AboutReviewerPage";
+import JournalPolicies from "./pages/JournalPolicies/JournalPolicies";
+import PublishingModels from "./pages/PublishingModels/PublishingModels";
+import ReviewerPaperModal from "./ReviewerDashboard/ReviewerPaperView/ReviewerPaperModal";
+import PaymentSuccessModal from "./components/PaymentSuccessModal/PaymentSuccessModal";
+import CurrentVolume from "./pages/CurrentVolume/CurrentVolume";
+import PaperSubmissionForm from "./pages/PaperSubmissionForm/PaperSubmissionForm";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import Dashboard from "./AdminDashboard/Dashboard/Dashboard";
 import ReviewersPage from "./AdminDashboard/ReviewersPage/ReviewersPage";
-import BrowseVolumes from "./components/sections/BrowseVolumes/BrowseVolumes";
-import ContactUs from "./components/ContactUs/ContactUs";
-import Subjects from "./components/sections/Subjects/Subjects";
+import BrowseVolumes from "./pages/BrowseVolumes/BrowseVolumes";
+import Subjects from "./pages/Subjects/Subjects";
 import AuthorInfoMain from "./AdminDashboard/AuthorInfo/AuthorInfoMain";
 import PapersDashboard from "./AdminDashboard/PapersDashboard/PapersDashboard";
 import ReviewerDashboard from "./ReviewerDashboard/ReviewerDashboard";
@@ -32,6 +31,10 @@ import PaperApprovedMain from "./AuthorDashboard/PaperApprovedMain/PaperApproved
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import VolumesCreate from "./AdminDashboard/Volumes/VolumesCreate/VolumesCreate";
 import Volumes from "./AdminDashboard/Volumes/Volumes";
+import Papers from "./components/sections/Papers/Papers";
+import ReviewerForm from "./pages/ReviewerForm/ReviewerForm";
+import Layout from "./components/Layout";
+import ContactUs from "./pages/ContactUs/ContactUs";
 
 const App = () => {
   return (
@@ -87,6 +90,11 @@ const App = () => {
             <CurrentVolume />
           </Layout>
         }
+      />
+      <Route path="/review-paper" element={<ReviewerPaperModal />} />
+      <Route
+        path="/payment-success"
+        element={<PaymentSuccessModal isOpen={true} />}
       />
       <Route
         path="/journal-information"
@@ -145,6 +153,15 @@ const App = () => {
           </Layout>
         }
       />
+      <Route
+        path="/paper-id"
+        element={
+          <Layout>
+            {" "}
+            <Papers />{" "}
+          </Layout>
+        }
+      />
 
       <Route path="/adminPanel" element={<AdminDashboard />}>
         <Route index element={<Dashboard />} />
@@ -153,7 +170,8 @@ const App = () => {
         <Route path="authorInfo" element={<AuthorInfoMain />} />
         <Route path="paperDashboard" element={<PapersDashboard />} />
         <Route path="volumes" element={<Volumes />} />
-        <Route path="volumes/create" element={<VolumesCreate />} /> {/* Moved out */}
+        <Route path="volumes/create" element={<VolumesCreate />} />{" "}
+        {/* Moved out */}
       </Route>
 
       <Route path="/reviewerDashboard" element={<ReviewerDashboard />}>

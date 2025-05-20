@@ -9,6 +9,7 @@ import {
 import { MdOutlineUploadFile } from "react-icons/md";
 import { Link } from "react-router-dom";
 import paperSubmission from "../../../../public/Jsonfolder/AuthorPaperSubmissions.json";
+import "./PapersSubmitted.css"
 
 const PapersSubmitted = () => {
   // const [data, setData] = useState([]);
@@ -77,17 +78,12 @@ const PapersSubmitted = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center gap-1.5 font-medium">
-          <MdOutlineUploadFile /> Papers Submitted
-        </h3>
-        <button className="text-sm cursor-pointer hover:underline">
-          See all
-        </button>
-      </div>
+    <div className="ppr-submitted-container">
+      <h3 className="ppr-submitted-title">
+        <MdOutlineUploadFile /> Papers Submitted
+      </h3>
 
-      <table className="w-full table-auto border border-stone-300 border-collapse">
+      <table className="ppr-submitted-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
@@ -121,11 +117,11 @@ const PapersSubmitted = () => {
         </tbody>
       </table>
 
-      <div className="mt-4 flex justify-end items-center gap-4">
+      <div className="ppr-submitted-table-btn-section">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-submitted-prev-btn disabled:opacity-50"
         >
           Prev
         </button>
@@ -136,7 +132,7 @@ const PapersSubmitted = () => {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-submitted-next-btn disabled:opacity-50"
         >
           Next
         </button>

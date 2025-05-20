@@ -10,6 +10,7 @@ import { TbUsersPlus } from "react-icons/tb";
 import axios from "axios";
 import ReviewerActionDialog from "../../../ReviewerActionDialog/ReviewerActionDialog";
 import { format } from "date-fns";
+import "./ReviewersApplied.css"
 
 const ReviewersApplied = () => {
   const [reviewers, setReviewers] = useState([]);
@@ -62,7 +63,7 @@ const ReviewersApplied = () => {
         header: "Actions",
         cell: ({ row }) => (
           <button
-            className="hover:bg-stone-200 transition-colors grid place-content-center rounded text-sm size-8"
+            className="reviewers-applied-table-actions"
             onClick={() => {
               setSelectedReviewerData(row.original); // Pass full reviewer object
               setIsDialogOpen(true);
@@ -88,20 +89,15 @@ const ReviewersApplied = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center gap-1.5 font-medium">
-          <TbUsersPlus /> Reviewers Applied
-        </h3>
-        <button className="text-sm cursor-pointer hover:underline">
-          See all
-        </button>
-      </div>
+    <div className="reviewers-applied-container">
+      <h3 className="reviewers-applied-table-title">
+        <TbUsersPlus /> Reviewers Applied
+      </h3>
 
-      <table className="w-full table-auto border border-stone-300 border-collapse">
+      <table className="reviewers-applied-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
+            <tr key={headerGroup.id} className="reviewers-applied-table-header">
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
                   {flexRender(header.column.columnDef.header, header.getContext())}
@@ -127,11 +123,11 @@ const ReviewersApplied = () => {
       </table>
 
       {/* Pagination */}
-      <div className="mt-4 flex justify-end items-center gap-4">
+      <div className="reviewers-table-btn-section">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="reviewers-table-prev-btn"
         >
           Prev
         </button>
@@ -141,7 +137,7 @@ const ReviewersApplied = () => {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="reviewers-table-next-btn"
         >
           Next
         </button>

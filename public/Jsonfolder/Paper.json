@@ -1,0 +1,17 @@
+{
+  "title": "Exploring Quantum Entanglement in Photonic Systems",
+  "domain": "Quantum Physics",
+  "authors": ["Dr. A. Kumar", "Dr. N. Sharma", "Prof. L. Mehta"],
+  "volumeIssue": "Vol. 12, Issue 4",
+  "datePublished": "2025-05-10",
+  "doi": "10.1234/quantum.2025.048",
+  "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.048",
+  "buttons": {
+    "downloadPdf": "https://examplejournal.org/download/quantum-entanglement.pdf",
+    "share": "https://examplejournal.org/share/quantum-entanglement",
+    "cite": "https://examplejournal.org/cite/quantum-entanglement",
+    "contactAuthor": "mailto:author@example.com"
+  },
+  "abstract": "This paper investigates the behavior of quantum entanglement in multi-photon systems and proposes a novel method to maintain coherence over extended distances. The findings have implications for quantum communication and computation technologies.",
+  "keywords": ["Quantum Entanglement", "Photonic Systems", "Quantum Communication", "Coherence", "Quantum Computing"]
+}

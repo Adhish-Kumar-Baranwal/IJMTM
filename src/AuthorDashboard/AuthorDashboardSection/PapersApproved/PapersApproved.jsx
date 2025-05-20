@@ -10,6 +10,7 @@ import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
 import papersApproved from "../../../../public/Jsonfolder/AuthorPaperApproved.json";
 import AuthorPaymentDialogBox from "../../AuthorPaymentDialogBox/AuthorPaymentDialogBox";
+import "./PapersApproved.css"
 
 const PapersApproved = () => {
   // const [data, setData] = useState([]);
@@ -71,7 +72,7 @@ const PapersApproved = () => {
               setSelectedRowData(row.original);
               setIsDialogOpen(true);
             }}
-            className="text-sm text-white cursor-pointer bg-green-600 hover:bg-green-700 rounded px-3 py-1"
+            className="ppr-table-actions"
           >
             Pay
           </button>
@@ -91,17 +92,12 @@ const PapersApproved = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 my-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center gap-1.5 font-medium">
-          <MdLibraryBooks /> Papers Approved
-        </h3>
-        <button className="text-sm cursor-pointer hover:underline">
-          See all
-        </button>
-      </div>
+    <div className="ppr-approved-container">
+      <h3 className="ppr-approved-table-title">
+        <MdLibraryBooks /> Papers Approved
+      </h3>
 
-      <table className="w-full table-auto border border-stone-300 border-collapse">
+      <table className="ppr-approved-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
@@ -135,11 +131,11 @@ const PapersApproved = () => {
         </tbody>
       </table>
 
-      <div className="mt-4 flex justify-end items-center gap-4">
+      <div className="ppr-approved-table-btn-section">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-approved-table-prev-btn disabled:opacity-50"
         >
           Prev
         </button>
@@ -150,7 +146,7 @@ const PapersApproved = () => {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-approved-table-next-btn disabled:opacity-50"
         >
           Next
         </button>

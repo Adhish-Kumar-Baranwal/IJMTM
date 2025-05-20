@@ -1,6 +1,6 @@
 import React from "react";
 import "./TopBar.css";
-import Notifications from "../../../components/sections/NotificationsBell/Notifications";
+import Notifications from "../../../components/NotificationsBell/Notifications";
 
 const TopBar = () => {
   const user = JSON.parse(localStorage.getItem("user"));

@@ -1,0 +1,310 @@
+.ppr-sub-container {
+  margin-top: 25px;
+}
+
+.ppr-sub-title {
+  margin: 0 0 25px 0;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.author-sub-container {
+  margin: 20px 0;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.author-info-container {
+  display: flex;
+  margin: 0 10px;
+}
+
+.author-name-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  flex: 1; /* allow input containers to grow evenly */
+}
+
+.author-name-container input {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+  width: 100%;
+}
+
+.author-name-container input:focus {
+  border-color: #575757;
+  box-shadow: 0 0 0 2px rgba(87, 87, 87, 0.1);
+}
+
+.submit-ppr-type,
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px 0;
+}
+
+.submit-ppr-type label,
+.title-container label,
+.abstract-container label,
+.author-number-container label,
+.author-name-container label,
+.file-upload-container label,
+.keyword-container label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.top-container,
+.author-main-container,
+.file-upload-container {
+  margin: 0 10px 40px 10px;
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.fileName-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bbbbbb;
+  padding: 15px 10px;
+  gap: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px !important;
+}
+
+.sub-container-title {
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #ded5d5;
+  margin-bottom: 15px;
+  padding: 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.title-container input {
+  flex: 1;
+  border: 1px solid #bbbbbb;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 50%;
+  /* box-sizing: border-box; */
+}
+
+.keyword-container{
+  display: flex;
+  gap: 8px;
+  margin: auto;
+}
+
+.keyword-container input{
+  flex: 1;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.abstract-container {
+  display: flex;
+  align-items: flex-start; /* Align label and textarea to the top */
+  gap: 10px; /* spacing between label and textarea */
+  margin-bottom: 10px;
+}
+
+.abstract-container textarea {
+  /* min-height: 100px; */
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  resize: vertical;
+  width: 50%;
+}
+
+.author-number-container {
+  margin-bottom: 10px;
+}
+
+.author-number-container input {
+  border: 1px solid #bbbbbb;
+  padding: 3px 0 3px 5px;
+  width: 60px;
+  border-radius: 5px;
+}
+
+.author-number {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.ppr-form-submit-btn {
+  /* border: 1px solid #5b5b5b; */
+  background-color: #003366;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30%;
+  transition: background-color 0.5s ease;
+}
+
+.ppr-form-submit-btn:hover {
+  background-color: #00509e;
+}
+
+.ppr-form-center-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ppr-sub-guidelines ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.ppr-sub-guidelines {
+  font-size: 16px;
+  line-height: 1.42;
+  padding-left: 20px;
+}
+
+.ppr-sub-guidelines ul li {
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.ppr-sub-guidelines-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* When open */
+.ppr-sub-guidelines-wrapper.open {
+  max-height: 1000px; /* A big enough value to hold your content */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button styling (optional) */
+.ppr-sub-guidelines-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #f3f4f6;
+  border: none;
+  cursor: pointer;
+}
+
+.ppr-sub-guidelines-btn:hover {
+  text-decoration: underline;
+}
+
+/* Chevron icon rotation */
+.chevron-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.chevron-icon.rotate {
+  transform: rotate(-90deg);
+}
+
+
+.ppr-sub-acknowledgement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #0c1c2c;
+  margin-bottom: 1.5rem;
+}
+
+/* Style the checkbox */
+.ppr-sub-acknowledgement input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #003366; /* deep blue */
+  cursor: pointer;
+}
+
+/* Optional: Improve spacing for better alignment on smaller screens */
+.ppr-sub-acknowledgement label {
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+/* ✅ Responsive Layout Breakpoints */
+@media (max-width: 1024px) {
+  .author-info-container {
+    flex-direction: row;
+    gap: 15px;
+  }
+  .ppr-sub-container{
+    margin: 25px 10px 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 15px;
+  }
+
+  .author-info-container {
+    flex-direction: column;
+  }
+
+  .author-info-container > div {
+    width: 100%;
+  }
+
+  .ppr-form-submit-btn {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .author-name-container input,
+  .title-container input,
+  .keyword-container input,
+  .author-number-container input,
+  .ppr-sub-acknowledgement input{
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .form-wrapper {
+    padding: 10px;
+  }
+
+  .author-info-container {
+    gap: 10px;
+  }
+
+  .guidelines {
+    font-size: 15px;
+  }
+}

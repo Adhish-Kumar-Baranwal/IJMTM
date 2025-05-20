@@ -43,7 +43,7 @@
     border: none;
     cursor: pointer;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 49px;
     border-radius: 4px;
     transition: 0.2s ease-in-out;
   }
@@ -97,7 +97,7 @@
   }
   
   /* Responsive Design */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .about-journal-container {
       flex-direction: column;
       padding: 20px;
@@ -118,5 +118,67 @@
       display: block;
       margin: 10px auto;
     }
-  }
+  } */
   
+
+  /* Responsive Design for Tablets and Below */
+@media (max-width: 992px) {
+  .about-journal-container {
+    flex-direction: column;
+    padding: 30px 5vw;
+  }
+
+  .about-section,
+  .info-section {
+    width: 100%;
+  }
+
+  .about-heading,
+  .info-heading {
+    text-align: center;
+  }
+
+  .about-btn,
+  .submit-btn {
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+/* Responsive Design for Phones */
+@media (max-width: 576px) {
+  .about-section {
+    min-width: 100%;
+  }
+
+  .about-description,
+  .info-subtext {
+    text-align: justify;
+  }
+
+  .about-btn,
+  .submit-btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* Responsive Design for Very Small Phones */
+@media (max-width: 360px) {
+  .about-journal-container {
+    gap: 24px;
+    padding: 20px 4vw;
+  }
+
+  .about-btn,
+  .submit-btn {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .info-value {
+    font-size: 20px;
+  }
+}

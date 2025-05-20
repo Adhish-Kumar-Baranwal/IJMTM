@@ -1,0 +1,141 @@
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 725px;
+    padding: 0 16px;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    z-index: 20;
+}
+
+.hero-title {
+    font-size: clamp(28px, 5vw, 52px); /* Responsive fluid font size */
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.hero-btn-section {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Wrap buttons on small screens */
+    gap: 16px;
+}
+
+.hero-ppr-submit-btn,
+.hero-journal-info-btn {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: clamp(14px, 2.5vw, 16px); /* Fluid font size */
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 180px;
+}
+
+/* Primary Button */
+.hero-ppr-submit-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.hero-ppr-submit-btn:hover {
+    background-color: #f3f4f6;
+}
+
+/* Secondary Button */
+.hero-journal-info-btn {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.hero-journal-info-btn:hover {
+    background-color: #4a5161;
+}
+
+/* === Media Queries for Extra Control === */
+
+/* Medium Desktops and below */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 48px;
+    }
+}
+
+/* Tablets and small laptops */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 42px;
+    }
+
+    .hero-btn-section {
+        gap: 12px;
+    }
+}
+
+/* Large phones and small tablets */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-btn-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hero-ppr-submit-btn,
+    .hero-journal-info-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .hero-btn-section {
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+    .hero-ppr-submit-btn,
+    .hero-journal-info-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+        min-width: auto;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 26px;
+    }
+
+    .hero-btn-section {
+        gap: 8px;
+    }
+
+    .hero-ppr-submit-btn,
+    .hero-journal-info-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}

@@ -35,11 +35,6 @@ const AuthorRouteSelect = () => {
         <span>Published Papers</span>
       </Link>
 
-      <Link to="" className="author-route-links">
-        <GrSchedule />
-        <span>Conference</span>
-      </Link>
-
     </div>
   );
 };

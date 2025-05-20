@@ -9,6 +9,7 @@ import {
 import { MdLibraryBooks } from "react-icons/md";
 import { Link } from "react-router-dom";
 import papersPublished from "../../../../public/Jsonfolder/AuthorsPublishedPapers.json"
+import "./PapersPublished.css"
 
 const PapersPublished = () => {
   // const [data, setData] = useState([]);
@@ -86,15 +87,12 @@ const PapersPublished = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 mt-5 mb-7">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center gap-1.5 font-medium">
-          <MdLibraryBooks /> Papers Published
-        </h3>
-        <button className="text-sm cursor-pointer hover:underline">See all</button>
-      </div>
+    <div className="ppr-published-container">
+      <h3 className="ppr-published-table-title">
+        <MdLibraryBooks /> Papers Published
+      </h3>
 
-      <table className="w-full table-auto border border-stone-300 border-collapse">
+      <table className="ppr-published-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
@@ -122,11 +120,11 @@ const PapersPublished = () => {
         </tbody>
       </table>
 
-      <div className="mt-4 flex justify-end items-center gap-4">
+      <div className="ppr-published-table-btn-sec">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-published-prev-btn disabled:opacity-50"
         >
           Prev
         </button>
@@ -136,7 +134,7 @@ const PapersPublished = () => {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="ppr-published-next-btn disabled:opacity-50"
         >
           Next
         </button>

@@ -3,7 +3,6 @@
   margin: auto;
   font-family: Arial, sans-serif;
 }
-
 .latest-articles-title {
   font-size: 38px;
   font-weight: bold;
@@ -59,7 +58,6 @@
 }
 
 .latest-article-image {
-  flex: 1;
   text-align: center;
 }
 
@@ -68,4 +66,87 @@
   height: 80px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+/* Tablets (up to 992px) */
+@media (max-width: 992px) {
+  .latest-articles-title {
+    font-size: 32px;
+    padding-left: 20px;
+    text-align: center;
+  }
+
+  .latest-article-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+    gap: 12px;
+  }
+
+  .latest-article-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .latest-article-meta {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .latest-article-info {
+    width: 100%;
+  }
+
+  .latest-article-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Phones (up to 576px) */
+@media (max-width: 576px) {
+  .latest-articles-title {
+    font-size: 26px;
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .latest-article-item {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .latest-article-title {
+    font-size: 16px;
+  }
+
+  .latest-article-authors {
+    font-size: 13px;
+  }
+
+  .latest-article-meta {
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .latest-article-image img {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+  }
+}
+
+/* Very Small Phones (up to 360px) */
+@media (max-width: 360px) {
+  .latest-article-title {
+    font-size: 15px;
+  }
+
+  .latest-article-authors {
+    font-size: 12px;
+  }
+
+  .latest-article-meta {
+    font-size: 12px;
+  }
 }

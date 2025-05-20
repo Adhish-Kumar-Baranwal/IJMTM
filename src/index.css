@@ -61,3 +61,16 @@ body {
 .main-content {
   flex: 1;
 }
+
+@media (max-width: 1023px) {
+  .u-container {
+    margin: 0;
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .u-container {
+    margin: 0;
+    padding: 0;
+  }
+}

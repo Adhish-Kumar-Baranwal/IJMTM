@@ -8,6 +8,7 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import {  FiUsers } from "react-icons/fi";
+import "./AuthorInfoTable.css"
 
 const AuthorInfoTable = () => {
   const [data, setData] = useState([]);
@@ -83,22 +84,19 @@ const AuthorInfoTable = () => {
   });
 
   return (
-    <div className="col-span-12 p-4 rounded border border-stone-300 mt-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center gap-1.5 font-medium">
+    <div className="atuhor-info-table-contianer">
+      <div className="atuhor-info-table-title">
+        <h3 className="info-table-title">
           <FiUsers /> Authors
         </h3>
-        <button className="text-sm cursor-pointer hover:underline">
-          See all
-        </button>
       </div>
 
-      <table className="w-full table-auto border border-stone-300 border-collapse">
+      <table className="author-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
               key={headerGroup.id}
-              className="text-sm font-normal text-stone-500"
+              className="author-table-header"
             >
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
@@ -128,11 +126,11 @@ const AuthorInfoTable = () => {
       </table>
 
       {/* Pagination */}
-      <div className="mt-4 flex justify-end items-center gap-4">
+      <div className="author-table-btn-section">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="author-table-prev-btn"
         >
           Prev
         </button>
@@ -143,7 +141,7 @@ const AuthorInfoTable = () => {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="text-sm px-3 py-1 rounded border disabled:opacity-50"
+          className="author-table-next-btn"
         >
           Next
         </button>

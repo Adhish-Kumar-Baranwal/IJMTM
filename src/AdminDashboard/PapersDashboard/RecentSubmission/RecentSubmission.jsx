@@ -84,7 +84,7 @@ const RecentSubmission = () => {
         id: "viewPdf",
         header: "PDF",
         cell: ({ row }) => {
-          const fileId = row.original?.pdfFileId; 
+          const fileId = row.original?.pdfFileId; // <<<<<< Corrected here
           return fileId ? (
             <a
               href={`https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${fileId}`}
@@ -100,7 +100,7 @@ const RecentSubmission = () => {
         },
       },
       {
-        id: "actions",
+        id: "as",
         header: "Action",
         cell: ({ row }) => (
           <button
@@ -143,7 +143,10 @@ const RecentSubmission = () => {
       <table className="w-full table-auto border border-stone-300 border-collapse">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
+            <tr
+              key={headerGroup.id}
+              className="text-sm font-normal text-stone-500"
+            >
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
                   {flexRender(

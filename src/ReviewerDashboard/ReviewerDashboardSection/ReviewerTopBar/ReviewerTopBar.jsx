@@ -1,6 +1,6 @@
 import React from "react";
 import "./ReviewerTopBar.css";
-import Notifications from "../../../components/sections/NotificationsBell/Notifications";
+import Notifications from "../../../components/NotificationsBell/Notifications";
 
 const ReviewerTopBar = () => {
   const user = JSON.parse(localStorage.getItem("user"));

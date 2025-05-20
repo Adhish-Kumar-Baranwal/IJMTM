@@ -28,12 +28,12 @@ const InfoCards = () => {
           </div>
           <p className="subtitle">{card.subtitle}</p>
           <div className="content">
-  <ul>
-    {card.content.map((line, idx) => (
-      <li key={idx}>{line}</li>
-    ))}
-  </ul>
-</div>
+            <ul>
+              {card.content.map((line, idx) => (
+                <li key={idx}>{line}</li>
+              ))}
+            </ul>
+          </div>
 
           <div className="buttons">
             {card.buttons.map((btn, idx) => (

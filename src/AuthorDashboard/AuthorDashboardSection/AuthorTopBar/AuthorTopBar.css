@@ -1,0 +1,27 @@
+.author-topbar{
+    border-bottom: 1px solid #e7e5e4;
+    padding: 0 16px 8px 16px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+.author-topbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+.author-topbar-user{
+    font-size: 14px;
+    line-height: 1.43;
+    font-weight: 700;
+    display: block;
+}
+
+.author-topbar-date{
+    font-size: 12px;
+    line-height: 1.33;
+    display: block;
+    color: #79716b;
+}
