@@ -84,7 +84,7 @@ const RecentSubmission = () => {
         id: "viewPdf",
         header: "PDF",
         cell: ({ row }) => {
-          const fileId = row.original?.pdfFileId; // <<<<<< Corrected here
+          const fileId = row.original?.pdfFileId;
           return fileId ? (
             <a
               href={`https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${fileId}`}
