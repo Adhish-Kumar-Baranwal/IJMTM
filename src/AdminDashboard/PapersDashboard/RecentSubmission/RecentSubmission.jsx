@@ -8,7 +8,8 @@ import {
 } from "@tanstack/react-table";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
-import RowActionDialog from "../../../components/RowActionDialog/RowActionDialog"; // adjust path as needed
+import RowActionDialog from "../../../components/RowActionDialog/RowActionDialog";
+import ReviewerPaperModal from "../../../ReviewerDashboard/ReviewerPaperView/ReviewerPaperModal";
 import { Link } from "react-router-dom";
 
 const RecentSubmission = () => {
@@ -20,6 +21,9 @@ const RecentSubmission = () => {
 
   const [selectedRow, setSelectedRow] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false); // New state
+  const [reviewPaperData, setReviewPaperData] = useState(null); // New state
 
   useEffect(() => {
     const fetchRecentSubmissions = async () => {
@@ -85,15 +89,21 @@ const RecentSubmission = () => {
         header: "PDF",
         cell: ({ row }) => {
           const fileId = row.original?.pdfFileId;
+          const title = row.original?.title;
+
           return fileId ? (
-            <a
-              href={`https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${fileId}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => {
+                setReviewPaperData({
+                  pdfUrl: `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${fileId}`,
+                  title: title,
+                });
+                setIsReviewModalOpen(true);
+              }}
               className="text-blue-600 hover:underline text-sm"
             >
               View PDF
-            </a>
+            </button>
           ) : (
             <span className="text-stone-400 italic text-sm">No file</span>
           );
@@ -196,15 +206,23 @@ const RecentSubmission = () => {
         </button>
       </div>
 
+      {/* Row Actions Dialog */}
       <RowActionDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         rowData={selectedRow}
         onAssign={(assignee) => {
           console.log(`Assigned to ${assignee}`, selectedRow);
-          // Optional: Add backend call or state update here
         }}
       />
+
+      {/* Reviewer Paper Modal */}
+      {isReviewModalOpen && reviewPaperData && (
+        <ReviewerPaperModal
+          onClose={() => setIsReviewModalOpen(false)}
+          paper={reviewPaperData}
+        />
+      )}
     </div>
   );
 };

@@ -8,12 +8,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9;
 }
 
 .modal-content {
   background: #fff;
-  padding: 24px;
+  padding: 25px;
   border-radius: 10px;
   width: 90%;
   max-width: 800px;
@@ -23,9 +23,11 @@
 
 .modal-close {
   position: absolute;
-  right: 16px;
+  right: 25px;
   top: 12px;
-  font-size: 22px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #b0b0b0;
   background: none;
   border: none;
   cursor: pointer;
@@ -38,7 +40,7 @@ h2 {
 }
 
 .pdf-container {
-  height: 400px;
+  height: 500px;
   overflow: hidden;
   margin-bottom: 20px;
 }

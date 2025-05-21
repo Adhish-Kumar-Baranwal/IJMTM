@@ -1,47 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./ReviewerPaperModal.css";
 
-const ReviewerPaperModal = ({ onClose }) => {
-  const [paper, setPaper] = useState(null);
+const ReviewerPaperModal = ({ onClose, paper }) => {
   const [remarks, setRemarks] = useState("");
 
-  useEffect(() => {
-    fetch("/Jsonfolder/paperReview.json")
-      .then((res) => res.json())
-      .then((data) => setPaper(data))
-      .catch((err) => console.error("Error fetching paper:", err));
-  }, []);
+  if (!paper || !paper.pdfUrl) return null;
+
+  const { pdfUrl, title } = paper;
 
   const handleApprove = () => {
     alert("Paper Approved");
-    // Send remarks & status to backend here
+    // You can send `remarks` and `status` to the backend here
     onClose();
   };
 
   const handleReject = () => {
     alert("Paper Rejected");
-    // Send remarks & status to backend here
+    // You can send `remarks` and `status` to the backend here
     onClose();
   };
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = paper.pdfUrl;
-    link.download = "paper.pdf";
-    link.click();
-  };
+  const handleDownload = async () => {
+  try {
+    const response = await fetch(pdfUrl, { mode: "cors" }); // ensure CORS is allowed
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
 
-  if (!paper) return null;
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.setAttribute("download", `${title || "paper"}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(blobUrl);
+  } catch (error) {
+    console.error("Download failed:", error);
+    alert("Failed to download PDF.");
+  }
+};
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="modal-close" onClick={onClose}></button>
+        <button className="modal-close" onClick={onClose}>×</button>
 
-        <h2>{paper.title}</h2>
+        <h2 className="modal-title">{title || "Paper Title"}</h2>
 
         <div className="pdf-container">
-          <iframe src={paper.pdfUrl} title="PDF Viewer" frameBorder="0" />
+          <iframe
+            src={pdfUrl}
+            title="PDF Viewer"
+            frameBorder="0"
+            width="100%"
+            height="500px"
+          />
         </div>
 
         <textarea
