@@ -1,7 +1,9 @@
 import React from "react";
 import "./AboutJournal.css";
+import { useNavigate } from "react-router-dom";
 
 const AboutJournal = () => {
+  const navigate = useNavigate();
   return (
     <div className="u-container about-journal-container">
       <div className="about-section">
@@ -60,7 +62,7 @@ const AboutJournal = () => {
           <p className="info-subtext">From submission to publication</p>
         </div>
 
-        <button className="submit-btn">Submit Your Research</button>
+        <button className="submit-btn" onClick={() => navigate("/paper-submit")}>Submit Your Research</button>
       </div>
     </div>
   );
