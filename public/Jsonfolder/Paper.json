@@ -1,17 +1,152 @@
-{
-  "title": "Exploring Quantum Entanglement in Photonic Systems",
-  "domain": "Quantum Physics",
-  "authors": ["Dr. A. Kumar", "Dr. N. Sharma", "Prof. L. Mehta"],
-  "volumeIssue": "Vol. 12, Issue 4",
-  "datePublished": "2025-05-10",
-  "doi": "10.1234/quantum.2025.048",
-  "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.048",
-  "buttons": {
-    "downloadPdf": "https://examplejournal.org/download/quantum-entanglement.pdf",
-    "share": "https://examplejournal.org/share/quantum-entanglement",
-    "cite": "https://examplejournal.org/cite/quantum-entanglement",
-    "contactAuthor": "mailto:author@example.com"
+[
+  {
+    "id" : 11904,
+    "title": "Exploring Quantum Entanglement in Photonic Systems",
+    "type": "Research Paper",
+    "domain": "Quantum Physics",
+    "authors": ["Dr. A. Kumar", "Dr. N. Sharma", "Prof. L. Mehta"],
+    "volumeIssue": "Vol. 12, Issue 4",
+    "datePublished": "2025-05-10",
+    "doi": "10.1234/quantum.2025.048",
+    "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.048",
+    "buttons": {
+      "downloadPdf": "https://examplejournal.org/download/quantum-entanglement.pdf",
+      "share": "https://examplejournal.org/share/quantum-entanglement",
+      "cite": "https://examplejournal.org/cite/quantum-entanglement",
+      "contactAuthor": "mailto:author@example.com"
+    },
+    "abstract": "This paper investigates the behavior of quantum entanglement in multi-photon systems and proposes a novel method to maintain coherence over extended distances. The findings have implications for quantum communication and computation technologies.",
+    "keywords": [
+      "Quantum Entanglement",
+      "Photonic Systems",
+      "Quantum Communication",
+      "Coherence",
+      "Quantum Computing"
+    ]
   },
-  "abstract": "This paper investigates the behavior of quantum entanglement in multi-photon systems and proposes a novel method to maintain coherence over extended distances. The findings have implications for quantum communication and computation technologies.",
-  "keywords": ["Quantum Entanglement", "Photonic Systems", "Quantum Communication", "Coherence", "Quantum Computing"]
-}
+    {
+    "id": 11905,
+    "title": "A Comprehensive Review on Quantum Error Correction Techniques",
+    "type": "Review Paper",
+    "domain": "Quantum Computing",
+    "authors": ["Dr. S. Verma", "Dr. M. Desai"],
+    "volumeIssue": "Vol. 12, Issue 4",
+    "datePublished": "2025-05-12",
+    "doi": "10.1234/quantum.2025.049",
+    "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.049",
+    "buttons": {
+      "downloadPdf": "https://examplejournal.org/download/qec-review.pdf",
+      "share": "https://examplejournal.org/share/qec-review",
+      "cite": "https://examplejournal.org/cite/qec-review",
+      "contactAuthor": "mailto:verma@example.com"
+    },
+    "abstract": "This review summarizes various quantum error correction schemes developed over the past two decades, highlighting their applicability, limitations, and future directions in quantum computer architectures.",
+    "keywords": [
+      "Quantum Error Correction",
+      "Qubits",
+      "Fault-Tolerance",
+      "Quantum Circuits",
+      "Decoherence"
+    ]
+  },
+  {
+    "id": 11906,
+    "title": "Case Study: Implementation of Quantum Key Distribution in Urban Fiber Networks",
+    "type": "Case Studies",
+    "domain": "Quantum Cryptography",
+    "authors": ["Prof. A. Iyer", "Ms. R. D'Souza"],
+    "volumeIssue": "Vol. 12, Issue 4",
+    "datePublished": "2025-05-13",
+    "doi": "10.1234/quantum.2025.050",
+    "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.050",
+    "buttons": {
+      "downloadPdf": "https://examplejournal.org/download/qkd-case-study.pdf",
+      "share": "https://examplejournal.org/share/qkd-case-study",
+      "cite": "https://examplejournal.org/cite/qkd-case-study",
+      "contactAuthor": "mailto:iyer@example.com"
+    },
+    "abstract": "This case study explores the deployment of a quantum key distribution (QKD) system in a metropolitan fiber-optic network, analyzing performance metrics, security outcomes, and practical challenges.",
+    "keywords": [
+      "Quantum Key Distribution",
+      "Urban Networks",
+      "Cryptographic Security",
+      "Fiber Optics",
+      "Quantum Networks"
+    ]
+  },
+  {
+    "id": 11907,
+    "title": "Entanglement-Based Conceptual Framework for Quantum Internet Architecture",
+    "type": "Conceptual Paper",
+    "domain": "Quantum Networks",
+    "authors": ["Dr. P. Singh", "Prof. E. Wang"],
+    "volumeIssue": "Vol. 12, Issue 4",
+    "datePublished": "2025-05-14",
+    "doi": "10.1234/quantum.2025.051",
+    "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.051",
+    "buttons": {
+      "downloadPdf": "https://examplejournal.org/download/quantum-internet-framework.pdf",
+      "share": "https://examplejournal.org/share/quantum-internet-framework",
+      "cite": "https://examplejournal.org/cite/quantum-internet-framework",
+      "contactAuthor": "mailto:singh@example.com"
+    },
+    "abstract": "This paper proposes a conceptual model for building a quantum internet infrastructure based on distributed entanglement and teleportation protocols. It outlines architectural layers, security implications, and scalability prospects.",
+    "keywords": [
+      "Quantum Internet",
+      "Entanglement",
+      "Teleportation",
+      "Network Architecture",
+      "Quantum Routing"
+    ]
+  },
+  {
+    "id": 11908,
+    "title": "Research on Quantum Dot Photonic Integration for Scalable Quantum Chips",
+    "type": "Research Paper",
+    "domain": "Quantum Photonics",
+    "authors": ["Dr. H. Roy", "Dr. K. Tanaka"],
+    "volumeIssue": "Vol. 12, Issue 4",
+    "datePublished": "2025-05-15",
+    "doi": "10.1234/quantum.2025.052",
+    "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.052",
+    "buttons": {
+      "downloadPdf": "https://examplejournal.org/download/quantum-dot-integration.pdf",
+      "share": "https://examplejournal.org/share/quantum-dot-integration",
+      "cite": "https://examplejournal.org/cite/quantum-dot-integration",
+      "contactAuthor": "mailto:roy@example.com"
+    },
+    "abstract": "This paper examines the fabrication and integration of quantum dots in photonic circuits, presenting a scalable approach for developing quantum processors using silicon photonics.",
+    "keywords": [
+      "Quantum Dots",
+      "Photonic Circuits",
+      "Quantum Chips",
+      "Silicon Photonics",
+      "Scalable Quantum Systems"
+    ]
+  },
+  {
+    "id": 11909,
+    "title": "Review of Quantum Machine Learning Algorithms for Pattern Recognition",
+    "type": "Review Paper",
+    "domain": "Quantum Machine Learning",
+    "authors": ["Dr. J. Patel", "Dr. B. Khan"],
+    "volumeIssue": "Vol. 12, Issue 4",
+    "datePublished": "2025-05-16",
+    "doi": "10.1234/quantum.2025.053",
+    "citeArticleLink": "https://examplejournal.org/articles/quantum.2025.053",
+    "buttons": {
+      "downloadPdf": "https://examplejournal.org/download/qml-pattern-recognition.pdf",
+      "share": "https://examplejournal.org/share/qml-pattern-recognition",
+      "cite": "https://examplejournal.org/cite/qml-pattern-recognition",
+      "contactAuthor": "mailto:patel@example.com"
+    },
+    "abstract": "This review highlights key quantum machine learning algorithms applied to pattern recognition problems, comparing their efficiency with classical approaches and discussing current limitations.",
+    "keywords": [
+      "Quantum Machine Learning",
+      "Pattern Recognition",
+      "Quantum Algorithms",
+      "Supervised Learning",
+      "Data Classification"
+    ]
+  }
+]

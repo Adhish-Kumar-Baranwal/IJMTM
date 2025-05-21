@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +21,6 @@ const ContactUs = () => {
 
   return (
     <>
-      <NavBar />
       <div className="u-container contact-container">
         <div className="contact-left">
           <h2>Contact Us</h2>

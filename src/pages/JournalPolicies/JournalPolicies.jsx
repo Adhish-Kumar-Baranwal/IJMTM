@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./JournalPolicies.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const JournalPolicies = () => {
   const [policies, setPolicies] = useState([]);
@@ -14,7 +13,6 @@ const JournalPolicies = () => {
 
   return (
     <>
-      <NavBar />
 
       <div className="u-container journal-policies-wrapper">
         <h2 className="journal-policies-title"> IJMTM Journal Policies</h2>

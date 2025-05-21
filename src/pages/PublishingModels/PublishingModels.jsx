@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./PublishingModels.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const PublishingModels = () => {
   const [models, setModels] = useState([]);
@@ -14,8 +13,6 @@ const PublishingModels = () => {
 
   return (
     <>
-      <NavBar />
-
       <div className="publishing-models-container">
         <h2 className="publishing-title">Publishing Models</h2>
         <p className="publishing-subtext">

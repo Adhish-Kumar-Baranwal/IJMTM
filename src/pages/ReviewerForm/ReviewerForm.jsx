@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./ReviewerForm.css";
 import { FiChevronLeft } from "react-icons/fi";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const ReviewerForm = () => {
   const {
@@ -43,8 +42,6 @@ const ReviewerForm = () => {
 
   return (
     <>
-      <NavBar />
-
       <div className="reviewer-form-container">
         <div className="reviewer-title-section">
           <h2 className="reviewer-form-title">Become a Reviewer</h2>
