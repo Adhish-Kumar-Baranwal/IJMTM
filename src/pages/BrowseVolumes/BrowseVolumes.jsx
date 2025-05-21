@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./BrowseVolumes.css";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const BrowseVolumes = () => {
   const [volumes, setVolumes] = useState([]);
@@ -20,7 +19,6 @@ const BrowseVolumes = () => {
 
   return (
     <>
-      <NavBar />
 
       <div className="browse-volumes-container">
         <h2 className="browse-volumes-title">Browse Volumes</h2>

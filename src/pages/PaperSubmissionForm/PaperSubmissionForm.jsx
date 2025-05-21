@@ -1,7 +1,6 @@
 //PaperSubmissionForm
 import React, { useState } from "react";
 import "./PaperSubmissionForm.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
@@ -119,7 +118,6 @@ const PaperSubmissionForm = () => {
 
   return (
     <>
-      <NavBar />
       <form
         className="u-container ppr-sub-container"
         onSubmit={handleSubmit(onSubmit)}

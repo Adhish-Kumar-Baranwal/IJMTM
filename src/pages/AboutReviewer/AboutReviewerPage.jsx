@@ -1,14 +1,12 @@
 import React from "react";
 import "./AboutReviewerPage.css";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const AboutReviewerPage = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <NavBar />
 
       <div className="about-reviewer-page-container">
         <h1 className="about-reviewer-title">Become a Reviewer</h1>

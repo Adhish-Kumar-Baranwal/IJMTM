@@ -19,8 +19,6 @@ const PublishedPapers = () => {
   ];
   return (
     <>
-      <NavBar />
-
       <div className="u-container">
         <h2 className="cfp-title">Published Papers</h2>
       </div>

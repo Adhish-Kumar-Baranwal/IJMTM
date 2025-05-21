@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./CurrentVolume.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const CurrentVolume = () => {
   const [volume, setVolume] = useState(null);
@@ -18,7 +17,6 @@ const CurrentVolume = () => {
 
   return (
     <>
-      <NavBar />
       <div className="current-volume-container">
         <div className="volume-header">
           <h2>

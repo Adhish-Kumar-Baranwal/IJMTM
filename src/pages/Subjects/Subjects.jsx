@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Subjects.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const Subjects = () => {
   const [subjects, setSubjects] = useState({ Engineering: [], Management: [] });
@@ -22,7 +21,6 @@ const Subjects = () => {
 
   return (
     <>
-      <NavBar />
       <div className="u-container subjects-wrapper">
         <h2 className="subjects-title">Subjects </h2>
 

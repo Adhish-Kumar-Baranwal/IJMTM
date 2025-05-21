@@ -1,0 +1,110 @@
+.paper-page {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.paper-main.full-width {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+
+.paper-outline-section {
+  flex: 1;
+  position: sticky;
+  top: 100px; /* Adjust based on navbar height */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  line-height: 1.6;
+  max-height: fit-content;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+  width: 25%;
+  padding-right: 20px;
+  border-left: 1px solid #ddd;
+  color: #333;
+}
+
+.sidebar .outline h3,
+.sidebar .figures h4 {
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 14px;
+}
+
+.sidebar ul li {
+  margin-bottom: 8px;
+}
+
+.figures .figure-placeholder {
+  background-color: #eaeaea;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  color: #888;
+}
+
+.paper-main h1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.authors {
+  font-style: italic;
+  color: #555;
+}
+.meta{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.meta p {
+  margin: 4px 0;
+}
+
+.action-buttons {
+  margin: 15px 0;
+
+}
+
+.action-buttons a {
+  border-right: 1px solid;
+  padding-right: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #0071c2;
+  font-weight: bold;
+}
+
+.action-buttons a:last-child{
+    border-right: none;
+}
+
+.abstract{
+    margin-top: 50px;
+}
+
+.keywords {
+  margin-top: 25px;
+}
+
+.abstract h2, .keywords h3 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  text-align: start;
+}

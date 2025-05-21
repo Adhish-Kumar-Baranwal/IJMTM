@@ -1,11 +1,9 @@
 import React from "react";
 import "./Journal_Information.css";
-import NavBar from "../../components/sections/NavBar/NavBar";
 
 const Journal_Information = () => {
   return (
     <>
-      <NavBar />
 
       <div className="info-container">
         <h2 className="info-header">Journal Information</h2>

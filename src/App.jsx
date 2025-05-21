@@ -3,7 +3,6 @@ import SigninPage from "./pages/SigninPageFolder/SigninPage";
 import SignupPage from "./pages/SignupPageFolder/SignupPage";
 import HomePage from "./pages/HomePage/HomePage";
 import PublishedPapers from "./pages/PublishedPapers/PublishedPapers";
-import AuthorForm from "./components/sections/AuthorForm/AuthorForm";
 import Journal_Information from "./pages/Journal_Information/Journal_Information";
 import AboutReviewerPage from "./pages/AboutReviewer/AboutReviewerPage";
 import JournalPolicies from "./pages/JournalPolicies/JournalPolicies";
@@ -33,7 +32,7 @@ import VolumesCreate from "./AdminDashboard/Volumes/VolumesCreate/VolumesCreate"
 import Volumes from "./AdminDashboard/Volumes/Volumes";
 import Papers from "./components/sections/Papers/Papers";
 import ReviewerForm from "./pages/ReviewerForm/ReviewerForm";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import ContactUs from "./pages/ContactUs/ContactUs";
 
 const App = () => {
@@ -64,14 +63,6 @@ const App = () => {
         element={
           <Layout>
             <ReviewerForm />
-          </Layout>
-        }
-      />
-      <Route
-        path="/apply-as-author"
-        element={
-          <Layout>
-            <AuthorForm />
           </Layout>
         }
       />
@@ -154,7 +145,7 @@ const App = () => {
         }
       />
       <Route
-        path="/paper-id"
+        path="/paper/:id"
         element={
           <Layout>
             {" "}
