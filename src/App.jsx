@@ -140,7 +140,9 @@ const App = () => {
         element={
           <Layout>
             {" "}
-            <PaperSubmissionForm />{" "}
+            <ProtectedRoute>
+              <PaperSubmissionForm />
+            </ProtectedRoute>
           </Layout>
         }
       />
