@@ -12,7 +12,6 @@ router.get("/recent-submissions", async (req, res) => {
       .populate("author", "name email") // Populate author details (if needed)
       .sort({ createdAt: -1 }) // Most recent first
       
-
     res.status(200).json(papers);
   } catch (error) {
     console.error("Error fetching recent submissions:", error);

@@ -12,8 +12,8 @@ import paperSubmission from "../../../../public/Jsonfolder/AuthorPaperSubmission
 import "./PapersSubmitted.css"
 
 const PapersSubmitted = () => {
-  // const [data, setData] = useState([]);
-  const data = useMemo(() => paperSubmission, []);
+  const [data, setData] = useState([]);
+  const Data = useMemo(() => paperSubmission, []);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,

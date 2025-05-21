@@ -79,6 +79,7 @@ import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { navLists } from "../../../constants";
 import { useAuth } from "../../../context/AuthContext";
+import { CgProfile } from "react-icons/cg";
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState(null);
@@ -171,7 +172,7 @@ const NavBar = () => {
             ))}
             <li className="mobile-nav-item">
               {userType ? (
-                <button onClick={goToDashboard}>Profile</button>
+                <button onClick={goToDashboard}><CgProfile /></button>
               ) : (
                 <button onClick={() => navigate("/SigninPage")}>
                   Sign In

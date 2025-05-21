@@ -95,7 +95,6 @@ const upload = multer({
 app.use("/api/auth", authRoutes);
 app.use(
   "/api/research-paper",
-  authMiddleware(["Author", "Admin"]),
   researchPaperRoutes
 );
 app.use("/api/review", authMiddleware(["Reviewer", "Admin"]), reviewRoutes);
