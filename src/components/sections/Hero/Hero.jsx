@@ -22,7 +22,7 @@ const Hero = () => {
           International Journal of Modern <br /> Technology and Management
         </h1>
 
-        {/* Buttons Section */}
+
         <div className="hero-btn-section">
           <Link
             to="/paper-submit"

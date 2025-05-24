@@ -13,7 +13,7 @@ import AuthorPaymentDialogBox from "../../AuthorPaymentDialogBox/AuthorPaymentDi
 import "./PapersApproved.css"
 
 const PapersApproved = () => {
-  // const [data, setData] = useState([]);
+  
   const data = useMemo(() => papersApproved, []);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -23,18 +23,7 @@ const PapersApproved = () => {
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  // useEffect(() => {
-  //   axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
-  //     .then((res) => {
-  //       const formatted = res.data.map((author) => ({
-  //         ...author,
-  //         publicationTitle: "Sample Publication",
-  //         datePublished: "N/A",
-  //       }));
-  //       setData(formatted);
-  //     })
-  //     .catch((err) => console.error("Error fetching authors:", err));
-  // }, []);
+ 
 
   const columns = useMemo(
     () => [
@@ -158,9 +147,7 @@ const PapersApproved = () => {
         actionButton={
           <button
             onClick={() => {
-              // Placeholder for redirecting to payment gateway
-              // Replace with your backend redirect later
-              // replace with window.location.href = `https://your-backend.com/pay?paperId=${selectedRowData.id}`;
+              w
               alert("Redirecting to payment gateway...");
               setIsDialogOpen(false);
             }}

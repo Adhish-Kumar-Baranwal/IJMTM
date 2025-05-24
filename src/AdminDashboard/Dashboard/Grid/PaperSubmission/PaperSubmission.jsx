@@ -138,7 +138,6 @@ const PaperSubmission = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
       <div className="ppr-submission-btn-section">
         <button
           onClick={() => table.previousPage()}

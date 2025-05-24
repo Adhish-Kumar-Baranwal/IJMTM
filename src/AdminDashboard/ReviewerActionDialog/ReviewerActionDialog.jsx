@@ -73,12 +73,12 @@ const ReviewerActionDialog = ({
             className="action-button"
             onClick={async () => {
               try {
-                // Send PATCH request to backend to approve reviewer
+                
                 await axios.patch(
                   `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/approve/${reviewerData._id}`
                 );
 
-                onDecision("approved", reviewerData); // ✅ Corrected from formData
+                onDecision("approved", reviewerData); 
               } catch (error) {
                 console.error("Failed to approve reviewer", error);
               }

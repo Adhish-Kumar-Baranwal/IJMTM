@@ -19,29 +19,10 @@ const PapersPublished = () => {
     pageSize: 10,
   });
 
-  // useEffect(() => {
-  //   axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
-  //     .then((res) => {
-  //       const formatted = res.data.map((author) => ({
-  //         ...author,
-  //         publicationTitle: "Sample Publication",
-  //         datePublished: "N/A",
-  //       }));
-  //       setData(formatted);
-  //     })
-  //     .catch((err) => console.error("Error fetching authors:", err));
-  // }, []);
-
+  
 
   
-/* 
-    {
-      "title": "Exploring AI in Healthcare",
-      "type": "Research Paper",
-      "authors": ["Dr. Aayushi Mehta", "Karan Dev"],
-      "publishedDate": "2025-03-22"
-    },
-*/
+
   const columns = useMemo(
     () => [
       {

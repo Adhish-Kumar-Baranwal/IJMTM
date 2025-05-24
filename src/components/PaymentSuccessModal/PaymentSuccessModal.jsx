@@ -3,9 +3,8 @@ import "./PaymentSuccessModal.css";
 
 const PaymentSuccessModal = () => {
   const handleClose = () => {
-    // Optional: Add any cleanup or state update logic here if needed
-    // For now, it simply reloads or can be enhanced with routing logic
-    window.location.reload(); // Or navigate elsewhere if using React Router
+    
+    window.location.reload(); // 
   };
 
   return (

@@ -20,7 +20,6 @@ const AuthorInfoTable = () => {
   useEffect(() => {
     axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
       .then((res) => {
-        // Map response to include submissions and publications as "Null"
         const formatted = res.data.map((author) => ({
           ...author,
           submissions: "Null",
@@ -125,7 +124,7 @@ const AuthorInfoTable = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
+      
       <div className="author-table-btn-section">
         <button
           onClick={() => table.previousPage()}

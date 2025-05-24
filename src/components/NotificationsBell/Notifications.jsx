@@ -16,7 +16,7 @@ const Notifications = ({ role = "Author" }) => {
       .catch((error) => console.error("Error loading notifications:", error));
   }, [role]);
 
-  // Close dropdown when clicked outside
+  
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {

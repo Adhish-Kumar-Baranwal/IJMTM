@@ -1,4 +1,4 @@
-//RowActionDialog.jsx
+
 import React, { useEffect, useState } from "react";
 import "./RowActionDialog.css";
 
@@ -14,7 +14,7 @@ const RowActionDialog = ({ isOpen, onClose, rowData, onAssign }) => {
         .then((data) => setReviewers(data))
         .catch((err) => console.error("Error fetching reviewers:", err));
 
-      // Reset selection when a new row (paper) is opened
+      
       setSelectedReviewers([]);
     }
   }, [isOpen, rowData]);
@@ -29,7 +29,7 @@ const RowActionDialog = ({ isOpen, onClose, rowData, onAssign }) => {
     const assignmentPayload = {
       paperId: rowData?._id,
       reviewers: selectedReviewers,
-      deadline: reviewDeadline, // include deadline here
+      deadline: reviewDeadline, 
     };
 
     try {

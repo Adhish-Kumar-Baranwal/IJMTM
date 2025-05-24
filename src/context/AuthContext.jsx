@@ -3,13 +3,14 @@ import { createContext, useContext, useState } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // null if not logged in
+  const [userType, setUserType] = useState(null); 
 
-  const login = (userData) => setUser(userData);
-  const logout = () => setUser(null);
+  // login expects userType string directly now
+  const login = (type) => setUserType(type);
+  const logout = () => setUserType(null);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ userType, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

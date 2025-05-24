@@ -3,7 +3,7 @@ import "./AuthorTopBar.css";
 import Notifications from "../../../components/NotificationsBell/Notifications";
 
 const AuthorTopBar = () => {
-  // Get user from localStorage
+ 
   const user = JSON.parse(localStorage.getItem("user"));
 
   const date = new Date();

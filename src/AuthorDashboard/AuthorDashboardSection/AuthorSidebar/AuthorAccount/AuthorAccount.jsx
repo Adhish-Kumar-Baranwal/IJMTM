@@ -2,7 +2,7 @@ import React from "react";
 import "./AuthorAccount.css"
 
 const AuthorAccount = () => {
-  // Get user info from localStorage
+  
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (

@@ -122,7 +122,7 @@ const ReviewersApplied = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
+  
       <div className="reviewers-table-btn-section">
         <button
           onClick={() => table.previousPage()}
@@ -143,11 +143,11 @@ const ReviewersApplied = () => {
         </button>
       </div>
 
-      {/* Action Dialog */}
+      
       <ReviewerActionDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
-        reviewerData={selectedReviewerData} // pass full reviewer object
+        reviewerData={selectedReviewerData} 
         onDecision={(decision, formData) => {
           console.log(`Reviewer ${formData.firstName} has been ${decision}`);
           setIsDialogOpen(false);

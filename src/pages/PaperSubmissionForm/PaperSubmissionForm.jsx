@@ -218,7 +218,6 @@ const PaperSubmissionForm = () => {
             <label className="inline mb-1">Keywords*: </label>
             <input
               type="text"
-              // className="border rounded p-2 w-[50%]"
               rows={4}
               {...register("keywords", { required: true })}
             />
@@ -233,6 +232,7 @@ const PaperSubmissionForm = () => {
             <input
               type="number"
               min="1"
+              max="6"
               defaultValue="1"
               {...register("no-authors", {
                 required: true,

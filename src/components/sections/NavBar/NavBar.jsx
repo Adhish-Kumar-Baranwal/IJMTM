@@ -9,13 +9,16 @@ const NavBar = () => {
   const [dropdown, setDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { userType } = useAuth();
+const { userType } = useAuth();
 
-  const goToDashboard = () => {
-    if (userType === "author") navigate("/author/authorDashboard");
-    else if (userType === "admin") navigate("/adminPanel/dashboard");
-    else if (userType === "reviewer") navigate("/reviewerDashboard/dashboard");
-  };
+const goToDashboard = () => {
+  console.log("goToDashboard called");
+  console.log("userType:", userType);
+
+  if (userType === "author") navigate("/author");
+  else if (userType === "admin") navigate("/adminPanel");
+  else if (userType === "reviewer") navigate("/reviewerDashboard");
+};
 
   return (
     <header className="nav-header" onMouseLeave={() => setDropdown(null)}>
@@ -63,7 +66,7 @@ const NavBar = () => {
         <div className="nav-btn-section max-sm:hidden">
           {userType ? (
             <button onClick={goToDashboard} className="nav-profile-btn">
-              Profile
+              <CgProfile />
             </button>
           ) : (
             <button

@@ -9,9 +9,8 @@ const router = express.Router();
 router.get("/recent-submissions", async (req, res) => {
   try {
     const papers = await ResearchPaper.find({})
-      .populate("author", "name email") // Populate author details (if needed)
-      .sort({ createdAt: -1 }) // Most recent first
-      
+      .populate("author", "name email") 
+      .sort({ createdAt: -1 }) 
     res.status(200).json(papers);
   } catch (error) {
     console.error("Error fetching recent submissions:", error);
