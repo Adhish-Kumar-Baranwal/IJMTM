@@ -1,5 +1,5 @@
 //model/Submission.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const submissionSchema = new mongoose.Schema({
   title: String,
@@ -10,6 +10,12 @@ const submissionSchema = new mongoose.Schema({
   abstract: String,
   pdfFileId: mongoose.Schema.Types.ObjectId,
   submissionDate: Date,
+  assignedReviewers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviewer' }],
+  status: { type: String , default: 'Submitted' },
+  reviewDeadline: { type: Date }
 }, { collection: "submissions" });
 
-module.exports = mongoose.model("Submission", submissionSchema);
+const Submission = mongoose.model("Submission", submissionSchema);
+export default Submission;
+
+

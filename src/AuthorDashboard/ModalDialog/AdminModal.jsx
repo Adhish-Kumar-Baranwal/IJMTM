@@ -1,8 +1,7 @@
-//ReviewerPaperModal.jsx
+//AdminModal.jsx
 import React, { useState } from "react";
-import "./ReviewerPaperModal.css";
-
-const ReviewerPaperModal = ({ onClose, paper }) => {
+import "../../ReviewerDashboard/ReviewerPaperView/ReviewerPaperModal.css";
+const AdminModal = ({ onClose, paper }) => {
   const [remarks, setRemarks] = useState("");
 
   if (!paper || !paper.pdfUrl) return null;
@@ -74,4 +73,4 @@ const ReviewerPaperModal = ({ onClose, paper }) => {
   );
 };
 
-export default ReviewerPaperModal;
+export default AdminModal;

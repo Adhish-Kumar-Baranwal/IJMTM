@@ -19,7 +19,7 @@ const ReviewerSchema = new mongoose.Schema({
      enum: ["Pending", "Approved", "Rejected"],
     default: "Pending", // So admin can approve later
   },
-  appliedDate: { type: Date, default: Date.now }, // New field added
+  appliedDate: { type: Date, default: Date.now }, 
 }, { timestamps: true });
 
 const Reviewer = mongoose.model("Reviewer", ReviewerSchema);

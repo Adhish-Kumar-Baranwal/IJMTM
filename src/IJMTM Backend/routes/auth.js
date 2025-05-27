@@ -3,6 +3,7 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js"; // Ensure correct path
+import Reviewer from "../models/Reviewer.js";
 
 const router = express.Router();
 
@@ -53,35 +54,9 @@ router.post("/register", async (req, res) => {
 
 
 
-const adminReviewerUsers  = [
-  {
-    email: process.env.ADMIN_EMAIL,
-    password: process.env.ADMIN_PASSWORD,
-    role: 'admin',
-  },
-  {
-    email: process.env.REVIEWER1_EMAIL,
-    password: process.env.REVIEWER1_PASSWORD,
-    role: 'reviewer',
-  },
-  {
-    email: process.env.REVIEWER2_EMAIL,
-    password: process.env.REVIEWER2_PASSWORD,
-    role: 'reviewer',
-  },
-  {
-    email: process.env.REVIEWER3_EMAIL,
-    password: process.env.REVIEWER3_PASSWORD,
-    role: 'reviewer',
-  },
-  {
-    email: process.env.REVIEWER4_EMAIL,
-    password: process.env.REVIEWER4_PASSWORD,
-    role: 'reviewer',
-  },
-];
 
-// LOGIN Route
+
+
 // LOGIN Route
 router.post("/login", async (req, res) => {
   try {
@@ -99,6 +74,7 @@ router.post("/login", async (req, res) => {
       return res.status(200).json({
         token,
         user: {
+         
           name: "Admin",
           email,
           role: "Admin",
@@ -130,15 +106,20 @@ router.post("/login", async (req, res) => {
     // 3️⃣ If not Admin or Reviewer, check as Author from DB
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "Invalid email or password" });
-
+     const reviewer = await Reviewer.findOne({ email });
+     
     const isMatch = await user.matchPassword(password);
     if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
 
-    const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, {
+
+    const token = jwt.sign({ userId: user._id, role: user.role, reviewer: reviewer._id }, JWT_SECRET, {
       expiresIn: "7d",
     });
-
-    res.status(200).json({ token, user });
+    const userWithReviewer = {
+  ...user.toObject(),
+  reviewer: reviewer?._id || null
+};
+    res.status(200).json({ token, user: userWithReviewer });
 
   } catch (error) {
     console.error("🔥 Login error:", error);

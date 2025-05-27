@@ -16,6 +16,7 @@ import reviewRoutes from "./src/IJMTM Backend/routes/review.js";
 import reviewerRoutes from "./src/IJMTM Backend/routes/reviewer.js";
 import Reviewer from "./src/IJMTM Backend/models/Reviewer.js";
 import User from "./src/IJMTM Backend/models/User.js";
+import Submission from "./src/IJMTM Backend/models/Submission.js";
 
 // Middleware for Role-Based Access Control
 const authMiddleware = (allowedRoles = []) => {
@@ -55,8 +56,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://fw9vjsxr-5173.inc1.devtunnels.ms",
-      "https://t4hxj7p8-5173.inc1.devtunnels.ms"
-
+      "https://t4hxj7p8-5173.inc1.devtunnels.ms",
     ],
     credentials: true,
   })
@@ -93,10 +93,7 @@ const upload = multer({
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use(
-  "/api/research-paper",
-  researchPaperRoutes
-);
+app.use("/api/research-paper", researchPaperRoutes);
 app.use("/api/review", authMiddleware(["Reviewer", "Admin"]), reviewRoutes);
 // app.use("/api/reviewer", authMiddleware(["Admin"]), reviewerRoutes);
 app.post("/api/reviewer/apply", async (req, res) => {
@@ -116,17 +113,11 @@ app.post("/api/reviewer/apply", async (req, res) => {
   }
 });
 
-
-
 //applied reviewers route
 app.use("/api", reviewerRoutes); // NOT /api/reviewers-applied
 
-
-
-// Temporarily remove the authMiddleware for testing
 app.post(
   "/api/upload-paper",
-  // authMiddleware(["Author"]),  // Commented out for testing
   upload.single("pdf"),
   async (req, res) => {
     try {
@@ -134,7 +125,8 @@ app.post(
         return res.status(400).json({ message: "No file uploaded" });
       }
 
-      const { title,domain, noAuthors, authors, documentType, abstract } = req.body;
+      const { title, domain, noAuthors, authors, documentType, abstract } =
+        req.body;
       const fileStream = Readable.from(req.file.buffer);
       const filename = `${Date.now()}-${req.file.originalname}`;
 
@@ -149,21 +141,32 @@ app.post(
           res.status(500).json({ message: "File upload failed" });
         })
         .on("finish", async () => {
-          const db = client.db();
-          const collection = db.collection("submissions");
+          // Validate and parse noAuthors
+          let numAuthors = parseInt(noAuthors, 10);
+          if (isNaN(numAuthors)) {
+            return res.status(400).json({ message: "Invalid number of authors" });
+          }
 
-          const doc = {
+          let parsedAuthors;
+          try {
+            parsedAuthors = JSON.parse(authors);
+            if (!Array.isArray(parsedAuthors)) throw new Error();
+          } catch {
+            return res.status(400).json({ message: "Invalid authors format" });
+          }
+
+          const doc = new Submission({
             title,
             domain,
-            noAuthors: parseInt(noAuthors),
-            authors: JSON.parse(authors),
+            noAuthors: numAuthors,
+            authors: parsedAuthors,
             documentType,
             abstract,
             pdfFileId: uploadStream.id,
             submissionDate: new Date(),
-          };
+          });
 
-          await collection.insertOne(doc);
+          await doc.save();
 
           res.status(201).json({
             message: "Submission successful",
@@ -179,19 +182,19 @@ app.post(
 //submission route
 app.get("/api/recent-submissions", async (req, res) => {
   try {
-    const db = client.db();
-    const collection = db.collection("submissions");
+    const submissions = await Submission.find({ status: "Submitted" })
+      .sort({ submissionDate: -1 })
+      .limit(5);
 
-    // Fetch the latest 5 submissions
-    const submissions = await collection
-      .find()
-      .sort({ submissionDate: -1 })  // Sort by submission date descending
-      
-      .toArray();
+    if (submissions.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No submitted submissions found" });
+    }
 
     res.status(200).json(submissions);
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching recent submissions:", err);
     res.status(500).json({ message: "Failed to fetch submissions" });
   }
 });

@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 import Reviewer from "../models/Reviewer.js";
 import User from "../models/User.js";
 import Assignment from "../models/Assignment.js";
+import Submission from '../models/Submission.js';
+
+
 
 dotenv.config();
 const router = express.Router();
@@ -58,6 +61,7 @@ router.post("/register", async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 });
+
 
 // Reviewer Login
 router.post("/login", async (req, res) => {
@@ -156,35 +160,30 @@ router.patch("/reject/:id", async (req, res) => {
 
 // Get reviewers who have been assigned at least one paper
 router.get("/reviewers-active", async (req, res) => {
-  try {
-    const assignments = await Assignment.aggregate([
-      {
-        $lookup: {
-          from: "reviewers",
-          localField: "reviewerId",
-          foreignField: "_id",
-          as: "reviewer",
-        },
-      },
-      { $unwind: "$reviewer" },
-      {
-        $group: {
-          _id: "$reviewer._id",
-          firstName: { $first: "$reviewer.firstName" },
-          lastName: { $first: "$reviewer.lastName" },
-          papersAssigned: { $sum: 1 },
-          reviewsDone: { $sum: 0 }, // Replace with real logic if review tracking is implemented
-          reviewDeadline: { $max: "$deadline" },
-        },
-      },
-    ]);
-    
-    console.log("ACTIVE REVIEWERS >>>", assignments);
+ 
+ try {
+    const submissions = await Submission.find()
+      .populate({
+        path: "assignedReviewers",
+        select: "firstName lastName" // Assuming 'name' field exists in User model
+      }) 
+      .lean();
+      console.log(submissions)
+    // Transform the data structure
+    const result = submissions.flatMap(submission => {
+      if (!submission.assignedReviewers?.length) return [];
+      
+      return submission.assignedReviewers.map(reviewer => ({
+        reviewerName: reviewer.firstName + " " + reviewer.lastName,
+        paperTitle: submission.title,
+        pdfFileId: submission.pdfFileId,
+        reviewDeadline: submission.reviewDeadline
+      }));
+    });
 
-    res.status(200).json(assignments);
+    res.status(200).json(result);
   } catch (error) {
-    console.error("Error fetching active reviewers:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 });
 

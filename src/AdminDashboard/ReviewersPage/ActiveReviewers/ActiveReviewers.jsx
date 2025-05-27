@@ -37,8 +37,8 @@ const ActiveReviewers = () => {
         },
       },
       {
-        header: "Reviews Done",
-        accessorKey: "reviewsDone",
+        header: "Paper ID",
+        accessorKey: "paperid",
       },
       {
         header: "Papers Assigned",
@@ -79,9 +79,6 @@ const ActiveReviewers = () => {
         <h3 className="flex items-center gap-1.5 font-medium">
           <FiUsers /> Active Reviewers
         </h3>
-        <button className="text-sm cursor-pointer hover:underline">
-          See all
-        </button>
       </div>
 
       <table className="w-full table-auto border border-stone-300 border-collapse">

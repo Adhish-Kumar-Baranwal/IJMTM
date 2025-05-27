@@ -2,21 +2,41 @@
 import express from 'express';
 import ResearchPaper from '../models/ResearchPaper.js';
 import { authenticate, authorizeRoles } from '../middleware/authMiddleware.js';
+import Submission from '../models/Submission.js';
 
 const router = express.Router();
 
 // GET: Recent Submissions
-router.get("/recent-submissions", async (req, res) => {
-  try {
-    const papers = await ResearchPaper.find({})
-      .populate("author", "name email") 
-      .sort({ createdAt: -1 }) 
-    res.status(200).json(papers);
-  } catch (error) {
-    console.error("Error fetching recent submissions:", error);
-    res.status(500).json({ message: "Server Error" });
-  }
-});
+// router.get("/recent-submissions", async (req, res) => {
+//   try {
+//     const papers = await ResearchPaper.find({})
+//       .populate("author", "name email") 
+//       .sort({ createdAt: -1 }) 
+//     res.status(200).json(papers);
+//   } catch (error) {
+//     console.error("Error fetching recent submissions:", error);
+//     res.status(500).json({ message: "Server Error" });
+//   }
+// });
+
+// router.get("/recent-submissions", async (req, res) => {
+//   try {
+//     const papers = await ResearchPaper.find({ status: "Submitted" })
+//       .populate("author", "name email")
+//       .sort({ createdAt: -1 });
+
+//     if (papers.length === 0) {
+//       return res
+//         .status(404)
+//         .json({ message: "No submitted papers found" });
+//     }
+
+//     res.status(200).json(papers);
+//   } catch (error) {
+//     console.error("Error fetching recent submissions:", error);
+//     res.status(500).json({ message: "Server Error" });
+//   }
+// });
 
 // Author uploads a research paper
 router.post("/upload-paper", async (req, res) => {
@@ -42,20 +62,21 @@ router.get('/', authenticate, authorizeRoles(['admin']), async (req, res) => {
 
 // Assign reviewers to a paper
 router.post("/assign-reviewers", async (req, res) => {
-  const { paperId, reviewers } = req.body;
+  const { paperId, reviewers,deadline } = req.body;
 
   if (!paperId || !Array.isArray(reviewers)) {
     return res.status(400).json({ message: "Missing paperId or reviewers" });
   }
 
   try {
-    const paper = await ResearchPaper.findById(paperId);
+    const paper = await Submission.findById(paperId);
 
     if (!paper) {
       return res.status(404).json({ message: "Research paper not found" });
     }
 
     paper.assignedReviewers = reviewers;
+    
     paper.reviewDeadline = new Date(deadline);
 
     await paper.save();
@@ -66,6 +87,69 @@ router.post("/assign-reviewers", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+router.get("/submission/admin", async (req, res) => {
+  try {
+    const submissions = await Submission.find({ status: { $ne: "Submitted" } })
+      .populate("assignedReviewers", "name email");
+
+    if (submissions.length === 0) {
+      return res.status(404).json({ message: "No submissions found" });
+    }
+
+    res.status(200).json({ submissions });
+  } catch (error) {
+    console.error("Error fetching submissions:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+router.get("/submission/reviewer/:reviewerId", async (req, res) => {
+const { reviewerId } = req.params;
+
+  try {
+    const submissions = await Submission.find({
+      assignedReviewers: reviewerId,
+      status: { $ne: "Assigned" }
+    })
+    .populate("assignedReviewers", "name email");
+
+    if (submissions.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No submissions found for this reviewer" });
+    }
+
+    res.status(200).json({ submissions });
+  } catch (error) {
+    console.error("Error fetching submissions:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
+router.get("/submission/:reviewerId", async (req, res) => {
+  const { reviewerId } = req.params;
+
+   try {
+    const submissions = await Submission.find({
+      assignedReviewers: reviewerId,
+      status: "Assigned"
+    })
+    .populate("assignedReviewers", "name email");
+
+    if (submissions.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No assigned submissions found for this reviewer" });
+    }
+
+    res.status(200).json({ submissions });
+  } catch (error) {
+    console.error("Error fetching submissions:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 
 
 export default router;

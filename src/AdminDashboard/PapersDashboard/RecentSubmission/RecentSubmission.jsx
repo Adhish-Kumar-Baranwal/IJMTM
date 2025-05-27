@@ -9,7 +9,7 @@ import {
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import RowActionDialog from "../../../components/RowActionDialog/RowActionDialog";
-import ReviewerPaperModal from "../../../ReviewerDashboard/ReviewerPaperView/ReviewerPaperModal";
+import AdminModal from "../../../AuthorDashboard/ModalDialog/AdminModal";
 import { Link } from "react-router-dom";
 
 const RecentSubmission = () => {
@@ -218,7 +218,7 @@ const RecentSubmission = () => {
 
       {/* Reviewer Paper Modal */}
       {isReviewModalOpen && reviewPaperData && (
-        <ReviewerPaperModal
+        <AdminModal
           onClose={() => setIsReviewModalOpen(false)}
           paper={reviewPaperData}
         />

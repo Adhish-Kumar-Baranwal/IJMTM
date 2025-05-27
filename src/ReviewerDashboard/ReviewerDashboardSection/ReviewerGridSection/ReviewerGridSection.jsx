@@ -8,7 +8,7 @@ const ReviewerGridSection = () => {
   return (
     <div className="reviewer-main-dashboard-grid">
         <ReviewerStatCard />
-        <ReviewersPapersAssigned />
+        <ReviewersPapersAssigned  />
         <ReviewersPapersReviewDone />
     </div>
   );
