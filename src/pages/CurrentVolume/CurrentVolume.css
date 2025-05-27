@@ -3,7 +3,7 @@
     background-color: #f9f9f9;
   }
   
-  .volume-header h2 {
+  .volume-header>h2 {
     text-align: center;
     font-size: 1.8rem;
     font-weight: 600;

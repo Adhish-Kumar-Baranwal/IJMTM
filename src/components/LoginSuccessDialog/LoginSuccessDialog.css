@@ -1,0 +1,33 @@
+/* Overlay background */
+.login-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+/* Dialog box */
+.login-dialog-box {
+  background-color: rgba(255, 255, 255, 0.9); /* slightly transparent white */
+  backdrop-filter: blur(4px);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 20rem;
+  width: 100%;
+}
+
+.login-dialog-box h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #15803d; /* Tailwind green-700 */
+}
+
+.login-dialog-box p {
+  margin-top: 0.5rem;
+  color: #1f2937; /* Tailwind gray-800 */
+}

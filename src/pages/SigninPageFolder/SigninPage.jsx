@@ -3,12 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SigninPage.css";
 import { useAuth } from "../../context/AuthContext";
+import LoginSuccessDialog from "../../components/LoginSuccessDialog/LoginSuccessDialog";
 
 const SigninPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [userName, setUserName] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,12 +31,15 @@ const SigninPage = () => {
         "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/login",
         formData
       );
+      console.log(res.data.user);
+      console.log(userName)
 
       // Save token and user data to localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      alert(`Login successful! Welcome, ${res.data.user.name}`);
+      // alert(`Login successful! Welcome, ${res.data.user.name}`);
+      setUserName(res.data.user.name);
 
       // Redirect based on role
       if (res.data.user.role === "Admin") {
@@ -110,10 +117,9 @@ const SigninPage = () => {
         <h1>Join the IJMTM Community</h1>
         <p>Submit, review, and publish high-quality research papers.</p>
         {/*  onClick={() => navigate("/SigninPage")} */}
-        <button className="cta-btn">
-          Read Submission Guidelines
-        </button>
+        <button className="cta-btn">Read Submission Guidelines</button>
       </div>
+      <LoginSuccessDialog username={userName} />
     </div>
   );
 };
