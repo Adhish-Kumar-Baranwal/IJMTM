@@ -23,7 +23,7 @@ const ReviewersPapersAssigned = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 const handleOpenModal = (paper) => {
-  console.log("Clicked paper:", paper);
+
   // Construct the pdfUrl similar to how it's done in RecentSubmission.jsx
   const paperWithUrl = {
     ...paper,
@@ -34,18 +34,13 @@ const handleOpenModal = (paper) => {
 };
 
  const handleCloseModal = () => {
-  console.log("Closing modal for paper:", selectedPaper);
   setSelectedPaper(null);
   setIsModalOpen(false);
 };
 
 
 
-  // build our data array from the fetched paper
-  // const data = useMemo(() => {
-  //   if (!paper) return [];
-  //   return Array.isArray(paper) ? paper : [paper];
-  // }, [paper]);
+  
 const data = useMemo(() => {
   return paper || [];
 }, [paper]);
@@ -62,7 +57,7 @@ const data = useMemo(() => {
         );
         if (!res.ok) throw new Error("Failed to fetch research paper");
         const json = await res.json();
-         console.log("Fetched papers:", json.submissions); // Add this to debug
+        
         setPaper(json.submissions);
       } catch (err) {
         setError(err.message);
@@ -74,8 +69,27 @@ const data = useMemo(() => {
   const columns = useMemo(
     () => [
       { header: "Title", accessorKey: "title" },
+       { header: "Domain", accessorKey: "domain" },
       { header: "Type", accessorKey: "documentType" },
-      { header: "Deadline Date", accessorKey: "reviewDeadline" },
+      
+      {
+        header: "Submitted",
+        accessorKey: "submissionDate",
+        cell: ({ getValue }) =>
+          new Date(getValue()).toLocaleDateString("en-GB"),
+      },
+      {
+        header: "Deadline",
+        accessorKey: "reviewDeadline",
+        cell: ({ getValue }) =>
+          new Date(getValue()).toLocaleDateString("en-GB"),
+      },
+      {
+        header: "Author(s)",
+        accessorKey: "authors",
+        cell: ({ getValue }) =>
+          getValue().map((a) => a.name).join(", "),
+      },
       {
         header: "Status",
         accessorKey: "status",

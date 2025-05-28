@@ -187,4 +187,23 @@ router.get("/reviewers-active", async (req, res) => {
   }
 });
 
+router.get("/submission/published", async (req, res) => {
+  try {
+    // Only fetch submissions whose status is exactly "Published"
+    const submissions = await Submission.find({ status: "Published" })
+      .populate("assignedReviewers", "name email");
+
+    if (submissions.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No published submissions found" });
+    }
+
+    res.status(200).json({ submissions });
+  } catch (error) {
+    console.error("Error fetching published submissions:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 export default router;

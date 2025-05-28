@@ -5,6 +5,7 @@ const submissionSchema = new mongoose.Schema({
   title: String,
   domain: String,
   noAuthors: Number,
+  authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   authors: Array,
   documentType: String,
   abstract: String,
@@ -12,7 +13,8 @@ const submissionSchema = new mongoose.Schema({
   submissionDate: Date,
   assignedReviewers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviewer' }],
   status: { type: String , default: 'Submitted' },
-  reviewDeadline: { type: Date }
+  reviewDeadline: { type: Date },
+  reviewComments: {type: String},
 }, { collection: "submissions" });
 
 const Submission = mongoose.model("Submission", submissionSchema);

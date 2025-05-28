@@ -54,6 +54,9 @@ router.post("/upload-paper", async (req, res) => {
 });
 
 
+
+
+
 // Fetch all research papers (Admin)
 router.get('/', authenticate, authorizeRoles(['admin']), async (req, res) => {
   const papers = await ResearchPaper.find().populate('author assignedReviewers');
@@ -76,7 +79,7 @@ router.post("/assign-reviewers", async (req, res) => {
     }
 
     paper.assignedReviewers = reviewers;
-    
+    paper.status = "Assigned";
     paper.reviewDeadline = new Date(deadline);
 
     await paper.save();
@@ -141,6 +144,50 @@ router.get("/submission/:reviewerId", async (req, res) => {
       return res
         .status(404)
         .json({ message: "No assigned submissions found for this reviewer" });
+    }
+
+    res.status(200).json({ submissions });
+  } catch (error) {
+    console.error("Error fetching submissions:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.put("/submission/:submissionId", async (req, res) => {
+  const { submissionId } = req.params;
+  const { status, reviewComments } = req.body;
+
+  try {
+    const submission = await Submission.findById(submissionId);
+
+    if (!submission) {
+      return res.status(404).json({ message: "Submission not found" });
+    }
+
+    submission.status = status;
+    submission.reviewComments = reviewComments;
+
+    await submission.save();
+
+    res.status(200).json({ message: "Submission updated successfully" });
+  } catch (error) {
+    console.error("Error updating submission:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get("/submission/author/:authorId", async (req, res) => {
+  const { authorId } = req.params;
+
+   try {
+    const submissions = await Submission.find({
+      authorId: authorId,
+    })
+
+    if (submissions.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No  submissions found for this author" });
     }
 
     res.status(200).json({ submissions });

@@ -1,20 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Draggable from "react-draggable";
 import "../../ReviewerDashboard/ReviewerPaperView/ReviewerPaperModal.css";
+import axios from "axios";
 
-const AdminModal = ({ onClose, paper }) => {
+const PublishModal = ({ onClose, paper, reviewerId }) => {
   const [remarks, setRemarks] = useState("");
+  const [reviewerRemarks, setReviewerRemarks] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const dragRef = useRef(null);
+  
+  console.log("😤",paper);
+ 
 
   if (!paper || !paper.pdfUrl) return null;
 
   const { pdfUrl, title } = paper;
 
-  // const handlePublish = () => {
-  //   alert("Paper Published!!");
-  //   onClose();
-  // }; 
-  const handlePublish = async () => {
+   const handlePublish = async () => {
   try {
     const res = await fetch(
       "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/6836c02f1e421d4fcbaf6d29",
@@ -35,7 +38,7 @@ const AdminModal = ({ onClose, paper }) => {
     }
 
     const data = await res.json();
-    alert("Paper Published Successfully");
+    alert("Paper Approved");
 
     // Optional: Trigger a re-fetch or update UI accordingly
     onClose();
@@ -120,6 +123,13 @@ const AdminModal = ({ onClose, paper }) => {
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
                 />
+                
+                {/* Remark Received section */}
+                <div className="remark-received">
+                  <h4>Remark Received:</h4>
+                  {paper.reviewComments}
+                </div>
+                
                 <div className="modal-buttons">
                   <button className="btn approve" onClick={handlePublish}>Publish</button>
                   <button className="btn reject" onClick={handleReject}>Reject</button>
@@ -134,4 +144,4 @@ const AdminModal = ({ onClose, paper }) => {
   );
 };
 
-export default AdminModal;
+export default PublishModal;

@@ -30,23 +30,31 @@ const ActiveReviewers = () => {
     () => [
       {
         header: "Name",
-        accessorKey: "firstName", // still needed for sorting/filtering
-        cell: ({ row }) => {
-          const { firstName, lastName } = row.original;
-          return `${firstName} ${lastName}`;
-        },
+        accessorKey: "reviewerName", // still needed for sorting/filtering
+      
       },
       {
         header: "Paper ID",
-        accessorKey: "paperid",
+        accessorKey: "pdfFileId",
       },
       {
         header: "Papers Assigned",
-        accessorKey: "papersAssigned",
+        accessorKey: "paperTitle",
       },
       {
         header: "Review Deadline",
         accessorKey: "reviewDeadline",
+        cell: ({ getValue }) => {
+          const dateValue = getValue();
+          if (!dateValue) return '-';
+          
+          return new Date(dateValue).toLocaleDateString('en-IN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            timeZone: 'Asia/Kolkata'
+          });
+        },
       },
       {
         id: "actions",

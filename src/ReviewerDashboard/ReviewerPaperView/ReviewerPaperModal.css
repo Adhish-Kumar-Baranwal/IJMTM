@@ -12,14 +12,22 @@
 }
 
 .modal-content {
+  resize: both;
+  overflow: auto;
   background: #fff;
   padding: 25px;
   border-radius: 10px;
   width: 90%;
-  height: auto;
-  max-width: 800px;
+  min-width: 800px; /* Increased initial width */
+  min-height: 600px; /* Added initial height */
+  max-width: 1200px; /* Increased max width */
+  max-height: 90vh;
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  cursor: move;
 }
 
 .modal-close {
@@ -34,44 +42,84 @@
   cursor: pointer;
 }
 
-.modal-content h2 {
+.modal-body {
+  display: flex;
+  gap: 20px;
+  height: calc(100% - 40px); /* Make body fill available space */
+  min-height: 500px; /* Ensure minimum height */
+}
+
+.left-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* Fill parent height */
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%; /* Fill parent height */
+}
+
+.modal-title {
   margin-bottom: 16px;
   font-size: 1.5rem;
   text-align: center;
 }
 
 .pdf-container {
-  height: 500px;
+  flex: 1; /* Take all available space */
+  min-height: 0; /* Allow shrinking */
   overflow: hidden;
-  margin-bottom: 20px;
 }
 
 .pdf-container iframe {
   width: 100%;
   height: 100%;
+  min-height: 300px; /* Ensure minimum height */
   border: none;
 }
 
 .remarks-input {
   width: 100%;
-  height: 100px;
+  height: 100%; /* Fill available space */
+  min-height: 150px; /* Minimum height */
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   resize: none;
   font-size: 1rem;
   margin-bottom: 20px;
+  flex: 1; /* Take available space */
 }
 
+.remark-received {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.remark-received h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.remark-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 .modal-buttons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 10px;
 }
 
 .btn {
-  flex: 1;
   padding: 10px 14px;
   font-size: 1rem;
   border: none;
@@ -96,13 +144,28 @@
   color: white;
 }
 
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
   .modal-content {
-    max-height: 90vh;
-    overflow-y: auto;
+    min-width: 90%;
+    min-height: 90vh;
+  }
+  
+  .modal-body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
   }
 
   .pdf-container {
-    height: 3
+    height: 400px;
+  }
+  
+  .remarks-input {
+    height: 200px;
   }
 }

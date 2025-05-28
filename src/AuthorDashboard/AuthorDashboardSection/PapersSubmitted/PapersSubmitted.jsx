@@ -8,37 +8,36 @@ import {
 } from "@tanstack/react-table";
 import { MdOutlineUploadFile } from "react-icons/md";
 import { Link } from "react-router-dom";
-import paperSubmission from "../../../../public/Jsonfolder/AuthorPaperSubmissions.json";
-import "./PapersSubmitted.css"
+import "./PapersSubmitted.css";
 
 const PapersSubmitted = () => {
   const [data, setData] = useState([]);
-  const Data = useMemo(() => paperSubmission, []);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
   });
-//
+
+  // Fetch submission data
   useEffect(() => {
-    axios.get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/authors")
+    axios
+      .get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/author/6837208e549d0fc5a8d8a68c")
       .then((res) => {
-        const formatted = res.data.map((author) => ({
-          ...author,
-          submissionTitle: "Sample Submission",
-          dateSubmitted: "N/A",
+        const formatted = res.data.submissions.map((submission) => ({
+          title: submission.title,
+          authors: submission.authors.map((a) => a.name),
+          type: submission.documentType,
+          submittedDate: new Date(submission.submissionDate).toLocaleDateString(),
         }));
         setData(formatted);
       })
-      .catch((err) => console.error("Error fetching authors:", err));
+      .catch((err) => console.error("Error fetching submissions:", err));
   }, []);
-
 
   const columns = useMemo(
     () => [
       {
         header: "Title",
         accessorKey: "title",
-        // cell: ({ row }) => row.original.name || "N/A",
       },
       {
         header: "Author/Co-author",
@@ -48,12 +47,32 @@ const PapersSubmitted = () => {
       {
         header: "Type",
         accessorKey: "type",
-        // cell: ({ row }) => row.original.publicationTitle || "N/A",
       },
       {
         header: "Submitted Date",
         accessorKey: "submittedDate",
-        // cell: ({ row }) => row.original.datePublished,
+      },
+       {
+        header: "Status",
+        accessorKey: "status",
+        cell: ({ getValue }) => {
+          const status = getValue();
+          const statusColorMap = {
+            Assigned: "bg-blue-100 text-blue-600",
+            Approved: "bg-green-100 text-green-600",
+            Rejected: "bg-red-100 text-red-600",
+            Published: "bg-purple-100 text-purple-600",
+            Submitted: "bg-yellow-100 text-yellow-600",
+          };
+          return (
+            <span
+              className={`ppr-submission-status-span ${statusColorMap[status] ?? ""
+                }`}
+            >
+              {status}
+            </span>
+          );
+        },
       },
       {
         id: "actions",
@@ -69,7 +88,7 @@ const PapersSubmitted = () => {
   );
 
   const table = useReactTable({
-    data: paperSubmission,
+    data,
     columns,
     state: { pagination },
     onPaginationChange: setPagination,
@@ -86,16 +105,10 @@ const PapersSubmitted = () => {
       <table className="ppr-submitted-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr
-              key={headerGroup.id}
-              className="text-sm font-normal text-stone-500"
-            >
+            <tr key={headerGroup.id} className="text-sm font-normal text-stone-500">
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="text-start p-1.5">
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
+                  {flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
             </tr>
@@ -103,10 +116,7 @@ const PapersSubmitted = () => {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row, index) => (
-            <tr
-              key={row.id}
-              className={(index + 1) % 2 ? "bg-stone-300 text-sm" : "text-sm"}
-            >
+            <tr key={row.id} className={(index + 1) % 2 ? "bg-stone-300 text-sm" : "text-sm"}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id} className="p-1.5 whitespace-nowrap">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -126,8 +136,7 @@ const PapersSubmitted = () => {
           Prev
         </button>
         <span className="text-sm">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
-          {table.getPageCount()}
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </span>
         <button
           onClick={() => table.nextPage()}

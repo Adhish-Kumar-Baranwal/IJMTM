@@ -58,7 +58,8 @@ const PaperSubmissionForm = () => {
   const handleSelectChange = (selected) => {
     setSelectedOptions(selected);
   };
-
+   const authorId =  JSON.parse(localStorage.getItem("user"));
+    console.log("🤩",authorId?._id)
   const onSubmit = async (data) => {
     const file = data["uploaded-document"][0];
 
@@ -66,7 +67,6 @@ const PaperSubmissionForm = () => {
       alert("Please upload a PDF");
       return;
     }
-
     const formData = new FormData();
     formData.append("title", data["title-of-paper"]);
     formData.append("domain", data["domain-of-paper"]);
@@ -74,6 +74,7 @@ const PaperSubmissionForm = () => {
     formData.append("abstract", data["abstract"]);
     formData.append("submissionDate", new Date().toISOString());
     formData.append("noAuthors", numAuthors); 
+    formData.append("authorId", authorId?._id); 
     formData.append(
       "authors",
       JSON.stringify(

@@ -110,9 +110,9 @@ router.post("/login", async (req, res) => {
      
     const isMatch = await user.matchPassword(password);
     if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
+    
 
-
-    const token = jwt.sign({ userId: user._id, role: user.role, reviewer: reviewer._id }, JWT_SECRET, {
+    const token = jwt.sign({ userId: user._id, role: user.role, reviewer: reviewer?._id }, JWT_SECRET, {
       expiresIn: "7d",
     });
     const userWithReviewer = {

@@ -22,6 +22,10 @@ const ReviewersPapersReviewDone = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = (paper) => {
+      const paperWithUrl = {
+    ...paper,
+    pdfUrl: `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${paper.pdfFileId}`,
+  };
     setSelectedPaper(paper);
     setIsModalOpen(true);
   };
@@ -50,10 +54,7 @@ const ReviewersPapersReviewDone = () => {
         const json = await res.json();
 
         // filter only those whose status is "Accepted" (i.e. review done)
-        const donePapers = (json.submissions || []).filter(
-          (p) => p.status === "Accepted"
-        );
-        setPapers(donePapers);
+        setPapers(json.submissions);
       } catch (err) {
         setError(err.message);
       }
@@ -83,6 +84,23 @@ const ReviewersPapersReviewDone = () => {
         accessorKey: "authors",
         cell: ({ getValue }) =>
           getValue().map((a) => a.name).join(", "),
+      },
+      {
+        header: "Status",
+        accessorKey: "status",
+        cell: ({ getValue }) => {
+          const status = getValue();
+          const map = {
+            Assigned: "bg-blue-100 text-blue-600",
+            "Approved": "bg-green-100 text-green-700",
+            "Rejected": "bg-red-100 text-red-600",
+          };
+          return (
+            <span className={`px-2 py-0.5 rounded-full text-xs ${map[status]}`}>
+              {status}
+            </span>
+          );
+        },
       },
       {
         id: "actions",
