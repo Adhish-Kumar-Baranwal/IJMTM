@@ -71,6 +71,7 @@ const PaperSubmissionForm = () => {
     formData.append("title", data["title-of-paper"]);
     formData.append("domain", data["domain-of-paper"]);
     formData.append("documentType", data["document-name"]);
+    formData.append("keywords", data["keywords"]);
     formData.append("abstract", data["abstract"]);
     formData.append("submissionDate", new Date().toISOString());
     formData.append("noAuthors", numAuthors); 

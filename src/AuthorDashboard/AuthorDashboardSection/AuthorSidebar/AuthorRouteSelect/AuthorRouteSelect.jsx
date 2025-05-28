@@ -25,7 +25,12 @@ const AuthorRouteSelect = () => {
         <span>Submitted Papers</span>
       </Link>
 
-      <Link to="paperApproved" className={`author-route-links ${isActive('paperApproved') ? "active shadow" : ""}`}>
+      <Link to="/author/paper-submit" className={`author-route-links ${isActive('paper-submit') ? "active shadow" : ""}`}>
+        <MdDocumentScanner />
+        <span>Publish paper</span>
+      </Link>
+
+      {/* <Link to="paperApproved" className={`author-route-links ${isActive('paperApproved') ? "active shadow" : ""}`}>
         <MdDocumentScanner />
         <span>Approved Papers</span>
       </Link>
@@ -33,7 +38,7 @@ const AuthorRouteSelect = () => {
       <Link to="paperPublished" className={`author-route-links ${isActive('paperPublished') ? "active shadow" : ""}`}>
         <MdDocumentScanner />
         <span>Published Papers</span>
-      </Link>
+      </Link> */}
 
     </div>
   );

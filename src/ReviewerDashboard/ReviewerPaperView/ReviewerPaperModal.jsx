@@ -8,13 +8,13 @@ const ReviewerPaperModal = ({ onClose, paper }) => {
 
 
   if (!paper || !paper.pdfUrl) return null;
-
+  console.log("Paper data:", paper);
   const { pdfUrl, title } = paper;
 
   const handleApprove = async () => {
   try {
     const res = await fetch(
-      "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/6836c02f1e421d4fcbaf6d29",
+      `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/${paper._id}`, // Replace with dynamic ID if needed
       {
         method: "PUT",
         headers: {
@@ -45,7 +45,7 @@ const ReviewerPaperModal = ({ onClose, paper }) => {
   const handleReject = async () => {
   try {
     const res = await fetch(
-      "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/6836c02f1e421d4fcbaf6d29", // Replace with dynamic ID if needed
+       `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/${paper._id}`, // Replace with dynamic ID if needed
       {
         method: "PUT",
         headers: {

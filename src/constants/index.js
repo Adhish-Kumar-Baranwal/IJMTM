@@ -2,7 +2,7 @@ export const navLists = [
     {
       name: "Publish with Us",
       submenu: [
-        { name: "Publish Paper", path: "/paper-submit" },
+        { name: "Publish Paper", path: "/SigninPage" },
       ],
     },
     {

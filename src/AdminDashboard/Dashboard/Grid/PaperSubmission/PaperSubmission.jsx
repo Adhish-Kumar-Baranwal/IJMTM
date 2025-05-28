@@ -113,6 +113,7 @@ const [isReviewModalOpen, setIsReviewModalOpen] = useState(false); // New state
                   pdfUrl: `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${fileId}`,
                   title: title,
                   reviewComments: row.original?.reviewComments || [],
+                  _id: row.original?._id,
                 });
                 setIsReviewModalOpen(true);
               }}

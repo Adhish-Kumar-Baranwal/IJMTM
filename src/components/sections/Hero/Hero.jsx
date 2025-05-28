@@ -25,7 +25,7 @@ const Hero = () => {
 
         <div className="hero-btn-section">
           <Link
-            to="/paper-submit"
+            to="/SigninPage"
             className="hero-ppr-submit-btn"
           >
             Submit Paper <span>→</span>

@@ -17,16 +17,18 @@ const PapersSubmitted = () => {
     pageSize: 10,
   });
 
+  const author = JSON.parse(localStorage.getItem("user"));
   // Fetch submission data
   useEffect(() => {
     axios
-      .get("https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/author/6837208e549d0fc5a8d8a68c")
+       .get(`https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/submission/author/${author._id}`)
       .then((res) => {
         const formatted = res.data.submissions.map((submission) => ({
           title: submission.title,
           authors: submission.authors.map((a) => a.name),
           type: submission.documentType,
           submittedDate: new Date(submission.submissionDate).toLocaleDateString(),
+          status: submission.status,
         }));
         setData(formatted);
       })
@@ -52,7 +54,7 @@ const PapersSubmitted = () => {
         header: "Submitted Date",
         accessorKey: "submittedDate",
       },
-       {
+        {
         header: "Status",
         accessorKey: "status",
         cell: ({ getValue }) => {

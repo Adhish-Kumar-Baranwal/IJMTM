@@ -136,7 +136,7 @@ const App = () => {
         }
       />
       <Route
-        path="/paper-submit"
+        path="author/paper-submit"
         element={
           <Layout>
             {" "}
