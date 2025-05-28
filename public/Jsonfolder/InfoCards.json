@@ -11,7 +11,7 @@
       "buttons": [
         {
           "text": "View all papers",
-          "link": "#"
+          "link": "/published-papers"
         }
       ]
     },
@@ -26,7 +26,7 @@
       "buttons": [
         {
           "text": "View this volume",
-          "link": "#"
+          "link": "/current-volume"
         }
       ]
     },
@@ -41,11 +41,11 @@
       "buttons": [
         {
           "text": "Apply as Reviewer",
-          "link": "#"
+          "link": "/apply-for-reviewer"
         },
         {
           "text": "Submit Paper",
-          "link": "#"
+          "link": "/paper-submit"
         }
       ]
     }
