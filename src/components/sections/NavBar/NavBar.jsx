@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { navLists } from "../../../constants";
 import { useAuth } from "../../../context/AuthContext";
 import { CgProfile } from "react-icons/cg";
+import logo from "../../../assets/Intersect.png"
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState(null);
@@ -24,7 +25,8 @@ const goToDashboard = () => {
     <header className="nav-header" onMouseLeave={() => setDropdown(null)}>
       <nav className="nav-container">
         {/* Logo */}
-        <Link to="/" className="no-underline text-3xl font-bold">
+        <Link to="/" className="flex items-center gap-1 no-underline text-3xl font-bold">
+        <img src={logo} className="w-[28px] h-[28px]" alt="" />
           IJMTM
         </Link>
 

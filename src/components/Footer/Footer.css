@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     background: #e6ecf3;
     padding: 50px 0;
     text-align: center;
@@ -77,7 +77,7 @@
   }
   
 
-  /* Responsive Footer */
+
 @media screen and (max-width: 1024px) {
   .footer-container {
     margin: 0 40px;
@@ -144,4 +144,118 @@
     font-size: 13px;
     padding-top: 15px;
   }
+} */
+
+
+
+.footer-simple {
+  margin-top: 20px;
+  background-color: #e6e6e6;
+  font-family: 'Segoe UI', sans-serif;
+  color: #111;
 }
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.footer-brand {
+  margin-bottom: 30px;
+}
+
+.footer-logo-circle {
+  width: 24px;
+  height: 24px;
+  background-color: #666;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.footer-logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.footer-tagline {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.footer-links {
+  display: flex;
+  gap: 100px;
+  /* flex: 2 1 500px; */
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.footer-column a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+/* Specific style to make 'Contact Us' feel like a heading/link combo */
+.contact-heading {
+  font-size: 18px !important;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 0;
+  color: #222;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid #000000;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #1a1a1a;
+  background-color: #d1d1d1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-right: 0;
+    margin-top: 20px;
+  }
+
+  .footer-brand {
+    align-items: center;
+  }
+}
+
