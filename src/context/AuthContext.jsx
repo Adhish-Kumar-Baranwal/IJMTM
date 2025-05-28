@@ -7,7 +7,10 @@ export const AuthProvider = ({ children }) => {
 
   // login expects userType string directly now
   const login = (type) => setUserType(type);
-  const logout = () => setUserType(null);
+ const logout = () => {
+  setUserType(null); // or setUser(null), depending on your logic
+  localStorage.removeItem("token"); // if you're using tokens
+};
 
   return (
     <AuthContext.Provider value={{ userType, login, logout }}>

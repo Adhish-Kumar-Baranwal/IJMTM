@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./SignupPage.css"; // Reuse your existing CSS
 // import bgImage1 from "../assets/How-to-Write-the-Background-of-Your-Scientific-Paper.jpg";
+import logo from "../.././assets//Intersect.png"
+
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -47,13 +50,13 @@ const SignupPage = () => {
   return (
     <div className="signup-container">
       <div className="signup-left">
-        <a
-          href="/"
-          id="nav-title"
-          className="no-underline p-5 text-2xl font-semibold"
+        <Link
+          to="/"
+          className="flex items-center gap-1 no-underline text-3xl font-bold"
         >
+          <img src={logo} className="w-[28px] h-[28px]" alt="" />
           IJMTM
-        </a>
+        </Link>
         <form className="signup-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Full Name</label>
           <input

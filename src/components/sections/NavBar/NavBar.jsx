@@ -4,29 +4,37 @@ import { Link, useNavigate } from "react-router-dom";
 import { navLists } from "../../../constants";
 import { useAuth } from "../../../context/AuthContext";
 import { CgProfile } from "react-icons/cg";
-import logo from "../../../assets/Intersect.png"
+import logo from "../../../assets/Intersect.png";
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-const { userType } = useAuth();
+  const { userType, logout } = useAuth();
 
-const goToDashboard = () => {
-  console.log("goToDashboard called");
-  console.log("userType:", userType);
+  const goToDashboard = () => {
+    console.log("goToDashboard called");
+    console.log("userType:", userType);
 
-  if (userType === "author") navigate("/author");
-  else if (userType === "admin") navigate("/adminPanel");
-  else if (userType === "reviewer") navigate("/reviewerDashboard");
-};
+    if (userType === "author") navigate("/author");
+    else if (userType === "admin") navigate("/adminPanel");
+    else if (userType === "reviewer") navigate("/reviewerDashboard");
+  };
+
+  const handleLogout = () => {
+    logout(); // Clears the session from AuthContext
+    navigate("/"); // Redirect to home or login page
+  };
 
   return (
     <header className="nav-header" onMouseLeave={() => setDropdown(null)}>
       <nav className="nav-container">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-1 no-underline text-3xl font-bold">
-        <img src={logo} className="w-[28px] h-[28px]" alt="" />
+        <Link
+          to="/"
+          className="flex items-center gap-1 no-underline text-3xl font-bold"
+        >
+          <img src={logo} className="w-[28px] h-[28px]" alt="" />
           IJMTM
         </Link>
 
@@ -67,9 +75,15 @@ const goToDashboard = () => {
         {/* Buttons */}
         <div className="nav-btn-section max-sm:hidden">
           {userType ? (
-            <button onClick={goToDashboard} className="nav-profile-btn">
-              <CgProfile />
-            </button>
+            <>
+              <button onClick={goToDashboard} className="profile-icon-btn">
+                <CgProfile size={22} />
+              </button>
+
+              <button onClick={handleLogout} className="nav-signin-btn ml-2">
+                Logout
+              </button>
+            </>
           ) : (
             <button
               onClick={() => navigate("/SigninPage")}
@@ -101,11 +115,17 @@ const goToDashboard = () => {
             ))}
             <li className="mobile-nav-item">
               {userType ? (
-                <button onClick={goToDashboard}><CgProfile /></button>
+                <>
+                  <button onClick={goToDashboard} className="profile-icon-btn">
+                    <CgProfile size={22} />
+                  </button>
+
+                  <button onClick={handleLogout} className="ml-2">
+                    Logout
+                  </button>
+                </>
               ) : (
-                <button onClick={() => navigate("/SigninPage")}>
-                  Sign In
-                </button>
+                <button onClick={() => navigate("/SigninPage")}>Sign In</button>
               )}
             </li>
           </ul>

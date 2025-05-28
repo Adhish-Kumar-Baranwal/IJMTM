@@ -1,17 +1,11 @@
+
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
-const ProtectedRoute = ({ allowedRoles, children }) => {
-  const { userType } = useAuth();
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = localStorage.getItem("user");
 
-  // If not logged in
-  if (!userType) {
+  if (!isAuthenticated) {
     return <Navigate to="/SigninPage" replace />;
-  }
-
-  // If user role isn't allowed
-  if (!allowedRoles.includes(userType)) {
-    return <Navigate to="/" replace />;
   }
 
   return children;

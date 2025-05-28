@@ -18,6 +18,21 @@
     margin: 0 80px;
     z-index: 1000;
 }
+.profile-icon-btn {
+  background: #1f2937; /* dark gray */
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.profile-icon-btn:hover {
+  background: #374151; /* lighter gray on hover */
+}
 
 .nav-menu{
     display: flex;

@@ -140,12 +140,11 @@ const App = () => {
       <Route
         path="author/paper-submit"
         element={
-          <Layout>
-            {" "}
+          <ProtectedRoute>
+            <Layout>
               <PaperSubmissionForm />
-            {/* <ProtectedRoute>
-            </ProtectedRoute> */}
-          </Layout>
+            </Layout>
+          </ProtectedRoute>
         }
       />
       {/* <Route
@@ -158,7 +157,14 @@ const App = () => {
         }
       /> */}
 
-      <Route path="/adminPanel" element={<AdminDashboard />}>
+      <Route
+        path="/adminPanel"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      >
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="reviewerPage" element={<ReviewersPage />} />
@@ -169,14 +175,28 @@ const App = () => {
         {/* Moved out */}
       </Route>
 
-      <Route path="/reviewerDashboard" element={<ReviewerDashboard />}>
+      <Route
+        path="/reviewerDashboard"
+        element={
+          <ProtectedRoute>
+            <ReviewerDashboard />
+          </ProtectedRoute>
+        }
+      >
         <Route index element={<ReviewerDashboardSection />} />
         <Route path="dashboard" element={<ReviewerDashboardSection />} />
         <Route path="assignedPaper" element={<AssignedPapers />} />
         <Route path="reviewedPaper" element={<ReviewedDashboard />} />
       </Route>
 
-      <Route path="/author" element={<AuthorDashboard />}>
+      <Route
+        path="/author"
+        element={
+          <ProtectedRoute>
+            <AuthorDashboard />
+          </ProtectedRoute>
+        }
+      >
         <Route index element={<AuthorDashboardSection />} />
         <Route path="authorDashboard" element={<AuthorDashboardSection />} />
         <Route path="paperSubmitted" element={<PaperSubmittedMain />} />

@@ -4,6 +4,8 @@ import axios from "axios";
 import "./SigninPage.css";
 import { useAuth } from "../../context/AuthContext";
 import LoginSuccessDialog from "../../components/LoginSuccessDialog/LoginSuccessDialog";
+import logo from "../.././assets/Intersect.png"
+
 
 const SigninPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -31,23 +33,25 @@ const SigninPage = () => {
         "https://t4hxj7p8-5000.inc1.devtunnels.ms/api/auth/login",
         formData
       );
-      console.log(res.data.user);
-      console.log(userName)
 
-      // Save token and user data to localStorage
+      const user = res.data.user;
+      const role = user.role.toLowerCase(); // e.g., 'author', 'admin', 'reviewer'
+
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("user", JSON.stringify(user));
 
-      // alert(`Login successful! Welcome, ${res.data.user.name}`);
-      setUserName(res.data.user.name);
+      setUserName(user.name);
+
+      // ✅ Call the context login method
+      login(role); // This sets userType in context
 
       // Redirect based on role
-      if (res.data.user.role === "Admin") {
-        window.location.href = "/adminPanel";
-      } else if (res.data.user.role === "Reviewer") {
-        window.location.href = "/reviewerDashboard";
+      if (role === "admin") {
+        navigate("/adminPanel");
+      } else if (role === "reviewer") {
+        navigate("/reviewerDashboard");
       } else {
-        window.location.href = "/author";
+        navigate("/author");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
@@ -59,13 +63,13 @@ const SigninPage = () => {
   return (
     <div className="signin-container">
       <div className="signin-left">
-        <a
-          href="/"
-          id="nav-title"
-          className="no-underline p-5 text-2xl font-semibold"
+        <Link
+          to="/"
+          className="flex items-center gap-1 no-underline text-3xl font-bold"
         >
+          <img src={logo} className="w-[28px] h-[28px]" alt="" />
           IJMTM
-        </a>
+        </Link>
         <form className="signin-form" onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
