@@ -82,6 +82,8 @@ const App = () => {
           </Layout>
         }
       />
+      <Route path="/paper/:id" element={<Papers />} />
+
       <Route path="/review-paper" element={<ReviewerPaperModal />} />
       <Route
         path="/payment-success"
@@ -146,7 +148,7 @@ const App = () => {
           </Layout>
         }
       />
-      <Route
+      {/* <Route
         path="/paper/:id"
         element={
           <Layout>
@@ -154,7 +156,7 @@ const App = () => {
             <Papers />{" "}
           </Layout>
         }
-      />
+      /> */}
 
       <Route path="/adminPanel" element={<AdminDashboard />}>
         <Route index element={<Dashboard />} />

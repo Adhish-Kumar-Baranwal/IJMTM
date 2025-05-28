@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 const submissionSchema = new mongoose.Schema({
   title: String,
   domain: String,
+  keywords: String,
   noAuthors: Number,
   authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   authors: Array,

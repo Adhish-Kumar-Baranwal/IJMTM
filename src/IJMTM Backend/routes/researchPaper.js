@@ -3,6 +3,7 @@ import express from 'express';
 import ResearchPaper from '../models/ResearchPaper.js';
 import { authenticate, authorizeRoles } from '../middleware/authMiddleware.js';
 import Submission from '../models/Submission.js';
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -197,6 +198,25 @@ router.get("/submission/author/:authorId", async (req, res) => {
   }
 });
 
+router.get("/paper/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
 
+    // Validate ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid paper ID" });
+    }
+
+    const submission = await Submission.findById(id);
+    if (!submission) {
+      return res.status(404).json({ message: "Paper not found" });
+    }
+
+    res.json(submission);
+  } catch (err) {
+    console.error("Error fetching paper:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 export default router;
