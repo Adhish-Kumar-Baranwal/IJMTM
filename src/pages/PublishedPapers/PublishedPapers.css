@@ -6,7 +6,7 @@
     background-color: #c8c8c8;
     padding: 10px;
     min-height: fit-content;
-    min-width: fit-content;
+    /* min-width: fit-content; */
 }
 
 .cfp-title{

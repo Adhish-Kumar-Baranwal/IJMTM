@@ -1,0 +1,97 @@
+.editorial-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  /* font-family: 'Georgia', serif; */
+  color: #222;
+  line-height: 1.6;
+}
+
+.editorial-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.editorial-loading {
+  font-style: italic;
+  color: #888;
+}
+
+.editor-card {
+  margin-bottom: 2.5rem;
+  border-left: 4px solid #000;
+  padding-left: 20px;
+}
+
+.editor-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.editor-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.editor-detail {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .editorial-container {
+    padding: 0 16px;
+  }
+
+  .editorial-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .editor-title {
+    font-size: 1.1rem;
+  }
+
+  .editor-name {
+    font-size: 1rem;
+  }
+
+  .editor-detail {
+    font-size: 0.95rem;
+  }
+
+  .editor-card {
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editorial-container {
+    padding: 0 12px;
+  }
+
+  .editorial-heading {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .editor-title {
+    font-size: 1rem;
+  }
+
+  .editor-name {
+    font-size: 0.95rem;
+  }
+
+  .editor-detail {
+    font-size: 0.9rem;
+  }
+
+  .editor-card {
+    padding-left: 12px;
+  }
+}

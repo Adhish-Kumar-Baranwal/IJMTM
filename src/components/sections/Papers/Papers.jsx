@@ -1,44 +1,69 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Papers.css";
-
+import NavBar from "../NavBar/NavBar";
+import Footer from "../../Footer/Footer";
 const Papers = () => {
   const { id } = useParams();
   const [paper, setPaper] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetch(
-      `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/paper/${id}`
-    )
+    fetch(`https://t4hxj7p8-5000.inc1.devtunnels.ms/api/research-paper/paper/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPaper({
-          type: data.documentType,
-          datePublished: new Date(data.submissionDate).toLocaleDateString(),
-          title: data.title,
-          authors: data.authors,
-          domain: data.domain,
-          volumeIssue: "N/A", // Placeholder, unless you store this
-          citeArticleLink: "#", // Placeholder
-          doi: "N/A", // Placeholder
+          type: data?.documentType || "Unknown",
+          datePublished: data?.submissionDate
+            ? new Date(data.submissionDate).toLocaleDateString()
+            : "Unknown",
+          title: data?.title || "Untitled",
+          authors: data?.authors || [],
+          domain: data?.domain || "N/A",
+          volumeIssue: "N/A", // still a placeholder
+          citeArticleLink: "#",
+          doi: "N/A",
           buttons: {
-            downloadPdf: `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${data.pdfFileId}`, // Adjust as needed
+            downloadPdf: data?.pdfFileId
+              ? `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${data.pdfFileId}`
+              : "#",
             share: "#",
             cite: "#",
-            contactAuthor: `mailto:${
-              data.authors[0]?.email || "author@example.com"
-            }`,
+            contactAuthor: `mailto:${data?.authors?.[0]?.email || "author@example.com"}`,
           },
-          keywords: data.keywords.split(","),
-          abstract: data.abstract,
+          keywords: data?.keywords ? data.keywords.split(",") : ["N/A"],
+          abstract: data?.abstract || "No abstract available.",
         });
       })
-      .catch((err) => console.error("Error fetching paper:", err));
+      .catch((err) => {
+        console.error("Error fetching paper:", err);
+        setPaper({
+          type: "Unknown",
+          datePublished: "Unknown",
+          title: "Failed to load paper",
+          authors: [],
+          domain: "N/A",
+          volumeIssue: "N/A",
+          citeArticleLink: "#",
+          doi: "N/A",
+          buttons: {
+            downloadPdf: "#",
+            share: "#",
+            cite: "#",
+            contactAuthor: "mailto:author@example.com",
+          },
+          keywords: ["N/A"],
+          abstract: "An error occurred while fetching the paper.",
+        });
+      });
   }, [id]);
 
   if (!paper) return <div className="loading">Loading paper...</div>;
 
   return (
+    <>
+    <NavBar />
+    <button onClick={() => navigate(-1)} className="back-btn">← Back to Articles</button>
     <div className="paper-page">
       <main className="paper-main full-width">
         <p>
@@ -46,7 +71,9 @@ const Papers = () => {
         </p>
         <h1>{paper.title}</h1>
         <p className="authors">
-          {paper.authors.map((author) => author.name).join(", ")}
+          {paper.authors.length > 0
+            ? paper.authors.map((author) => author?.name || "Unknown").join(", ")
+            : "No authors listed"}
         </p>
 
         <div className="meta">
@@ -88,9 +115,13 @@ const Papers = () => {
           <p>{paper.abstract}</p>
         </section>
       </main>
-      <button onClick={() => navigate(-1)}>← Back to Articles</button>
+      
     </div>
+    <Footer />
+    </>
   );
 };
 
 export default Papers;
+
+

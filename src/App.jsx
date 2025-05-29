@@ -34,6 +34,7 @@ import Papers from "./components/sections/Papers/Papers";
 import ReviewerForm from "./pages/ReviewerForm/ReviewerForm";
 import Layout from "./components/Layout/Layout";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import EditoralBoard from './pages/EditoralBoard/EditoralBoard'
 
 const App = () => {
   return (
@@ -147,15 +148,15 @@ const App = () => {
           </ProtectedRoute>
         }
       />
-      {/* <Route
-        path="/paper/:id"
+      <Route
+        path="/editorial-board"
         element={
           <Layout>
             {" "}
-            <Papers />{" "}
+            <EditoralBoard />{" "}
           </Layout>
         }
-      /> */}
+      />
 
       <Route
         path="/adminPanel"

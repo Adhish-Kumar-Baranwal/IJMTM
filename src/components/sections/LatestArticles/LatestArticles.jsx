@@ -20,11 +20,8 @@ const LatestArticles = () => {
         }
 
         const result = await response.json();
-
-        // Extract the submissions array from the response
         const submissions = result.submissions || [];
 
-        // Transform the data
         const formattedArticles = submissions.map((article) => ({
           id: article._id,
           title: article.title || "Untitled",
@@ -40,10 +37,9 @@ const LatestArticles = () => {
           documentType: article.documentType || "Article",
           pdfFileId: article?.pdfFileId,
         }));
-        console.log("Formatted Articles:", formattedArticles);
+
         setArticles(formattedArticles);
       } catch (error) {
-        console.error("Error fetching articles:", error);
         setError(error.message);
       } finally {
         setLoading(false);
@@ -53,36 +49,24 @@ const LatestArticles = () => {
     fetchArticles();
   }, []);
 
-  //  const handleArticleClick = (pdfId) => {
-
-  //     window.open(
-  //       `https://t4hxj7p8-5000.inc1.devtunnels.ms/api/papers/${pdfId.pdfFileId}`,
-  //       '_blank',
-  //       'noopener,noreferrer'
-  //     );
-  //   };
   const handleArticleClick = (article) => {
     navigate(`/paper/${article.id}`);
   };
 
-  if (loading) {
-    return <div className="u-container">Loading articles...</div>;
-  }
+  const handleSeeMoreClick = () => {
+    navigate("/published-papers");
+  };
 
-  if (error) {
-    return <div className="u-container">Error loading articles: {error}</div>;
-  }
-
-  if (articles.length === 0) {
-    return <div className="u-container">No articles found</div>;
-  }
+  if (loading) return <div className="u-container">Loading articles...</div>;
+  if (error) return <div className="u-container">Error: {error}</div>;
+  if (articles.length === 0) return <div className="u-container">No articles found.</div>;
 
   return (
     <div className="u-container">
       <div className="latest-articles-section">
         <h2 className="latest-articles-title">Latest Articles</h2>
         <div className="latest-articles-list">
-          {articles.map((article, index) => (
+          {articles.slice(0, 5).map((article, index) => (
             <div
               key={index}
               className="latest-article-item"
@@ -91,11 +75,7 @@ const LatestArticles = () => {
             >
               <div className="latest-article-content">
                 <div className="latest-article-info">
-                  <h3
-                    className="latest-article-title"
-                    onClick={() => handleArticleClick(article)}
-                    style={{ cursor: "pointer" }}
-                  >
+                  <h3 className="latest-article-title">
                     {index + 1}. {article.title}
                   </h3>
                   <p className="latest-article-authors">{article.authors}</p>
@@ -111,6 +91,14 @@ const LatestArticles = () => {
             </div>
           ))}
         </div>
+
+        {articles.length > 5 && (
+          <div style={{ textAlign: "left", marginTop: "1rem" }}>
+            <button className="see-more-button" onClick={handleSeeMoreClick}>
+              See More
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

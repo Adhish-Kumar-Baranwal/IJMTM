@@ -26,7 +26,7 @@ export const navLists = [
       name: "About the Journal",
       submenu: [
         { name: "Jounal Information", path: "/journal-information" },
-        // { name: "Editorial Board", path: "/editorial-board" },
+        { name: "Editorial Board", path: "/editorial-board" },
         { name: "Publishing Models", path: "/publishing-models" },
         { name: "Journal Policies", path: "/journal-policies" },
         // { name: "Popular Topics", path: "/popular-topics" },
