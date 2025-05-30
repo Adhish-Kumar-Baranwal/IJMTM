@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../../assets/Intersect.png"
+import logo from "../../assets/IJMTM_icon.png"
 
 const Footer = () => {
   return (

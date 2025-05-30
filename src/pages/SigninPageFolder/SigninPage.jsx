@@ -4,7 +4,7 @@ import axios from "axios";
 import "./SigninPage.css";
 import { useAuth } from "../../context/AuthContext";
 import LoginSuccessDialog from "../../components/LoginSuccessDialog/LoginSuccessDialog";
-import logo from "../.././assets/Intersect.png"
+import logo from "../.././assets/IJMTM_icon.png"
 
 
 const SigninPage = () => {

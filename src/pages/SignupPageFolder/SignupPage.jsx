@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignupPage.css"; // Reuse your existing CSS
 // import bgImage1 from "../assets/How-to-Write-the-Background-of-Your-Scientific-Paper.jpg";
-import logo from "../.././assets//Intersect.png"
+import logo from "../.././assets//IJMTM_icon.png"
 
 
 const SignupPage = () => {
