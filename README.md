@@ -1,12 +1,12 @@
-# React + Vite
+Project: IJMTM – Research Journal Publication & Peer-Review Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Developed a full-stack journal publication platform using React.js, Node.js, Express.js, and MongoDB Atlas. Implemented role-based access control for Authors, Reviewers, and Admins to manage research paper submissions, reviewer approvals, paper assignments, review deadlines, and feedback. Integrated JWT-based authentication and research paper file uploads, with an admin dashboard for managing submissions and streamlining the peer-review workflow.
 
-Currently, two official plugins are available:
+Tech Stack: React.js, Node.js, Express.js, MongoDB Atlas, JWT Authentication, REST APIs, GridFS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="1536" height="1024" alt="IJMTM Web Application Architecture" src="https://github.com/user-attachments/assets/5864c7a4-0ab8-4a18-9019-463e4ccbb7fc" />
 
-## Expanding the ESLint configuration
+<img width="1894" height="871" alt="Screenshot 2026-10-29 195339_edited" src="https://github.com/user-attachments/assets/f3cad3b2-e78b-4b58-b433-b95f7c8b318b" />
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<img width="1916" height="874" alt="Screenshot 2026-10-29 195539" src="https://github.com/user-attachments/assets/a46cbf4f-6a81-4a2e-b3ed-44bcbd5b1986" />
+
